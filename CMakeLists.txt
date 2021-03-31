@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(travesim_adapter)
+project(travesim_adapters)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 set(CMAKE_CXX_STANDARD 11)
@@ -96,7 +96,7 @@ find_package(Boost REQUIRED COMPONENTS system thread)
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES travesim_adapter
+#  LIBRARIES travesim_adapters
 #  CATKIN_DEPENDS Boost roscpp std_msgs
 #  DEPENDS system_lib
 )
@@ -117,7 +117,7 @@ link_directories(${Boost_LIBRARY_DIRS})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/travesim_adapter.cpp
+#   src/${PROJECT_NAME}/travesim_adapters.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -128,7 +128,7 @@ link_directories(${Boost_LIBRARY_DIRS})
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/travesim_adapter_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/travesim_adapters_node.cpp)
 
 add_executable(multi_sender_test src/bin/tests/multicast_sender.cpp)
 add_executable(multi_receiver_test src/bin/tests/multicast_receiver.cpp)
@@ -205,7 +205,7 @@ target_link_libraries(multi_receiver_test
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_travesim_adapter.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_travesim_adapters.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
