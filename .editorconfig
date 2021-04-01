@@ -16,5 +16,8 @@ indent_size = 2
 [Makefile]
 indent_style = tab
 
-[*.py]
+[*.cpp]
+indent_size = 4
+
+[*.h]
 indent_size = 4
