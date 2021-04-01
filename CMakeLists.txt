@@ -50,8 +50,8 @@ add_library(${PROJECT_NAME}
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 
-add_executable(multi_sender_test
-  src/bin/tests/multicast_sender.cpp
+add_executable(test_multi_sender
+  src/bin/tests/test_multicast_sender.cpp
 )
 
 add_executable(test_multi_receiver
@@ -60,7 +60,7 @@ add_executable(test_multi_receiver
 
 ## Specify libraries to link a library or executable target against
 
-target_link_libraries(multi_sender_test
+target_link_libraries(test_multi_sender
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
