@@ -9,4 +9,4 @@ jobs:
       - name: Build the stack
         run: docker build -t adapters .
       - name: Run test
-        run: docker run -it adapters
+        run: docker run adapters
