@@ -13,13 +13,16 @@
 
   <doc_depend>doxygen</doc_depend>
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>Boost</build_depend>
+
+  <build_depend>boost</build_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>std_msgs</build_depend>
-  <build_export_depend>Boost</build_export_depend>
+
+  <build_export_depend>boost</build_export_depend>
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>std_msgs</build_export_depend>
-  <exec_depend>Boost</exec_depend>
+
+  <exec_depend>boost</exec_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>std_msgs</exec_depend>
 
