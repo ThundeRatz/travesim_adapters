@@ -22,7 +22,7 @@ find_package(Boost REQUIRED COMPONENTS system thread)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 #  LIBRARIES travesim_adapters
 #  CATKIN_DEPENDS Boost roscpp std_msgs
 #  DEPENDS system_lib
@@ -48,6 +48,7 @@ add_library(${PROJECT_NAME}
   src/lib/data/entity_state.cpp
   src/lib/data/robot_state.cpp
   src/lib/data/field_state.cpp
+  src/lib/vision_receiver.cpp
 )
 
 ## Declare a C++ executable
@@ -61,6 +62,16 @@ add_executable(multi_receiver_test
   src/bin/tests/multicast_receiver.cpp
 )
 
+add_executable(vision_adapter
+  src/bin/vision_adapter.cpp
+)
+
+## Rename C++ executable without prefix
+## The above recommended prefix causes long target names, the following renames the
+## target back to the shorter version for ease of user use
+## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
+# set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
+
 ## Specify libraries to link a library or executable target against
 
 target_link_libraries(multi_sender_test
@@ -73,6 +84,10 @@ target_link_libraries(multi_receiver_test
   ${Boost_LIBRARIES}
 )
 
+target_link_libraries(vision_adapter
+  ${PROJECT_NAME}
+  ${catkin_LIBRARIES}
+)
 #############
 ## Testing ##
 #############
