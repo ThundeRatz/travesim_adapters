@@ -12,9 +12,15 @@ WORKDIR ${CATKIN_WS}
 # Create catkin workspace
 RUN /ros_entrypoint.sh catkin_make
 
-COPY . src/${PROJECT_NAME}
+COPY package.xml src/${PROJECT_NAME}/
 
 RUN . devel/setup.sh && apt update --fix-missing && rosdep install ${PROJECT_NAME} -y
 
+COPY . src/${PROJECT_NAME}
+
 # Compile project
 RUN /ros_entrypoint.sh catkin_make
+
+RUN /ros_entrypoint.sh catkin_make install
+
+CMD [ "catkin_make", "run_tests" ]
