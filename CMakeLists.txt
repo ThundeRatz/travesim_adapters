@@ -54,8 +54,8 @@ add_executable(multi_sender_test
   src/bin/tests/multicast_sender.cpp
 )
 
-add_executable(multi_receiver_test
-  src/bin/tests/multicast_receiver.cpp
+add_executable(test_multi_receiver
+  src/bin/tests/test_multicast_receiver.cpp
 )
 
 ## Specify libraries to link a library or executable target against
@@ -65,7 +65,8 @@ target_link_libraries(multi_sender_test
   ${Boost_LIBRARIES}
 )
 
-target_link_libraries(multi_receiver_test
+target_link_libraries(test_multi_receiver
+  ${PROJECT_NAME}
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
