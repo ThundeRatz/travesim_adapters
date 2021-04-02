@@ -14,7 +14,7 @@ class MulticastReceiver {
 
     ~MulticastReceiver();
 
-    size_t receive(std::array<char, 1024>* p_buffer);
+    size_t receive(char* buffer, const size_t buffer_size);
 
   private:
     boost::asio::io_context io_context;

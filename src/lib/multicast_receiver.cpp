@@ -1,13 +1,12 @@
 #include <iostream>
 #include <string>
-#include <stdint.h>
 #include <exception>
 #include <boost/asio.hpp>
 #include "boost/bind.hpp"
 
 #include "travesim_adapters/multicast_receiver.hh"
 
-#define DATA_MAX_LENGTH 1024
+#define NO_FLAGS 0U
 
 MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port,
                                      std::string listener_address) {
@@ -40,18 +39,18 @@ void MulticastReceiver::create_socket(const boost::asio::ip::address multicast_i
     this->socket->set_option(boost::asio::ip::udp::socket::reuse_address(true));
     this->socket->bind(this->listener_endpoint);
 
-    // Usar non blocking para leitura síncrona
+    // Use non blocking for syncronous reading
     this->socket->non_blocking(true);
 
     // Join the multicast group.
     this->socket->set_option(boost::asio::ip::multicast::join_group(multicast_ip));
 };
 
-size_t MulticastReceiver::receive(std::array<char, 1024>* buffer) {
-    size_t data_size;
+size_t MulticastReceiver::receive(char* buffer, const size_t buffer_size) {
+    size_t bytes_received;
     boost::system::error_code ec;
 
-    data_size = this->socket->receive_from(boost::asio::buffer(*buffer), this->sender_endpoint, 0, ec);
+    bytes_received = this->socket->receive_from(boost::asio::buffer(buffer, buffer_size), this->sender_endpoint, NO_FLAGS, ec);
 
     switch (ec.value()) {
         case boost::system::errc::success: {
@@ -60,7 +59,7 @@ size_t MulticastReceiver::receive(std::array<char, 1024>* buffer) {
         }
 
         case boost::asio::error::would_block: {
-            data_size = 0;
+            bytes_received = 0;
             break;
         }
 
@@ -73,5 +72,5 @@ size_t MulticastReceiver::receive(std::array<char, 1024>* buffer) {
         }
     }
 
-    return data_size;
+    return bytes_received;
 };

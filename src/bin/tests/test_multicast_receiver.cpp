@@ -5,11 +5,13 @@
 
 #include "travesim_adapters/multicast_receiver.hh"
 
+#define BUFFER_SIZE 1024U
+
 const std::string listen_address_str = "0.0.0.0";
 const std::string multicast_address_str = "239.255.0.1";
 const short multicast_port = 30001;
 
-std::array<char, 1024> data_buff;
+char data_buff[BUFFER_SIZE];
 
 int main(int argc, char* argv[]) {
     try {
@@ -18,11 +20,11 @@ int main(int argc, char* argv[]) {
         size_t data_size = 0;
 
         for (long int i = 0;; i++) {
-            data_size = my_receiver.receive(&data_buff);
+            data_size = my_receiver.receive(data_buff, BUFFER_SIZE);
 
             if (data_size > 0) {
-                std::cout.write(data_buff.data(), data_size);
-                std::cout << std::endl;
+                std::string received_msg(data_buff, data_size);
+                std::cout << received_msg << std::endl;
             }
 
             if (i % 100000 == 0) {
