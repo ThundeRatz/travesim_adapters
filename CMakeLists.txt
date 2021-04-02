@@ -44,8 +44,8 @@ link_directories(${Boost_LIBRARY_DIRS})
 
 ## Declare a C++ library
 add_library(${PROJECT_NAME}
-  src/lib/multicast_receiver.cpp
-  src/lib/multicast_sender.cpp
+  src/lib/udp/multicast_receiver.cpp
+  src/lib/udp/multicast_sender.cpp
 )
 
 ## Declare a C++ executable

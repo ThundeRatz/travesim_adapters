@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-#include "travesim_adapters/multicast_sender.hh"
+#include "travesim_adapters/udp/multicast_sender.hh"
 
 const short multicast_port = 30001;
 const std::string multicast_address_str = "239.255.0.1";
