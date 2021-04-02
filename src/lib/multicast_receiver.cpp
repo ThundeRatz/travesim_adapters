@@ -10,41 +10,48 @@
 #define DATA_MAX_LENGTH 1024
 
 MulticastReceiver::MulticastReceiver(std::string multicast_address,
-                                     short multicast_port, std::string listener_address) : socket(io_context) {
+                                     short multicast_port, std::string listener_address) {
     const boost::asio::ip::address multicast_ip = boost::asio::ip::address::from_string(multicast_address);
     const boost::asio::ip::address listener_ip = boost::asio::ip::address::from_string(listener_address);
 
     this->listener_endpoint = boost::asio::ip::udp::endpoint(listener_ip, multicast_port);
 
-    this->configure_socket(multicast_ip);
+    this->create_socket(multicast_ip);
 };
 
-MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port) : socket(io_context) {
+MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port) {
     const boost::asio::ip::address multicast_ip = boost::asio::ip::address::from_string(multicast_address);
 
     this->listener_endpoint = boost::asio::ip::udp::endpoint(multicast_ip, multicast_port);
 
-    this->configure_socket(multicast_ip);
+    this->create_socket(multicast_ip);
 };
 
-void MulticastReceiver::configure_socket(const boost::asio::ip::address multicast_ip) {
+MulticastReceiver::~MulticastReceiver() {
+    this->socket->close();
+    delete this->socket;
+}
+
+void MulticastReceiver::create_socket(const boost::asio::ip::address multicast_ip) {
+    this->socket = new boost::asio::ip::udp::socket(io_context);
+
     // Create the socket so that multiple may be bound to the same address.
-    this->socket.open(this->listener_endpoint.protocol());
-    this->socket.set_option(boost::asio::ip::udp::socket::reuse_address(true));
-    this->socket.bind(this->listener_endpoint);
+    this->socket->open(this->listener_endpoint.protocol());
+    this->socket->set_option(boost::asio::ip::udp::socket::reuse_address(true));
+    this->socket->bind(this->listener_endpoint);
 
     // Usar non blocking para leitura síncrona
-    this->socket.non_blocking(true);
+    this->socket->non_blocking(true);
 
     // Join the multicast group.
-    this->socket.set_option(boost::asio::ip::multicast::join_group(multicast_ip));
+    this->socket->set_option(boost::asio::ip::multicast::join_group(multicast_ip));
 };
 
 size_t MulticastReceiver::receive(std::array<char, 1024>* buffer) {
     size_t data_size;
     boost::system::error_code ec;
 
-    data_size = this->socket.receive_from(boost::asio::buffer(*buffer), this->sender_endpoint, 0, ec);
+    data_size = this->socket->receive_from(boost::asio::buffer(*buffer), this->sender_endpoint, 0, ec);
 
     switch(ec.value()) {
         case boost::system::errc::success: {
