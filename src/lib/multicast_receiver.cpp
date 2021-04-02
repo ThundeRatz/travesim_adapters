@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stdint.h>
+#include <exception>
 #include <boost/asio.hpp>
 #include "boost/bind.hpp"
 
@@ -43,12 +44,30 @@ void MulticastReceiver::configure_socket(const boost::asio::ip::address multicas
 };
 
 size_t MulticastReceiver::receive(std::array<char, 1024>* buffer) {
-    size_t data_size = 0;
+    size_t data_size;
+    boost::system::error_code ec;
 
-    try {
-        data_size = this->socket.receive_from(boost::asio::buffer(*buffer), this->sender_endpoint);
+    data_size = this->socket.receive_from(boost::asio::buffer(*buffer), this->sender_endpoint, 0, ec);
 
-    } catch (boost::wrapexcept<boost::system::system_error>& e) {}
+    switch(ec.value()) {
+        case boost::system::errc::success: {
+            // Message received, do some log with self->sender_endpoint to register whoe is sending messages
+            break;
+        }
 
+        case boost::asio::error::would_block: {
+            data_size = 0;
+            break;
+        }
+
+        default: {
+            std::string error_msg = "Error in multicast receiver. Boost error: ";
+            error_msg += ec.category().name();
+            error_msg += " ";
+            error_msg += std::to_string(ec.value());
+            throw std::runtime_error(error_msg);
+        }
+    }
+    
     return data_size;
 };
