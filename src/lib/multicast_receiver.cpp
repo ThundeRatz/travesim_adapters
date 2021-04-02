@@ -49,8 +49,19 @@ void MulticastReceiver::create_socket(const boost::asio::ip::address multicast_i
 size_t MulticastReceiver::receive(char* buffer, const size_t buffer_size) {
     size_t bytes_received;
     boost::system::error_code ec;
+    boost::asio::ip::udp::endpoint current_endpoint;
 
-    bytes_received = this->socket->receive_from(boost::asio::buffer(buffer, buffer_size), this->sender_endpoint, NO_FLAGS, ec);
+    bytes_received =
+        this->socket->receive_from(boost::asio::buffer(buffer, buffer_size), current_endpoint, NO_FLAGS, ec);
+
+    if (this->sender_endpoint == boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0)) {
+        this->sender_endpoint = current_endpoint;
+    } else if (this->sender_endpoint != current_endpoint) {
+        if (current_endpoint != boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0)) {
+            std::string error_msg = "Error in multicast receiver. Any-source multicast not supported.";
+            throw std::runtime_error(error_msg);
+        }
+    }
 
     switch (ec.value()) {
         case boost::system::errc::success: {
