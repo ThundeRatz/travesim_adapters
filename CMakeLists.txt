@@ -45,6 +45,7 @@ link_directories(${Boost_LIBRARY_DIRS})
 ## Declare a C++ library
 add_library(${PROJECT_NAME}
   src/lib/multicast_receiver.cpp
+  src/lib/multicast_sender.cpp
 )
 
 ## Declare a C++ executable
@@ -61,6 +62,7 @@ add_executable(test_multi_receiver
 ## Specify libraries to link a library or executable target against
 
 target_link_libraries(test_multi_sender
+  ${PROJECT_NAME}
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
