@@ -16,7 +16,6 @@ class MulticastSender {
     boost::asio::io_context io_context;
     boost::asio::ip::udp::socket* socket;
     boost::asio::ip::udp::endpoint endpoint;
-
 };
 
-#endif // __MULTICAST_SENDER_H__
+#endif  // __MULTICAST_SENDER_H__

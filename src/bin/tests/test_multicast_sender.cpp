@@ -14,7 +14,7 @@ int main() {
         boost::asio::steady_timer my_timer(io_context);
         MulticastSender my_sender(multicast_address_str, multicast_port);
 
-        for(int i = 0; i < max_message_count; i++) {
+        for (int i = 0; i < max_message_count; i++) {
             std::string msg = "Menssagem " + std::to_string(i);
             size_t bytes_sent = my_sender.send(msg.c_str(), msg.length());
 
