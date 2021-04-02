@@ -9,22 +9,19 @@
 
 #define DATA_MAX_LENGTH 1024
 
-MulticastReceiver::MulticastReceiver(boost::asio::io_context& io_context, std::string multicast_address,
+MulticastReceiver::MulticastReceiver(std::string multicast_address,
                                      short multicast_port, std::string listener_address) : socket(io_context) {
     const boost::asio::ip::address multicast_ip = boost::asio::ip::address::from_string(multicast_address);
     const boost::asio::ip::address listener_ip = boost::asio::ip::address::from_string(listener_address);
 
-    // this->socket = boost::asio::ip::udp::socket(io_context);
     this->listener_endpoint = boost::asio::ip::udp::endpoint(listener_ip, multicast_port);
 
     this->configure_socket(multicast_ip);
 };
 
-MulticastReceiver::MulticastReceiver(boost::asio::io_context& io_context, std::string multicast_address,
-                                     short multicast_port) : socket(io_context) {
+MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port) : socket(io_context) {
     const boost::asio::ip::address multicast_ip = boost::asio::ip::address::from_string(multicast_address);
 
-    // this->socket = boost::asio::ip::udp::socket(io_context);
     this->listener_endpoint = boost::asio::ip::udp::endpoint(multicast_ip, multicast_port);
 
     this->configure_socket(multicast_ip);
@@ -68,6 +65,6 @@ size_t MulticastReceiver::receive(std::array<char, 1024>* buffer) {
             throw std::runtime_error(error_msg);
         }
     }
-    
+
     return data_size;
 };

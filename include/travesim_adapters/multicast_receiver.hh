@@ -6,14 +6,15 @@
 
 class MulticastReceiver {
   public:
-    MulticastReceiver(boost::asio::io_context& io_context, const std::string multicast_address, const short multicast_port, const std::string listener_address);
+    MulticastReceiver(const std::string multicast_address, const short multicast_port, const std::string listener_address);
 
     // Uses multicast address as listen address
-    MulticastReceiver(boost::asio::io_context& io_context, const std::string multicast_address, const short multicast_port);
+    MulticastReceiver(const std::string multicast_address, const short multicast_port);
 
     size_t receive(std::array<char, 1024>* p_buffer);
 
   private:
+    boost::asio::io_context io_context;
     boost::asio::ip::udp::socket socket;
     boost::asio::ip::udp::endpoint sender_endpoint;
     boost::asio::ip::udp::endpoint listener_endpoint;
