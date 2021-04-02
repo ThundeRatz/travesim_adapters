@@ -9,8 +9,8 @@
 
 #define DATA_MAX_LENGTH 1024
 
-MulticastReceiver::MulticastReceiver(std::string multicast_address,
-                                     short multicast_port, std::string listener_address) {
+MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port,
+                                     std::string listener_address) {
     const boost::asio::ip::address multicast_ip = boost::asio::ip::address::from_string(multicast_address);
     const boost::asio::ip::address listener_ip = boost::asio::ip::address::from_string(listener_address);
 
@@ -53,7 +53,7 @@ size_t MulticastReceiver::receive(std::array<char, 1024>* buffer) {
 
     data_size = this->socket->receive_from(boost::asio::buffer(*buffer), this->sender_endpoint, 0, ec);
 
-    switch(ec.value()) {
+    switch (ec.value()) {
         case boost::system::errc::success: {
             // Message received, do some log with self->sender_endpoint to register whoe is sending messages
             break;

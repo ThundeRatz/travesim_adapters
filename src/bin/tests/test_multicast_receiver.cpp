@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
 
         size_t data_size = 0;
 
-        for(long int i = 0;; i++) {
+        for (long int i = 0;; i++) {
             data_size = my_receiver.receive(&data_buff);
 
             if (data_size > 0) {
@@ -38,7 +38,6 @@ int main(int argc, char* argv[]) {
             if (i % 100000 == 0) {
                 std::cout << "Loop count: " << i << std::endl;
             }
-
         }
 
     } catch (std::exception& e) {

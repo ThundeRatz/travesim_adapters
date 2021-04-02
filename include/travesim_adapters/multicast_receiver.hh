@@ -6,7 +6,8 @@
 
 class MulticastReceiver {
   public:
-    MulticastReceiver(const std::string multicast_address, const short multicast_port, const std::string listener_address);
+    MulticastReceiver(const std::string multicast_address, const short multicast_port,
+                      const std::string listener_address);
 
     // Uses multicast address as listen address
     MulticastReceiver(const std::string multicast_address, const short multicast_port);
@@ -24,4 +25,4 @@ class MulticastReceiver {
     void create_socket(const boost::asio::ip::address multicast_ip);
 };
 
-#endif // __MULTICAST_RECEIVER_H__
+#endif  // __MULTICAST_RECEIVER_H__
