@@ -23,8 +23,7 @@ std::array<char, 1024> data_buff;
 
 int main(int argc, char* argv[]) {
     try {
-        boost::asio::io_context io_context;
-        MulticastReceiver my_receiver = MulticastReceiver(io_context, multicast_address_str, multicast_port);
+        MulticastReceiver my_receiver(multicast_address_str, multicast_port);
 
         size_t data_size = 0;
 
