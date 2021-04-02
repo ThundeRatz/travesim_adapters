@@ -54,7 +54,7 @@ size_t MulticastReceiver::receive(char* buffer, const size_t buffer_size) {
 
     switch (ec.value()) {
         case boost::system::errc::success: {
-            // Message received, do some log with self->sender_endpoint to register whoe is sending messages
+            // Message received, do some log with self->sender_endpoint to register whoe is sending
             break;
         }
 
@@ -64,11 +64,7 @@ size_t MulticastReceiver::receive(char* buffer, const size_t buffer_size) {
         }
 
         default: {
-            std::string error_msg = "Error in multicast receiver. Boost error: ";
-            error_msg += ec.category().name();
-            error_msg += " ";
-            error_msg += std::to_string(ec.value());
-            throw std::runtime_error(error_msg);
+            throw boost::system::system_error(ec);
         }
     }
 

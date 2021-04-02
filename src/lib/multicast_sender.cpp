@@ -28,18 +28,14 @@ size_t MulticastSender::send(const char* buffer, const size_t buffer_size) {
 
     bytes_sent = this->socket->send_to(boost::asio::buffer(buffer, buffer_size), this->endpoint, NO_FLAGS, ec);
 
-    switch(ec.value()) {
+    switch (ec.value()) {
         case boost::system::errc::success: {
             // Message sent. Log?
             break;
         }
 
         default: {
-            std::string error_msg = "Error in multicast receiver. Boost error: ";
-            error_msg += ec.category().name();
-            error_msg += " ";
-            error_msg += std::to_string(ec.value());
-            throw std::runtime_error(error_msg);
+            throw boost::system::system_error(ec);
         }
     }
 
