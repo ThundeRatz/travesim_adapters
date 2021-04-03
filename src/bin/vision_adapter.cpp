@@ -16,16 +16,13 @@
 #include <iostream>
 
 int main(int argc, char** argv) {
-    int32_t send_rate;
-    VisionReceiver vision_receiver;
-
     ros::init(argc, argv, "vision_adapter");
     ros::NodeHandle nh;
 
-    ros::Subscriber sub = nh.subscribe("/gazebo/model_states", 2, &VisionReceiver::receive, &vision_receiver);
+    int32_t send_rate;
+    VisionReceiver vision_receiver(&nh);
 
     nh.param<int32_t>("send_rate", send_rate, 60);
-
     ros::Rate loop_rate(send_rate);
 
     ROS_INFO_STREAM("Vision adapter started with loop rate " << send_rate);

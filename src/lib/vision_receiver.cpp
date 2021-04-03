@@ -12,10 +12,11 @@
 #include "gazebo_msgs/ModelStates.h"
 #include "travesim_adapters/vision_receiver.h"
 
-VisionReceiver::VisionReceiver() {
+VisionReceiver::VisionReceiver(ros::NodeHandle* nh_ptr) {
     for (int32_t i = 0; i < 7; i++) {
         this->lookup_table.insert({ this->topics[i], i + 1 });
     }
+    this->subscriber = nh_ptr->subscribe("/gazebo/model_states", 2, &VisionReceiver::receive, this);
 }
 
 int32_t VisionReceiver::model_name_to_index(std::string topic) {

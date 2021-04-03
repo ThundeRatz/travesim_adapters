@@ -11,6 +11,7 @@
 #ifndef __VISION_RECEIVER_H__
 #define __VISION_RECEIVER_H__
 
+#include "ros/ros.h"
 #include "ros/console.h"
 #include "gazebo_msgs/ModelStates.h"
 #include "gazebo_msgs/ModelState.h"
@@ -41,8 +42,10 @@ class VisionReceiver {
                                     BLUE_ROBOT_2_NAME,
                                     BALL_NAME };
 
+    ros::Subscriber subscriber;
+
   public:
-    VisionReceiver();
+    VisionReceiver(ros::NodeHandle* nh_ptr);
     // ~VisionReceiver();
 
     gazebo_msgs::ModelState world_state[7];
