@@ -109,10 +109,17 @@ install(TARGETS vision_adapter
 ## Add gtest based cpp test target and link libraries
 catkin_add_gtest(${PROJECT_NAME}-test src/lib/data/test/robot_state.test.cpp)
 # catkin_add_gtest(${PROJECT_NAME}-test test/test_travesim_adapters.cpp)
-catkin_add_gtest(${PROJECT_NAME}-test_vision test/test_vision_adapter.cpp)
-if(TARGET ${PROJECT_NAME}-test)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_vision_adapter.cpp)
+# if(TARGET ${PROJECT_NAME}-test)
+#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME} ${catkin_LIBRARIES})
+# endif()
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(vision_receiver.test test/vision_receiver.test src/lib/test/vision_receiver.test.cpp)
+  target_link_libraries(vision_receiver.test ${catkin_LIBRARIES} ${PROJECT_NAME})
+
   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME} ${catkin_LIBRARIES})
-  target_link_libraries(${PROJECT_NAME}-test_vision ${PROJECT_NAME} ${catkin_LIBRARIES})
 endif()
 
 ## Add folders to be run by python nosetests

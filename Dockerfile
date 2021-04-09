@@ -23,4 +23,6 @@ RUN /ros_entrypoint.sh catkin_make
 
 RUN /ros_entrypoint.sh catkin_make install
 
-CMD [ "catkin_make", "run_tests" ]
+RUN /ros_entrypoint.sh catkin_make run_tests
+
+RUN /ros_entrypoint.sh catkin_test_results

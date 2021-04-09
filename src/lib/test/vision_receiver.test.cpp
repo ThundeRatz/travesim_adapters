@@ -1,11 +1,14 @@
 // Bring in my package's API, which is what I'm testing
-#include "travesim_adapters/vision_receiver.h"
+#include "ros/ros.h"
 #include "ros/console.h"
+#include "travesim_adapters/vision_receiver.h"
 #include <gtest/gtest.h>
 
 // Declare a test
 TEST(vision_adapter, model_name_to_index) {
-    VisionReceiver vision_receiver;
+    ros::NodeHandle _nh;
+    VisionReceiver vision_receiver(&_nh);
+
     EXPECT_EQ(vision_receiver.model_name_to_index("yellow_team/robot_0"), 0);
     EXPECT_EQ(vision_receiver.model_name_to_index("yellow_team/robot_1"), 1);
     EXPECT_EQ(vision_receiver.model_name_to_index("yellow_team/robot_2"), 2);
@@ -23,7 +26,7 @@ TEST(vision_adapter, model_name_to_index) {
 // Run all the tests that were declared with TEST()
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);
-    // ros::init(argc, argv, "tester");
-    // ros::NodeHandle nh;
+    ros::init(argc, argv, "tester");
+    ros::NodeHandle nh;
     return RUN_ALL_TESTS();
 }

@@ -46,7 +46,6 @@ class VisionReceiver {
 
   public:
     VisionReceiver(ros::NodeHandle* nh_ptr);
-    // ~VisionReceiver();
 
     gazebo_msgs::ModelState world_state[7];
 

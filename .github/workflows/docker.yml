@@ -8,5 +8,3 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the stack
         run: docker build -t adapters .
-      - name: Run test
-        run: docker run adapters
