@@ -17,17 +17,17 @@
   <build_depend>boost</build_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>std_msgs</build_depend>
-  <build_depend>protobuf</build_depend>
+  <build_depend>protobuf-dev</build_depend>
 
   <build_export_depend>boost</build_export_depend>
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>std_msgs</build_export_depend>
-  <build_export_depend>protobuf</build_export_depend>
+  <build_export_depend>protobuf-dev</build_export_depend>
 
   <exec_depend>boost</exec_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>std_msgs</exec_depend>
-  <exec_depend>protobuf</exec_depend>
+  <exec_depend>protobuf-dev</exec_depend>
 
   <export>
   </export>
