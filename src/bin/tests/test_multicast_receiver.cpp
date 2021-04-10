@@ -3,7 +3,7 @@
 #include <boost/asio.hpp>
 #include "boost/bind.hpp"
 
-#include "travesim_adapters/udp/multicast_receiver.hh"
+#include "travesim_adapters/udp/multicast_receiver.hpp"
 
 #define BUFFER_SIZE 1024U
 

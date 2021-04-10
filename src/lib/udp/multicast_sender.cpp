@@ -3,7 +3,7 @@
 #include <exception>
 #include <boost/asio.hpp>
 
-#include "travesim_adapters/udp/multicast_sender.hh"
+#include "travesim_adapters/udp/multicast_sender.hpp"
 
 #define NO_FLAGS 0U
 
