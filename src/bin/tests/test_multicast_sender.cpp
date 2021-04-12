@@ -12,7 +12,7 @@ int main() {
     try {
         boost::asio::io_context io_context;
         boost::asio::steady_timer my_timer(io_context);
-        MulticastSender my_sender(multicast_address_str, multicast_port);
+        travesim::udp::MulticastSender my_sender(multicast_address_str, multicast_port);
 
         for (int i = 0; i < max_message_count; i++) {
             std::string msg = "Menssagem " + std::to_string(i);

@@ -4,6 +4,9 @@
 #ifndef __MULTICAST_SENDER_H__
 #define __MULTICAST_SENDER_H__
 
+namespace travesim {
+namespace udp {
+
 class MulticastSender {
   public:
     MulticastSender(const std::string multicast_address, const short multicast_port);
@@ -17,5 +20,8 @@ class MulticastSender {
     boost::asio::ip::udp::socket* socket;
     boost::asio::ip::udp::endpoint endpoint;
 };
+
+} // namespace udp
+} // namespace travesim
 
 #endif  // __MULTICAST_SENDER_H__

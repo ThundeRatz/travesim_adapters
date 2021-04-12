@@ -7,6 +7,9 @@
 
 #define NO_FLAGS 0U
 
+namespace travesim {
+namespace udp {
+
 MulticastSender::MulticastSender(std::string multicast_address, short multicast_port) {
     const boost::asio::ip::address multicast_ip = boost::asio::ip::address::from_string(multicast_address);
 
@@ -41,3 +44,6 @@ size_t MulticastSender::send(const char* buffer, const size_t buffer_size) {
 
     return bytes_sent;
 };
+
+} // namespace udp
+} // namespace travesim

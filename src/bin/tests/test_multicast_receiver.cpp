@@ -15,7 +15,7 @@ char data_buff[BUFFER_SIZE];
 
 int main(int argc, char* argv[]) {
     try {
-        MulticastReceiver my_receiver(multicast_address_str, multicast_port);
+        travesim::udp::MulticastReceiver my_receiver(multicast_address_str, multicast_port);
 
         size_t data_size = 0;
 

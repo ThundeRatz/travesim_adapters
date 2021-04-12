@@ -4,6 +4,9 @@
 #ifndef __MULTICAST_RECEIVER_H__
 #define __MULTICAST_RECEIVER_H__
 
+namespace travesim {
+namespace udp {
+
 class MulticastReceiver {
   public:
     MulticastReceiver(const std::string multicast_address, const short multicast_port,
@@ -24,5 +27,8 @@ class MulticastReceiver {
 
     void create_socket(const boost::asio::ip::address multicast_ip);
 };
+
+} // namespace udp
+} // namespace travesim
 
 #endif  // __MULTICAST_RECEIVER_H__
