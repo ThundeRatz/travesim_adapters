@@ -47,6 +47,7 @@ add_library(${PROJECT_NAME}
   src/lib/data/team_command.cpp
   src/lib/data/entity_state.cpp
   src/lib/data/robot_state.cpp
+  src/lib/data/field_state.cpp
 )
 
 ## Declare a C++ executable
