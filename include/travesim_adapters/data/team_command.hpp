@@ -15,58 +15,58 @@
 #include "travesim_adapters/data/data_constants.hpp"
 
 namespace travesim_adapters {
-    /**
-     * @brief Data structure to hold the command for a robot
-     *
-     */
-    class RobotCommand {
-        public:
-            /**
-             * @brief Construct a new Robot Command object
-             *
-             * @param left_speed Command left speed
-             * @param right_speed Command right speed
-             */
-            RobotCommand(double left_speed = 0, double right_speed = 0);
+/**
+ * @brief Data structure to hold the command for a robot
+ *
+ */
+class RobotCommand {
+    public:
+        /**
+         * @brief Construct a new Robot Command object
+         *
+         * @param left_speed Command left speed
+         * @param right_speed Command right speed
+         */
+        RobotCommand(double left_speed = 0, double right_speed = 0);
 
-            /**
-             * @brief Output stream operator overloading
-             *
-             */
-            friend std::ostream& operator<<(std::ostream& output, const RobotCommand& command);
+        /**
+         * @brief Output stream operator overloading
+         *
+         */
+        friend std::ostream& operator <<(std::ostream& output, const RobotCommand& command);
 
-            /**
-             * @brief Public attributes
-             *
-             */
-            double left_speed;
-            double right_speed;
-    };
+        /**
+         * @brief Public attributes
+         *
+         */
+        double left_speed;
+        double right_speed;
+};
 
-    /**
-     * @brief Data structure to hold the command for a team
-     *
-     */
-    class TeamCommand {
-        public:
-            /**
-             * @brief Construct a new Team Command object
-             *
-             */
-            TeamCommand() = default;
+/**
+ * @brief Data structure to hold the command for a team
+ *
+ */
+class TeamCommand {
+    public:
+        /**
+         * @brief Construct a new Team Command object
+         *
+         */
+        TeamCommand() = default;
 
-            /**
-             * @brief Output stream operator overloading
-             *
-             */
-            friend std::ostream& operator<<(std::ostream& output, const TeamCommand& command);
+        /**
+         * @brief Output stream operator overloading
+         *
+         */
+        friend std::ostream& operator <<(std::ostream& output, const TeamCommand& command);
 
-            /**
-             * @brief Public attributes
-             *
-             */
-            RobotCommand robot_command[NUM_OF_ROBOTS_PER_TEAM];
-    };
+        /**
+         * @brief Public attributes
+         *
+         */
+        RobotCommand robot_command[NUM_OF_ROBOTS_PER_TEAM];
+};
 }
 
-#endif  // __TEAM_COMMAND_H__
+#endif // __TEAM_COMMAND_H__

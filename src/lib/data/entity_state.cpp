@@ -12,44 +12,44 @@
 #include "travesim_adapters/data/entity_state.hpp"
 
 namespace travesim_adapters {
-    /*****************************************
-     * Vector2D Related
-     *****************************************/
+/*****************************************
+ * Vector2D Related
+ *****************************************/
 
-    Vector2D::Vector2D(double x, double y) {
-        this->x = x;
-        this->y = y;
-    }
+Vector2D::Vector2D(double x, double y) {
+    this->x = x;
+    this->y = y;
+}
 
-    std::ostream& operator<<(std::ostream& output, const Vector2D& vector_2d) {
-        output << "X: " << std::setw(5) << vector_2d.x << " | ";
-        output << "Y: " << std::setw(5) << vector_2d.y;
+std::ostream& operator <<(std::ostream& output, const Vector2D& vector_2d) {
+    output << "X: " << std::setw(5) << vector_2d.x << " | ";
+    output << "Y: " << std::setw(5) << vector_2d.y;
 
-        return output;
-    }
+    return output;
+}
 
-    /*****************************************
-     * EntityState Related
-     *****************************************/
+/*****************************************
+ * EntityState Related
+ *****************************************/
 
-    EntityState::EntityState() : EntityState(Vector2D(), 0.0, Vector2D(), 0.0){
-    }
+EntityState::EntityState() : EntityState(Vector2D(), 0.0, Vector2D(), 0.0) {
+}
 
-    EntityState::EntityState(Vector2D position, double angular_position, Vector2D velocity, double angular_velocity) {
-        this->position = position;
-        this->angular_position = angular_position;
-        this->velocity = velocity;
-        this->angular_velocity = angular_velocity;
-    }
+EntityState::EntityState(Vector2D position, double angular_position, Vector2D velocity, double angular_velocity) {
+    this->position = position;
+    this->angular_position = angular_position;
+    this->velocity = velocity;
+    this->angular_velocity = angular_velocity;
+}
 
-    std::ostream& operator<<(std::ostream& output, const EntityState& entity_state) {
-        output << "POSITION: " << std::endl;
-        output << entity_state.position << " | ";
-        output << "THETA: "<< std::setw(5) << entity_state.angular_position << std::endl;
-        output << "VELOCITY: " << std::endl;
-        output << entity_state.velocity << " | ";
-        output << "THETA: "<< std::setw(6) << entity_state.angular_velocity << std::endl;
+std::ostream& operator <<(std::ostream& output, const EntityState& entity_state) {
+    output << "POSITION: " << std::endl;
+    output << entity_state.position << " | ";
+    output << "THETA: "<< std::setw(5) << entity_state.angular_position << std::endl;
+    output << "VELOCITY: " << std::endl;
+    output << entity_state.velocity << " | ";
+    output << "THETA: "<< std::setw(6) << entity_state.angular_velocity << std::endl;
 
-        return output;
-    }
+    return output;
+}
 }
