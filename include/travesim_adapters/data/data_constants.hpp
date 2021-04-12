@@ -22,5 +22,6 @@
  *
  */
 #define PRINTING_MIN_WIDTH 5U
+#define PRINTING_DECIMAL_PRECISION 3U
 
 #endif // __DATA_CONSTANTS_H__

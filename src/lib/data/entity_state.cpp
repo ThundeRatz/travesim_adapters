@@ -23,6 +23,8 @@ Vector2D::Vector2D(double x, double y) {
 }
 
 std::ostream& operator <<(std::ostream& output, const Vector2D& vector_2d) {
+    output << std::fixed << std::setprecision(PRINTING_DECIMAL_PRECISION);
+    
     output << "X: " << std::setw(PRINTING_MIN_WIDTH) << vector_2d.x << " | ";
     output << "Y: " << std::setw(PRINTING_MIN_WIDTH) << vector_2d.y;
 
@@ -44,9 +46,12 @@ EntityState::EntityState(Vector2D position, double angular_position, Vector2D ve
 }
 
 std::ostream& operator <<(std::ostream& output, const EntityState& entity_state) {
+    output << std::fixed << std::setprecision(PRINTING_DECIMAL_PRECISION);
+
     output << "POSITION: " << std::endl;
     output << entity_state.position << " | ";
     output << "THETA: "<< std::setw(PRINTING_MIN_WIDTH) << entity_state.angular_position << std::endl;
+
     output << "VELOCITY: " << std::endl;
     output << entity_state.velocity << " | ";
     output << "THETA: "<< std::setw(PRINTING_MIN_WIDTH) << entity_state.angular_velocity << std::endl;

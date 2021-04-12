@@ -28,11 +28,15 @@ RobotState::RobotState(Vector2D position, double angular_position, Vector2D velo
 }
 
 std::ostream& operator <<(std::ostream& output, const RobotState& robot_state) {
+    output << std::fixed << std::setprecision(PRINTING_DECIMAL_PRECISION);
+
     output << "TEAM YELLOW: " << robot_state.team_yellow << std::endl;
     output << "ROBOT ID: " << robot_state.id << std::endl;
+
     output << "POSITION: " << std::endl;
     output << robot_state.position << " | ";
     output << "THETA: "<< std::setw(PRINTING_MIN_WIDTH) << robot_state.angular_position << std::endl;
+
     output << "VELOCITY: " << std::endl;
     output << robot_state.velocity << " | ";
     output << "THETA: "<< std::setw(PRINTING_MIN_WIDTH) << robot_state.angular_velocity << std::endl;
