@@ -14,7 +14,6 @@
 #include <iostream>
 #include "travesim_adapters/data/data_constants.hpp"
 #include "travesim_adapters/data/entity_state.hpp"
-#include "travesim_adapters/data/robot_state.hpp"
 
 namespace travesim_adapters {
     /**
@@ -27,7 +26,7 @@ namespace travesim_adapters {
              * @brief Construct a new Field State object
              *
              */
-            FieldState();
+            FieldState() = default;
 
             /**
              * @brief Output stream operator overloading
@@ -40,8 +39,8 @@ namespace travesim_adapters {
              *
              */
             EntityState ball;
-            RobotState yellow_team[NUM_OF_ROBOTS_PER_TEAM];
-            RobotState blue_team[NUM_OF_ROBOTS_PER_TEAM];
+            EntityState yellow_team[NUM_OF_ROBOTS_PER_TEAM];
+            EntityState blue_team[NUM_OF_ROBOTS_PER_TEAM];
     };
 }
 

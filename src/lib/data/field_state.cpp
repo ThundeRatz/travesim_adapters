@@ -12,16 +12,6 @@
 #include "travesim_adapters/data/field_state.hpp"
 
 namespace travesim_adapters {
-    FieldState::FieldState() {
-        for (int i = 0; i < NUM_OF_ROBOTS_PER_TEAM; i++) {
-            this->yellow_team[i].id = i;
-            this->yellow_team[i].team_yellow = true;
-
-            this->blue_team[i].id = i;
-            this->blue_team[i].team_yellow = false;
-        }
-    }
-
     std::ostream& operator<<(std::ostream& output, const FieldState& field_state) {
         output << "BALL STATE: " << std::endl;
         output << field_state.ball << std::endl;
