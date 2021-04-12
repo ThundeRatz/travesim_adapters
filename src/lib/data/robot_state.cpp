@@ -8,6 +8,7 @@
  * @date 04/2021
  */
 
+#include <iomanip>
 #include "travesim_adapters/data/robot_state.hpp"
 
 namespace travesim_adapters {
@@ -24,15 +25,12 @@ namespace travesim_adapters {
     std::ostream& operator<<(std::ostream& output, const RobotState& robot_state) {
         output << "TEAM YELLOW: " << robot_state.team_yellow << std::endl;
         output << "ROBOT ID: " << robot_state.id << std::endl;
-        output << std::endl;
         output << "POSITION: " << std::endl;
-        output << robot_state.position << std::endl;
-        output << "THETA: "<< robot_state.angular_position << std::endl;
-        output << std::endl;
+        output << robot_state.position << " | ";
+        output << "THETA: "<< std::setw(5) << robot_state.angular_position << std::endl;
         output << "VELOCITY: " << std::endl;
-        output << robot_state.velocity << std::endl;
-        output << "THETA: "<< robot_state.angular_velocity << std::endl;
-        output << std::endl;
+        output << robot_state.velocity << " | ";
+        output << "THETA: "<< std::setw(5) << robot_state.angular_velocity << std::endl;
 
         return output;
     }

@@ -18,7 +18,7 @@ namespace travesim_adapters {
     }
 
     std::ostream& operator<<(std::ostream& output, const Vector2D& vector_2d) {
-        output << "X: " << std::setw(5) << vector_2d.x << std::endl;
+        output << "X: " << std::setw(5) << vector_2d.x << " | ";
         output << "Y: " << std::setw(5) << vector_2d.y;
 
         return output;
@@ -37,13 +37,11 @@ namespace travesim_adapters {
 
     std::ostream& operator<<(std::ostream& output, const EntityState& entity_state) {
         output << "POSITION: " << std::endl;
-        output << entity_state.position << std::endl;
-        output << "THETA: "<< entity_state.angular_position << std::endl;
-        output << std::endl;
+        output << entity_state.position << " | ";
+        output << "THETA: "<< std::setw(5) << entity_state.angular_position << std::endl;
         output << "VELOCITY: " << std::endl;
-        output << entity_state.velocity << std::endl;
-        output << "THETA: "<< entity_state.angular_velocity << std::endl;
-        output << std::endl;
+        output << entity_state.velocity << " | ";
+        output << "THETA: "<< std::setw(6) << entity_state.angular_velocity << std::endl;
 
         return output;
     }
