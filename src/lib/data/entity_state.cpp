@@ -12,6 +12,10 @@
 #include "travesim_adapters/data/entity_state.hpp"
 
 namespace travesim_adapters {
+    /*****************************************
+     * Vector2D Related
+     *****************************************/
+
     Vector2D::Vector2D(double x, double y) {
         this->x = x;
         this->y = y;
@@ -23,6 +27,10 @@ namespace travesim_adapters {
 
         return output;
     }
+
+    /*****************************************
+     * EntityState Related
+     *****************************************/
 
     EntityState::EntityState() : EntityState(Vector2D(), 0.0, Vector2D(), 0.0){
     }

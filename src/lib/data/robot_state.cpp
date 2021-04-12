@@ -12,6 +12,10 @@
 #include "travesim_adapters/data/robot_state.hpp"
 
 namespace travesim_adapters {
+    /*****************************************
+     * RobotState Related
+     *****************************************/
+
     RobotState::RobotState() : RobotState(Vector2D(), 0, Vector2D(), 0, true, 0) {
     }
 

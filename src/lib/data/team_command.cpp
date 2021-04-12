@@ -12,6 +12,10 @@
 #include "travesim_adapters/data/team_command.hpp"
 
 namespace travesim_adapters {
+    /*****************************************
+     * RobotCommand Related
+     *****************************************/
+
     RobotCommand::RobotCommand(double left_speed, double right_speed) {
         this->left_speed = left_speed;
         this->right_speed = right_speed;

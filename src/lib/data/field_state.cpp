@@ -12,6 +12,10 @@
 #include "travesim_adapters/data/field_state.hpp"
 
 namespace travesim_adapters {
+    /*****************************************
+     * FieldState Related
+     *****************************************/
+
     std::ostream& operator<<(std::ostream& output, const FieldState& field_state) {
         output << "BALL STATE: " << std::endl;
         output << field_state.ball << std::endl;
