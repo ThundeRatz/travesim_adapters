@@ -12,7 +12,7 @@
 #include "travesim_adapters/data/entity_state.hpp"
 #include "travesim_adapters/data/data_constants.hpp"
 
-namespace travesim_adapters {
+namespace travesim {
 /*****************************************
  * Vector2D Related
  *****************************************/
@@ -24,7 +24,7 @@ Vector2D::Vector2D(double x, double y) {
 
 std::ostream& operator <<(std::ostream& output, const Vector2D& vector_2d) {
     output << std::fixed << std::setprecision(PRINTING_DECIMAL_PRECISION);
-    
+
     output << "X: " << std::setw(PRINTING_MIN_WIDTH) << vector_2d.x << " | ";
     output << "Y: " << std::setw(PRINTING_MIN_WIDTH) << vector_2d.y;
 
