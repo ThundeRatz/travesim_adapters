@@ -24,8 +24,7 @@ namespace travesim_adapters {
         return output;
     }
 
-    EntityState::EntityState() {
-        EntityState(Vector2D(), 0, Vector2D(), 0);
+    EntityState::EntityState() : EntityState(Vector2D(), 0.0, Vector2D(), 0.0){
     }
 
     EntityState::EntityState(Vector2D position, double angular_position, Vector2D velocity, double angular_velocity) {

@@ -24,7 +24,6 @@ namespace travesim_adapters {
         return output;
     }
 
-
     std::ostream& operator<<(std::ostream& output, const TeamCommand& command) {
         for (int i = 0; i < NUM_OF_ROBOTS_PER_TEAM; i++) {
             output << "ROBOT " << i << ":" << std::endl;

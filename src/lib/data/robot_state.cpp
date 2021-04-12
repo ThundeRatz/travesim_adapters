@@ -12,8 +12,7 @@
 #include "travesim_adapters/data/robot_state.hpp"
 
 namespace travesim_adapters {
-    RobotState::RobotState() : EntityState() {
-        RobotState(Vector2D(), 0, Vector2D(), 0, true, 0);
+    RobotState::RobotState() : RobotState(Vector2D(), 0, Vector2D(), 0, true, 0) {
     }
 
     RobotState::RobotState(Vector2D position, double angular_position, Vector2D velocity, double angular_velocity, bool team_yellow, int id) :
