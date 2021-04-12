@@ -22,8 +22,8 @@ RobotCommand::RobotCommand(double left_speed, double right_speed) {
 }
 
 std::ostream& operator <<(std::ostream& output, const RobotCommand& command) {
-    output << "LEFT SPEED: " << std::setw(6) << command.left_speed << std::endl;
-    output << "RIGHT SPEED: " << std::setw(5) << command.right_speed;
+    output << "LEFT SPEED: " << std::setw(PRINTING_MIN_WIDTH) << command.left_speed << std::endl;
+    output << "RIGHT SPEED: " << std::setw(PRINTING_MIN_WIDTH) << command.right_speed;
 
     return output;
 }

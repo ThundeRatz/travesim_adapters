@@ -11,6 +11,16 @@
 #ifndef __DATA_CONSTANTS_H__
 #define __DATA_CONSTANTS_H__
 
+/**
+ * @brief Robots related constants
+ *
+ */
 #define NUM_OF_ROBOTS_PER_TEAM 3
+
+/**
+ * @brief Printing output configuration constants
+ *
+ */
+#define PRINTING_MIN_WIDTH 5U
 
 #endif // __DATA_CONSTANTS_H__
