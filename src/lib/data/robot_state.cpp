@@ -12,7 +12,7 @@
 #include "travesim_adapters/data/robot_state.hpp"
 #include "travesim_adapters/data/data_constants.hpp"
 
-namespace travesim_adapters {
+namespace travesim {
 /*****************************************
  * RobotState Related
  *****************************************/

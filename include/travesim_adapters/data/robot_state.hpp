@@ -14,7 +14,7 @@
 #include <iostream>
 #include "travesim_adapters/data/entity_state.hpp"
 
-namespace travesim_adapters {
+namespace travesim {
 /**
  * @brief Data structure to hold the state of a robot in the simulation
  *

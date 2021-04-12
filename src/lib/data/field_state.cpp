@@ -11,7 +11,7 @@
 #include <iomanip>
 #include "travesim_adapters/data/field_state.hpp"
 
-namespace travesim_adapters {
+namespace travesim {
 /*****************************************
  * FieldState Related
  *****************************************/

@@ -11,7 +11,7 @@
 #include <iomanip>
 #include "travesim_adapters/data/team_command.hpp"
 
-namespace travesim_adapters {
+namespace travesim {
 /*****************************************
  * RobotCommand Related
  *****************************************/

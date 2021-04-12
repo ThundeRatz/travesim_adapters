@@ -13,7 +13,7 @@
 
 #include <iostream>
 
-namespace travesim_adapters {
+namespace travesim {
 /**
  * @brief Data structure to hold a two dimensional vector
  *

@@ -15,7 +15,7 @@
 #include "travesim_adapters/data/data_constants.hpp"
 #include "travesim_adapters/data/entity_state.hpp"
 
-namespace travesim_adapters {
+namespace travesim {
 /**
  * @brief Data structure to hold the field state
  *
