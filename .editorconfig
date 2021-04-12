@@ -19,5 +19,5 @@ indent_style = tab
 [*.cpp]
 indent_size = 4
 
-[*.h]
+[*.hpp]
 indent_size = 4
