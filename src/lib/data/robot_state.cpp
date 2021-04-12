@@ -21,16 +21,16 @@ RobotState::RobotState() : RobotState(Vector2D(), 0, Vector2D(), 0, true, 0) {
 }
 
 RobotState::RobotState(Vector2D position, double angular_position, Vector2D velocity, double angular_velocity,
-                       bool team_yellow, int id) :
+                       bool is_yellow, int id) :
     EntityState(position, angular_position, velocity, angular_velocity) {
-    this->team_yellow = team_yellow;
+    this->is_yellow = is_yellow;
     this->id = id;
 }
 
 std::ostream& operator <<(std::ostream& output, const RobotState& robot_state) {
     output << std::fixed << std::setprecision(PRINTING_DECIMAL_PRECISION);
 
-    output << "TEAM YELLOW: " << robot_state.team_yellow << std::endl;
+    output << "TEAM YELLOW: " << robot_state.is_yellow << std::endl;
     output << "ROBOT ID: " << robot_state.id << std::endl;
 
     output << "POSITION: " << std::endl;

@@ -35,11 +35,11 @@ class RobotState :
          * @param angular_position Angular position in radinans
          * @param velocity Velocity in m/s
          * @param angular_velocity Angular velocity in rad/s
-         * @param team_yellow Wheter the robot is from the yellow team or not
+         * @param is_yellow Wheter the robot is from the yellow team or not
          * @param id Identification number
          */
         RobotState(Vector2D position, double angular_position, Vector2D velocity, double angular_velocity,
-                   bool team_yellow, int id);
+                   bool is_yellow, int id);
 
         /**
          * @brief Output stream operator overloading
@@ -51,7 +51,7 @@ class RobotState :
          * @brief Public attributes
          *
          */
-        bool team_yellow;
+        bool is_yellow;
         int id;
 };
 }
