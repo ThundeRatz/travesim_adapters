@@ -43,6 +43,8 @@ class RobotState :
         RobotState(Vector2D position, double angular_position, Vector2D velocity, double angular_velocity,
                    bool is_yellow, int id);
 
+        RobotState(EntityState* entity_state, bool is_yellow, int id);
+
         /**
          * @brief Construct a new Robot State object from Model State object
          *

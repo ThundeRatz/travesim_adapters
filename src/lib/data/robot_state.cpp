@@ -27,6 +27,15 @@ RobotState::RobotState(Vector2D position, double angular_position, Vector2D velo
     this->id = id;
 }
 
+RobotState::RobotState(EntityState* entity_state, bool is_yellow, int id) :
+    EntityState(entity_state->position,
+                entity_state->angular_position,
+                entity_state->velocity,
+                entity_state->angular_velocity) {
+    this->is_yellow = is_yellow;
+    this->id = id;
+}
+
 RobotState::RobotState(gazebo_msgs::ModelState* model_state) : RobotState(model_state, true, 0) {
 }
 
