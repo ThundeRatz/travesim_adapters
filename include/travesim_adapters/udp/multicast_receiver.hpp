@@ -9,6 +9,8 @@ namespace udp {
 
 class MulticastReceiver {
   public:
+    MulticastReceiver() = delete;
+
     MulticastReceiver(const std::string multicast_address, const short multicast_port,
                       const std::string listener_address);
 

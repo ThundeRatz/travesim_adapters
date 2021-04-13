@@ -9,6 +9,8 @@ namespace udp {
 
 class MulticastSender {
   public:
+    MulticastSender() = delete;
+    
     MulticastSender(const std::string multicast_address, const short multicast_port);
 
     ~MulticastSender();
