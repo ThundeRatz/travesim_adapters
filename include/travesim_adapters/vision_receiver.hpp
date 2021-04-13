@@ -32,25 +32,26 @@
 typedef std::unordered_map<std::string, int32_t> lookup_table_t;
 
 class VisionReceiver {
-  private:
-    lookup_table_t lookup_table;
-    const std::string topics[7] = { YELLOW_ROBOT_0_NAME,
-                                    YELLOW_ROBOT_1_NAME,
-                                    YELLOW_ROBOT_2_NAME,
-                                    BLUE_ROBOT_0_NAME,
-                                    BLUE_ROBOT_1_NAME,
-                                    BLUE_ROBOT_2_NAME,
-                                    BALL_NAME };
+    private:
+        lookup_table_t lookup_table;
+        const std::string topics[7] = { YELLOW_ROBOT_0_NAME,
+                                        YELLOW_ROBOT_1_NAME,
+                                        YELLOW_ROBOT_2_NAME,
+                                        BLUE_ROBOT_0_NAME,
+                                        BLUE_ROBOT_1_NAME,
+                                        BLUE_ROBOT_2_NAME,
+                                        BALL_NAME };
 
-    ros::Subscriber subscriber;
+        ros::Subscriber subscriber;
 
-  public:
-    VisionReceiver(ros::NodeHandle* nh_ptr);
+    public:
+        VisionReceiver(ros::NodeHandle* nh_ptr);
 
-    gazebo_msgs::ModelState world_state[7];
+        gazebo_msgs::ModelState world_state[7];
 
-    void receive(const gazebo_msgs::ModelStates::ConstPtr& msg);
-    int32_t model_name_to_index(std::string topic);
+        void receive(const gazebo_msgs::ModelStates::ConstPtr& msg);
+
+        int32_t model_name_to_index(std::string topic);
 };
 
-#endif  // __VISION_RECEIVER_H__
+#endif // __VISION_RECEIVER_H__

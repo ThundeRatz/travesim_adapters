@@ -8,10 +8,10 @@
  *
  */
 
-#include "ros/ros.h"
-#include "ros/console.h"
-#include "gazebo_msgs/ModelStates.h"
-#include "travesim_adapters/vision_receiver.h"
+#include <ros/ros.h>
+#include <ros/console.h>
+#include <gazebo_msgs/ModelStates.h>
+#include "travesim_adapters/vision_receiver.hpp"
 
 #include <iostream>
 
@@ -29,9 +29,9 @@ int main(int argc, char** argv) {
 
     while (ros::ok()) {
         // Send message with protobuf
-        ROS_INFO_STREAM(vision_receiver.world_state[0].model_name
-                        << " X: " << vision_receiver.world_state[0].pose.position.x
-                        << " Y: " << vision_receiver.world_state[0].pose.position.x);
+        ROS_INFO_STREAM(vision_receiver.world_state[0].model_name<<
+                        " X: " << vision_receiver.world_state[0].pose.position.x<<
+                        " Y: " << vision_receiver.world_state[0].pose.position.x);
         ros::spinOnce();
         loop_rate.sleep();
     }

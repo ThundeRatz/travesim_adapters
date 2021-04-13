@@ -1,11 +1,12 @@
 // Bring in my package's API, which is what I'm testing
 #include "ros/ros.h"
 #include "ros/console.h"
-#include "travesim_adapters/vision_receiver.h"
+#include "travesim_adapters/vision_receiver.hpp"
 #include <gtest/gtest.h>
 
 // Declare a test
-TEST(vision_adapter, model_name_to_index) {
+TEST(vision_adapter, model_name_to_index)
+{
     ros::NodeHandle _nh;
     VisionReceiver vision_receiver(&_nh);
 
