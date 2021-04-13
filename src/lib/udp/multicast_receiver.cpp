@@ -1,3 +1,14 @@
+/**
+ * @file multicast_receiver.cpp
+ * @author Lucas Haug <lucas.haug@thuneratz.org>
+ * @author Lucas Schneider <lucas.schneider@thuneratz.org>
+ * @brief Receiver data using UDP in multicast mode
+ * @date 04/2021
+ *
+ * @copyright MIT License - Copyright (c) 2021 ThundeRatz
+ *
+ */
+
 #include <iostream>
 #include <string>
 #include <exception>
@@ -6,7 +17,15 @@
 
 #include "travesim_adapters/udp/multicast_receiver.hpp"
 
+/*****************************************
+ * Private Constants
+ *****************************************/
+
 #define NO_FLAGS 0U
+
+/*****************************************
+ * Class Methods Bodies Definitions
+ *****************************************/
 
 namespace travesim {
 namespace udp {

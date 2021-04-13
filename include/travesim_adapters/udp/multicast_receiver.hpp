@@ -1,3 +1,14 @@
+/**
+ * @file multicast_receiver.hpp
+ * @author Lucas Haug <lucas.haug@thuneratz.org>
+ * @author Lucas Schneider <lucas.schneider@thuneratz.org>
+ * @brief Receiver data using UDP in multicast mode
+ * @date 04/2021
+ *
+ * @copyright MIT License - Copyright (c) 2021 ThundeRatz
+ *
+ */
+
 #include <boost/asio.hpp>
 #include <string>
 
@@ -7,26 +18,84 @@
 namespace travesim {
 namespace udp {
 
+/**
+ * @brief Receiver class using UDP in multicast mode
+ *
+ */
 class MulticastReceiver {
   public:
+    /**
+     * @note The default construct may not be used
+     *
+     */
     MulticastReceiver() = delete;
 
+    /**
+     * @brief Construct a new Multicast Receiver object
+     *
+     * @param multicast_address Multicas group address
+     * @param multicast_port Multicast group port
+     * @param listener_address Listener address, has a filtering role, setting
+     *                         where the data may be received
+     */
     MulticastReceiver(const std::string multicast_address, const short multicast_port,
                       const std::string listener_address);
 
-    // Uses multicast address as listen address
+    /**
+     * @brief Construct a new Multicast Receiver object
+     *
+     * @param multicast_address Multicas group address
+     * @param multicast_port Multicast group port
+     *
+     * @note Use multicast address as listen address
+     */
     MulticastReceiver(const std::string multicast_address, const short multicast_port);
 
+    /**
+     * @brief Destroy the Multicast Receiver object
+     *
+     */
     ~MulticastReceiver();
 
+    /**
+     * @brief Receive data using UDP
+     *
+     * @param buffer Buffet to store data
+     * @param buffer_size Size of the buffer where to store data
+     * @return size_t Number of bytes received
+     */
     size_t receive(char* buffer, const size_t buffer_size);
 
   private:
+    /**
+     * @brief boost/asio I/O execution context
+     *
+     */
     boost::asio::io_context io_context;
+
+    /**
+     * @brief Network socket
+     *
+     */
     boost::asio::ip::udp::socket* socket;
+
+    /**
+     * @brief Sender address and port pair
+     *
+     */
     boost::asio::ip::udp::endpoint sender_endpoint;
+
+    /**
+     * @brief Listener address and port pair
+     *
+     */
     boost::asio::ip::udp::endpoint listener_endpoint;
 
+    /**
+     * @brief Create a socket object
+     *
+     * @param multicast_address Multicas group address
+     */
     void create_socket(const boost::asio::ip::address multicast_address);
 };
 
