@@ -11,6 +11,10 @@
 #ifndef __ENTITY_STATE_H__
 #define __ENTITY_STATE_H__
 
+#include <geometry_msgs/Vector3.h>
+#include <geometry_msgs/Point.h>
+#include <gazebo_msgs/ModelState.h>
+
 #include <iostream>
 
 namespace travesim {
@@ -27,6 +31,41 @@ class Vector2D {
          * @param y y quota
          */
         Vector2D(double x = 0, double y = 0);
+
+        /**
+         * @brief Construct a new Vector 2D object from Vector3 object
+         *
+         * @param vector3
+         */
+        Vector2D(geometry_msgs::Vector3* vector3);
+
+        /**
+         * @brief Construct a new Vector 2D object from Point object
+         *
+         * @param point
+         */
+        Vector2D(geometry_msgs::Point* point);
+
+        /**
+         * @brief Convert object to data type used in Gazebo
+         *
+         * @return geometry_msgs::Vector3
+         */
+        geometry_msgs::Vector3 to_Vector3();
+
+        /**
+         * @brief Convert object to data type used in Gazebo
+         *
+         * @return geometry_msgs::Vector3
+         */
+        geometry_msgs::Point to_Point();
+
+        /**
+         * @brief Perform a counter-clockwise rotation of the vector
+         *
+         * @param theta Rotation angle in radians
+         */
+        void rotate(double theta);
 
         /**
          * @brief Output stream operator overloading
@@ -63,6 +102,20 @@ class EntityState {
          * @param angular_velocity Angular velocity in rad/s
          */
         EntityState(Vector2D position, double angular_position, Vector2D velocity, double angular_velocity);
+
+        /**
+         * @brief Construct a new Entity State object from Model State object
+         *
+         * @param model_state
+         */
+        EntityState(gazebo_msgs::ModelState* model_state);
+
+        /**
+         * @brief Convert object to data type used in Gazebo
+         *
+         * @return gazebo_msgs::ModelState converted data
+         */
+        gazebo_msgs::ModelState to_ModelState();
 
         /**
          * @brief Output stream operator overloading

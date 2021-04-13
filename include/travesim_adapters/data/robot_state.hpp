@@ -12,6 +12,8 @@
 #define __ROBOT_STATE_H__
 
 #include <iostream>
+#include <gazebo_msgs/ModelState.h>
+
 #include "travesim_adapters/data/entity_state.hpp"
 
 namespace travesim {
@@ -40,6 +42,22 @@ class RobotState :
          */
         RobotState(Vector2D position, double angular_position, Vector2D velocity, double angular_velocity,
                    bool is_yellow, int id);
+
+        /**
+         * @brief Construct a new Robot State object from Model State object
+         *
+         * @param model_state
+         */
+        RobotState(gazebo_msgs::ModelState* model_state);
+
+        RobotState(gazebo_msgs::ModelState* model_state, bool is_yellow, int id);
+
+        /**
+         * @brief Convert object to data type used in Gazebo
+         *
+         * @return gazebo_msgs::ModelState converted data
+         */
+        gazebo_msgs::ModelState to_ModelState();
 
         /**
          * @brief Output stream operator overloading
