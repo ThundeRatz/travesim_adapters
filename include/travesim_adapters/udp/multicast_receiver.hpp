@@ -27,7 +27,7 @@ class MulticastReceiver {
     boost::asio::ip::udp::endpoint sender_endpoint;
     boost::asio::ip::udp::endpoint listener_endpoint;
 
-    void create_socket(const boost::asio::ip::address multicast_ip);
+    void create_socket(const boost::asio::ip::address multicast_address);
 };
 
 } // namespace udp

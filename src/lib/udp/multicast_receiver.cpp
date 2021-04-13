@@ -34,7 +34,7 @@ MulticastReceiver::~MulticastReceiver() {
     delete this->socket;
 }
 
-void MulticastReceiver::create_socket(const boost::asio::ip::address multicast_ip) {
+void MulticastReceiver::create_socket(const boost::asio::ip::address multicast_address) {
     this->socket = new boost::asio::ip::udp::socket(io_context);
 
     // Create the socket so that multiple may be bound to the same address.
@@ -46,7 +46,7 @@ void MulticastReceiver::create_socket(const boost::asio::ip::address multicast_i
     this->socket->non_blocking(true);
 
     // Join the multicast group.
-    this->socket->set_option(boost::asio::ip::multicast::join_group(multicast_ip));
+    this->socket->set_option(boost::asio::ip::multicast::join_group(multicast_address));
 };
 
 size_t MulticastReceiver::receive(char* buffer, const size_t buffer_size) {
