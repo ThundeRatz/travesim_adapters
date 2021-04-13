@@ -1,14 +1,29 @@
+/**
+ * @file multicast_sender_example.cpp
+ * @author Lucas Haug <lucas.haug@thuneratz.org>
+ * @author Lucas Schneider <lucas.schneider@thuneratz.org>
+ * @brief Example on how to use the MulticastReceiver
+ * @date 04/2021
+ *
+ * @copyright MIT License - Copyright (c) 2021 ThundeRatz
+ *
+ */
+
 #include <boost/asio.hpp>
 #include <iostream>
 #include <string>
 
 #include "travesim_adapters/udp/multicast_sender.hpp"
 
-const short multicast_port = 30001;
-const std::string multicast_address_str = "239.255.0.1";
-const int max_message_count = 20;
+/*****************************************
+ * Main Function
+ *****************************************/
 
 int main() {
+    const short multicast_port = 30001;
+    const std::string multicast_address_str = "239.255.0.1";
+    const int max_message_count = 20;
+
     try {
         boost::asio::io_context io_context;
         boost::asio::steady_timer my_timer(io_context);
