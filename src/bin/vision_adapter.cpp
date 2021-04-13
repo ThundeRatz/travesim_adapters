@@ -11,7 +11,11 @@
 #include <ros/ros.h>
 #include <ros/console.h>
 #include <gazebo_msgs/ModelStates.h>
+
 #include "travesim_adapters/vision_receiver.hpp"
+#include "travesim_adapters/data/field_state.hpp"
+#include "travesim_adapters/data/robot_state.hpp"
+#include "travesim_adapters/data/entity_state.hpp"
 
 #include <iostream>
 
@@ -22,6 +26,7 @@ int main(int argc, char** argv) {
     int32_t send_rate;
     travesim::VisionReceiver vision_receiver(&nh);
 
+    travesim::FieldState field_state;
     nh.param<int32_t>("send_rate", send_rate, 60);
     ros::Rate loop_rate(send_rate);
 
@@ -29,9 +34,15 @@ int main(int argc, char** argv) {
 
     while (ros::ok()) {
         // Send message with protobuf
-        ROS_INFO_STREAM(vision_receiver.world_state[0].model_name<<
-                        " X: " << vision_receiver.world_state[0].pose.position.x<<
-                        " Y: " << vision_receiver.world_state[0].pose.position.x);
+
+        field_state.ball = travesim::EntityState(vision_receiver.ball);
+
+        for (uint8_t i = 0; i < 3; i++) {
+            field_state.yellow_team[i] = travesim::RobotState(vision_receiver.yellow_team[i], true, i);
+            field_state.blue_team[i] = travesim::RobotState(vision_receiver.blue_team[i], false, i);
+        }
+
+        ROS_INFO_STREAM(field_state);
         ros::spinOnce();
         loop_rate.sleep();
     }

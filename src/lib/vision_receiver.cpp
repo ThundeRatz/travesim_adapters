@@ -18,6 +18,13 @@ VisionReceiver::VisionReceiver(ros::NodeHandle* nh_ptr) {
         this->lookup_table.insert({ this->topics[i], i + 1 });
     }
 
+    for (int32_t i = 0; i < 3; i++) {
+        this->yellow_team[i] = &this->world_state[i];
+        this->blue_team[i] = &this->world_state[i + 3];
+    }
+
+    this->ball = &this->world_state[7];
+
     this->subscriber = nh_ptr->subscribe("/gazebo/model_states", 2, &VisionReceiver::receive, this);
 }
 
@@ -26,8 +33,6 @@ int32_t VisionReceiver::model_name_to_index(std::string topic) {
 }
 
 void VisionReceiver::receive(const gazebo_msgs::ModelStates::ConstPtr& msg) {
-    // ROS_INFO_THROTTLE(2, "Received message!");
-    // ROS_INFO_STREM("Received message!");
     int32_t index = -1;
     uint32_t size = msg->name.size();
 

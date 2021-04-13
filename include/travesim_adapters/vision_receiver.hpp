@@ -44,11 +44,14 @@ class VisionReceiver {
                                         BALL_NAME };
 
         ros::Subscriber subscriber;
+        gazebo_msgs::ModelState world_state[7];
 
     public:
         VisionReceiver(ros::NodeHandle* nh_ptr);
 
-        gazebo_msgs::ModelState world_state[7];
+        gazebo_msgs::ModelState* yellow_team[3];
+        gazebo_msgs::ModelState* blue_team[3];
+        gazebo_msgs::ModelState* ball;
 
         void receive(const gazebo_msgs::ModelStates::ConstPtr& msg);
 
