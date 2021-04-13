@@ -21,6 +21,8 @@
 #include <iostream>
 #include <unordered_map>
 
+#include "travesim_adapters/teams_topics.hpp"
+#include "travesim_adapters/data/data_constants.hpp"
 #include "travesim_adapters/data/robot_state.hpp"
 #include "travesim_adapters/data/entity_state.hpp"
 
@@ -40,22 +42,23 @@ namespace travesim {
 class VisionReceiver {
     private:
         lookup_table_t lookup_table;
-        const std::string topics[7] = { YELLOW_ROBOT_0_NAME,
-                                        YELLOW_ROBOT_1_NAME,
-                                        YELLOW_ROBOT_2_NAME,
-                                        BLUE_ROBOT_0_NAME,
-                                        BLUE_ROBOT_1_NAME,
-                                        BLUE_ROBOT_2_NAME,
-                                        BALL_NAME };
+        const std::string topics[NUM_OF_ENTITIES_IN_FIELD] =
+        { YELLOW_ROBOT_0_NAME,
+          YELLOW_ROBOT_1_NAME,
+          YELLOW_ROBOT_2_NAME,
+          BLUE_ROBOT_0_NAME,
+          BLUE_ROBOT_1_NAME,
+          BLUE_ROBOT_2_NAME,
+          BALL_NAME };
 
         ros::Subscriber subscriber;
-        gazebo_msgs::ModelState world_state[7];
+        gazebo_msgs::ModelState world_state[NUM_OF_ENTITIES_IN_FIELD];
 
     public:
         VisionReceiver(ros::NodeHandle* nh_ptr);
 
-        gazebo_msgs::ModelState* yellow_team[3];
-        gazebo_msgs::ModelState* blue_team[3];
+        gazebo_msgs::ModelState* yellow_team[NUM_OF_ROBOTS_PER_TEAM];
+        gazebo_msgs::ModelState* blue_team[NUM_OF_ROBOTS_PER_TEAM];
         gazebo_msgs::ModelState* ball;
 
         void receive(const gazebo_msgs::ModelStates::ConstPtr& msg);

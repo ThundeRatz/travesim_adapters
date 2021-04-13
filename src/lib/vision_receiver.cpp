@@ -16,16 +16,16 @@
 
 namespace travesim {
 VisionReceiver::VisionReceiver(ros::NodeHandle* nh_ptr) {
-    for (int32_t i = 0; i < 7; i++) {
+    for (int32_t i = 0; i < NUM_OF_ENTITIES_IN_FIELD; i++) {
         this->lookup_table.insert({ this->topics[i], i + 1 });
     }
 
-    for (int32_t i = 0; i < 3; i++) {
+    for (int32_t i = 0; i < NUM_OF_ROBOTS_PER_TEAM; i++) {
         this->yellow_team[i] = &this->world_state[i];
-        this->blue_team[i] = &this->world_state[i + 3];
+        this->blue_team[i] = &this->world_state[i + NUM_OF_ROBOTS_PER_TEAM];
     }
 
-    this->ball = &this->world_state[7];
+    this->ball = &this->world_state[NUM_OF_ENTITIES_IN_FIELD - 1];
 
     this->subscriber = nh_ptr->subscribe("/gazebo/model_states", 2, &VisionReceiver::receive, this);
 }
