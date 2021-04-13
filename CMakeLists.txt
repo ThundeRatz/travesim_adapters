@@ -58,23 +58,23 @@ add_library(${PROJECT_NAME}
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 
-add_executable(test_multi_sender
-  src/bin/tests/test_multicast_sender.cpp
+add_executable(multi_sender_example
+  examples/udp/multicast_sender_example.cpp
 )
 
-add_executable(test_multi_receiver
-  src/bin/tests/test_multicast_receiver.cpp
+add_executable(multi_receiver_example
+  examples/udp/multicast_receiver_example.cpp
 )
 
 ## Specify libraries to link a library or executable target against
 
-target_link_libraries(test_multi_sender
+target_link_libraries(multi_sender_example
   ${PROJECT_NAME}
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
 
-target_link_libraries(test_multi_receiver
+target_link_libraries(multi_receiver_example
   ${PROJECT_NAME}
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
