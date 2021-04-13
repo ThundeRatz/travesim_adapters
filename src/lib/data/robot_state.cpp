@@ -36,24 +36,6 @@ RobotState::RobotState(EntityState* entity_state, bool is_yellow, int id) :
     this->id = id;
 }
 
-RobotState::RobotState(gazebo_msgs::ModelState* model_state) : RobotState(model_state, true, 0) {
-}
-
-RobotState::RobotState(gazebo_msgs::ModelState* model_state, bool is_yellow, int id) :
-    EntityState(model_state) {
-    this->is_yellow = is_yellow;
-    this->id = id;
-}
-
-gazebo_msgs::ModelState RobotState::to_ModelState() {
-    gazebo_msgs::ModelState retval = EntityState::to_ModelState();
-
-    std::string base_name = this->is_yellow ? "yellow_team/robot_" : "blue_team/robot_";
-    retval.model_name = base_name.append(std::to_string(this->id));
-
-    return retval;
-}
-
 std::ostream& operator <<(std::ostream& output, const RobotState& robot_state) {
     output << std::fixed << std::setprecision(PRINTING_DECIMAL_PRECISION);
 

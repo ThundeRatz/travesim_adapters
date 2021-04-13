@@ -12,6 +12,8 @@
 #include <gazebo_msgs/ModelStates.h>
 #include "travesim_adapters/vision_receiver.hpp"
 
+#define quaternion_to_theta(q0, q1, q2, q3) atan2(2*(q0*q1+q2*q3), 1 - 2*(q1*q1 + q2*q2))
+
 namespace travesim {
 VisionReceiver::VisionReceiver(ros::NodeHandle* nh_ptr) {
     for (int32_t i = 0; i < 7; i++) {
@@ -47,5 +49,46 @@ void VisionReceiver::receive(const gazebo_msgs::ModelStates::ConstPtr& msg) {
             this->world_state[index].reference_frame = "world";
         }
     }
+}
+
+Vector2D VisionReceiver::Point_to_Vector2D(geometry_msgs::Point* point) {
+    Vector2D retval;
+
+    retval.x = point->x;
+    retval.y = point->y;
+
+    return retval;
+}
+
+Vector2D VisionReceiver::Vector3_to_Vector2D(geometry_msgs::Vector3* vector3) {
+    Vector2D retval;
+
+    retval.x = vector3->x;
+    retval.y = vector3->y;
+
+    return retval;
+}
+
+EntityState VisionReceiver::ModelState_to_EntityState(gazebo_msgs::ModelState* model_state) {
+    EntityState retval;
+
+    retval.position = Point_to_Vector2D(&model_state->pose.position);
+
+    retval.angular_position = quaternion_to_theta(model_state->pose.orientation.w, model_state->pose.orientation.x,
+                                                  model_state->pose.orientation.y, model_state->pose.orientation.z);
+
+    retval.velocity = Vector3_to_Vector2D(&model_state->twist.linear);
+
+    retval.angular_velocity = model_state->twist.angular.z;
+
+    return retval;
+}
+
+RobotState VisionReceiver::ModelState_to_RobotState(gazebo_msgs::ModelState* model_state, bool is_yellow, int id) {
+    EntityState tmp = ModelState_to_EntityState(model_state);
+
+    RobotState retval(&tmp, is_yellow, id);
+
+    return retval;
 }
 }  // namespace travesim

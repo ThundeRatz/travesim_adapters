@@ -11,13 +11,18 @@
 #ifndef __VISION_RECEIVER_H__
 #define __VISION_RECEIVER_H__
 
-#include "ros/ros.h"
-#include "ros/console.h"
-#include "gazebo_msgs/ModelStates.h"
-#include "gazebo_msgs/ModelState.h"
+#include <ros/ros.h>
+#include <ros/console.h>
+#include <geometry_msgs/Point.h>
+#include <geometry_msgs/Vector3.h>
+#include <gazebo_msgs/ModelState.h>
+#include <gazebo_msgs/ModelStates.h>
 
 #include <iostream>
 #include <unordered_map>
+
+#include "travesim_adapters/data/robot_state.hpp"
+#include "travesim_adapters/data/entity_state.hpp"
 
 #define YELLOW_ROBOT_0_NAME "yellow_team/robot_0"
 #define YELLOW_ROBOT_1_NAME "yellow_team/robot_1"
@@ -56,6 +61,15 @@ class VisionReceiver {
         void receive(const gazebo_msgs::ModelStates::ConstPtr& msg);
 
         int32_t model_name_to_index(std::string topic);
+
+        static travesim::Vector2D Point_to_Vector2D(geometry_msgs::Point* point);
+
+        static travesim::Vector2D Vector3_to_Vector2D(geometry_msgs::Vector3* vector3);
+
+        static travesim::EntityState ModelState_to_EntityState(gazebo_msgs::ModelState* model_state);
+
+        static travesim::RobotState ModelState_to_RobotState(gazebo_msgs::ModelState* model_state, bool is_yellow,
+                                                             int id);
 };
 }  // travesim
 #endif // __VISION_RECEIVER_H__

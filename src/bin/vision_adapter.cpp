@@ -35,11 +35,14 @@ int main(int argc, char** argv) {
     while (ros::ok()) {
         // Send message with protobuf
 
-        field_state.ball = travesim::EntityState(vision_receiver.ball);
+        field_state.ball = travesim::VisionReceiver::ModelState_to_EntityState(vision_receiver.ball);
 
         for (uint8_t i = 0; i < 3; i++) {
-            field_state.yellow_team[i] = travesim::RobotState(vision_receiver.yellow_team[i], true, i);
-            field_state.blue_team[i] = travesim::RobotState(vision_receiver.blue_team[i], false, i);
+            field_state.yellow_team[i] =
+                travesim::VisionReceiver::ModelState_to_RobotState(vision_receiver.yellow_team[i], true, i);
+
+            field_state.blue_team[i] =
+                travesim::VisionReceiver::ModelState_to_RobotState(vision_receiver.blue_team[i], false, i);
         }
 
         ROS_INFO_STREAM(field_state);

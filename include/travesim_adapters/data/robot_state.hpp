@@ -46,15 +46,6 @@ class RobotState :
         RobotState(EntityState* entity_state, bool is_yellow, int id);
 
         /**
-         * @brief Construct a new Robot State object from Model State object
-         *
-         * @param model_state
-         */
-        RobotState(gazebo_msgs::ModelState* model_state);
-
-        RobotState(gazebo_msgs::ModelState* model_state, bool is_yellow, int id);
-
-        /**
          * @brief Convert object to data type used in Gazebo
          *
          * @return gazebo_msgs::ModelState converted data
