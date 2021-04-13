@@ -49,6 +49,7 @@ add_library(${PROJECT_NAME}
   src/lib/data/robot_state.cpp
   src/lib/data/field_state.cpp
   src/lib/vision_receiver.cpp
+  src/lib/teams_sender.cpp
 )
 
 ## Declare a C++ executable
@@ -64,6 +65,10 @@ add_executable(multi_receiver_test
 
 add_executable(vision_adapter
   src/bin/vision_adapter.cpp
+)
+
+add_executable(teams_adapter
+  src/bin/teams_adapter.cpp
 )
 
 ## Rename C++ executable without prefix
@@ -85,6 +90,11 @@ target_link_libraries(multi_receiver_test
 )
 
 target_link_libraries(vision_adapter
+  ${PROJECT_NAME}
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(teams_adapter
   ${PROJECT_NAME}
   ${catkin_LIBRARIES}
 )
