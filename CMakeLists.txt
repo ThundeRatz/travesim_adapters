@@ -46,13 +46,16 @@ include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 
 ## Declare a C++ library
-add_library(${PROJECT_NAME}
-  src/lib/udp/multicast_receiver.cpp
-  src/lib/udp/multicast_sender.cpp
+add_library(${PROJECT_NAME}_core
   src/lib/data/team_command.cpp
   src/lib/data/entity_state.cpp
   src/lib/data/robot_state.cpp
   src/lib/data/field_state.cpp
+)
+
+add_library(${PROJECT_NAME}_udp_comm
+  src/lib/udp/multicast_receiver.cpp
+  src/lib/udp/multicast_sender.cpp
 )
 
 ## Declare a C++ executable
@@ -69,13 +72,15 @@ add_executable(multi_receiver_example
 ## Specify libraries to link a library or executable target against
 
 target_link_libraries(multi_sender_example
-  ${PROJECT_NAME}
+  ${PROJECT_NAME}_udp_comm
+  ${PROJECT_NAME}_core
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
 
 target_link_libraries(multi_receiver_example
-  ${PROJECT_NAME}
+  ${PROJECT_NAME}_udp_comm
+  ${PROJECT_NAME}_core
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
