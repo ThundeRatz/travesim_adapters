@@ -12,6 +12,7 @@
 #include <gazebo_msgs/ModelStates.h>
 #include "travesim_adapters/vision_receiver.hpp"
 
+namespace travesim {
 VisionReceiver::VisionReceiver(ros::NodeHandle* nh_ptr) {
     for (int32_t i = 0; i < 7; i++) {
         this->lookup_table.insert({ this->topics[i], i + 1 });
@@ -42,3 +43,4 @@ void VisionReceiver::receive(const gazebo_msgs::ModelStates::ConstPtr& msg) {
         }
     }
 }
+}  // namespace travesim

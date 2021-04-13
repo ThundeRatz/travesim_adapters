@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
     ros::NodeHandle nh;
 
     int32_t send_rate;
-    VisionReceiver vision_receiver(&nh);
+    travesim::VisionReceiver vision_receiver(&nh);
 
     nh.param<int32_t>("send_rate", send_rate, 60);
     ros::Rate loop_rate(send_rate);
