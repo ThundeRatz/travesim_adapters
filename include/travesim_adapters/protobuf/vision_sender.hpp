@@ -50,13 +50,6 @@ class VisionSender {
          */
         void send(FieldState* p_field_state);
 
-    private:
-        /**
-         * @brief Pointer to UDP multicast sender
-         *
-         */
-        udp::MulticastSender* multicast_sender;
-
         /**
          * @brief Convert a FieldState object to a Environment protobuf message object
          *
@@ -64,6 +57,13 @@ class VisionSender {
          * @return fira_message::sim_to_ref::Environment
          */
         static fira_message::sim_to_ref::Environment field_state_to_env_pb_msg(FieldState* p_field_state);
+
+    private:
+        /**
+         * @brief Pointer to UDP multicast sender
+         *
+         */
+        udp::MulticastSender* multicast_sender;
 };
 }  // namespace proto
 }  // namespace travesim

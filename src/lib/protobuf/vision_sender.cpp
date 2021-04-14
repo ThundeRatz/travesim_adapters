@@ -35,12 +35,12 @@ void VisionSender::send(FieldState* p_field_state) {
     }
 }
 
-fira_message::sim_to_ref::Environment field_state_to_env_pb_msg(FieldState* p_field_state) {
-    fira_message::sim_to_ref::Environment environment_data;
+fira_message::sim_to_ref::Environment VisionSender::field_state_to_env_pb_msg(FieldState* p_field_state) {
+    fira_message::sim_to_ref::Environment env_data;
 
     // convert data
 
-    return environment_data;
+    return env_data;
 }
 }  // namespace proto
 }  // namespace travesim
