@@ -71,18 +71,18 @@ add_executable(multi_receiver_example
 
 ## Specify libraries to link a library or executable target against
 
+target_link_libraries(${PROJECT_NAME}_udp_comm
+  ${Boost_LIBRARIES}
+)
+
 target_link_libraries(multi_sender_example
   ${PROJECT_NAME}_udp_comm
-  ${PROJECT_NAME}_core
   ${catkin_LIBRARIES}
-  ${Boost_LIBRARIES}
 )
 
 target_link_libraries(multi_receiver_example
   ${PROJECT_NAME}_udp_comm
-  ${PROJECT_NAME}_core
   ${catkin_LIBRARIES}
-  ${Boost_LIBRARIES}
 )
 
 #############
