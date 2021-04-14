@@ -8,7 +8,6 @@
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
- *
  */
 
 #include "travesim_adapters/protobuf/vision_sender.hpp"

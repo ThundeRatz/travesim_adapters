@@ -2,15 +2,13 @@
  * @file multicast_sender.hpp
  *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
- *
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
- *
+
  * @brief Send data using UDP in multicast mode
  *
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
- *
  */
 
 #include <boost/asio.hpp>
@@ -23,7 +21,6 @@ namespace travesim {
 namespace udp {
 /**
  * @brief Sender class using UDP in multicast mode
- *
  */
 class MulticastSender {
     public:
@@ -50,7 +47,7 @@ class MulticastSender {
          *
          * @param buffer Buffer to be sent
          * @param buffer_size Size of the buffer to be sent
-         * 
+         *
          * @return size_t Number of bytes sent
          */
         size_t send(const char* buffer, const size_t buffer_size);

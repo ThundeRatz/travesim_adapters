@@ -2,7 +2,6 @@
  * @file multicast_receiver.hpp
  *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
- *
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
  *
  * @brief Receiver data using UDP in multicast mode
@@ -10,7 +9,6 @@
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
- *
  */
 
 #include <boost/asio.hpp>
@@ -23,7 +21,6 @@ namespace travesim {
 namespace udp {
 /**
  * @brief Receiver class using UDP in multicast mode
- *
  */
 class MulticastReceiver {
     public:
@@ -63,7 +60,7 @@ class MulticastReceiver {
          *
          * @param buffer Buffet to store data
          * @param buffer_size Size of the buffer where to store data
-         * 
+         *
          * @return size_t Number of bytes received
          */
         size_t receive(char* buffer, const size_t buffer_size);

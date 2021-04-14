@@ -4,11 +4,10 @@
  * @author Lucas Haug <lucas.haug@thunderatz.org>
  *
  * @brief Vision data sender with UDP and protobuf
- * 
+ *
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
- *
  */
 
 #include "travesim_adapters/udp/multicast_sender.hpp"
@@ -22,7 +21,6 @@ namespace travesim {
 namespace proto {
 /**
  * @brief Vision sender class with UDP and protobuf
- *
  */
 class VisionSender {
     public:

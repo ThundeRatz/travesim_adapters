@@ -2,15 +2,13 @@
  * @file multicast_receiver_example.cpp
  *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
- *
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
  *
  * @brief Example on how to use the MulticastReceiver
- * 
+ *
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
- *
  */
 
 #include <iostream>

@@ -2,15 +2,13 @@
  * @file multicast_sender.cpp
  *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
- *
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
  *
  * @brief Send data using UDP in multicast mode
- * 
+ *
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
- *
  */
 
 #include <iostream>

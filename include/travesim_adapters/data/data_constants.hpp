@@ -13,20 +13,17 @@
 
 /**
  * @brief Robots related constants
- *
  */
 #define NUM_OF_ROBOTS_PER_TEAM 3
 
 /**
  * @brief Printing output configuration constants
- *
  */
 #define PRINTING_MIN_WIDTH 6U
 #define PRINTING_DECIMAL_PRECISION 3U
 
 /**
  * @brief Field and goal constants
- *
  */
 #define FIELD_WIDTH_M 1.3F
 #define FIELD_LENGTH_M 1.5F
