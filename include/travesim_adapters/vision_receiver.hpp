@@ -71,8 +71,17 @@ class VisionReceiver {
 
         static travesim::EntityState ModelState_to_EntityState(gazebo_msgs::ModelState* model_state);
 
-        static travesim::RobotState ModelState_to_RobotState(gazebo_msgs::ModelState* model_state, bool is_yellow,
-                                                             int id);
+        static travesim::RobotState ModelState_to_RobotState(gazebo_msgs::ModelState* model_state,
+                                                             bool is_yellow = true, int id = 0);
+
+        static geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d);
+
+        static geometry_msgs::Vector3 Vector2D_to_Vector3(Vector2D* vector2d);
+
+        static gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state);
+
+        static gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state);
 };
 }  // travesim
+
 #endif // __VISION_RECEIVER_H__
