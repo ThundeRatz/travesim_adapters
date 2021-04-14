@@ -35,13 +35,17 @@ class FieldState {
         friend std::ostream& operator <<(std::ostream& output, const FieldState& field_state);
 
         /**
-         * @brief Public attributes
+         * @brief Field entities
          *
          */
         EntityState ball;
         EntityState yellow_team[NUM_OF_ROBOTS_PER_TEAM];
         EntityState blue_team[NUM_OF_ROBOTS_PER_TEAM];
 
+        /**
+         * @brief ODE time step
+         *
+         */
         unsigned int time_step;
 };
 }
