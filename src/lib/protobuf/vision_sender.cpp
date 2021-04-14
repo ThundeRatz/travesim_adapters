@@ -40,9 +40,6 @@ void VisionSender::send(FieldState* p_field_state) {
 }
 
 fira_message::sim_to_ref::Environment VisionSender::field_state_to_env_pb_msg(FieldState* p_field_state) {
-    /**
-     * @todo Update step and add field dimmensions
-     */
     fira_message::sim_to_ref::Environment env_data;
     fira_message::Frame* frame = env_data.mutable_frame();
 
