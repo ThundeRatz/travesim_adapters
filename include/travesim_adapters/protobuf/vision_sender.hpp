@@ -25,7 +25,7 @@ namespace proto {
 class VisionSender {
     public:
         /**
-         * @note The default construct may not be used
+         * @note The default construct cannot be used
          */
         VisionSender() = delete;
 

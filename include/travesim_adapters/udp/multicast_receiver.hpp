@@ -25,7 +25,7 @@ namespace udp {
 class MulticastReceiver {
     public:
         /**
-         * @note The default construct may not be used
+         * @note The default construct cannot be used
          */
         MulticastReceiver() = delete;
 

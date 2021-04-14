@@ -87,7 +87,7 @@ fira_message::sim_to_ref::Environment VisionSender::field_state_to_env_pb_msg(Fi
         robot->set_vorientation(p_field_state->blue_team[i].angular_velocity);
     }
 
-    // Set field dimmensions
+    // Set field dimensions
     fira_message::Field* field = env_data.mutable_field();
 
     field->set_width(FIELD_WIDTH_M);
