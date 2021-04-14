@@ -86,7 +86,10 @@ size_t MulticastReceiver::receive(char* buffer, const size_t buffer_size) {
 
     switch (ec.value()) {
         case boost::system::errc::success: {
-            // Message received, do some log with self->sender_endpoint to register whoe is sending
+            /**
+             * @todo sender_endpoint loggin?
+             *
+             */
             break;
         }
 

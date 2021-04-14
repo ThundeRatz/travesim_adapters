@@ -31,7 +31,10 @@ void VisionSender::send(FieldState* p_field_state) {
     env_data.SerializeToString(&buffer);
 
     if (this->multicast_sender->send(buffer.c_str(), buffer.length()) == 0) {
-        // warning
+        /**
+         * @todo Warn send error
+         *
+         */
     }
 }
 

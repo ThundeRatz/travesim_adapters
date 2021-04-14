@@ -51,7 +51,10 @@ size_t MulticastSender::send(const char* buffer, const size_t buffer_size) {
 
     switch (ec.value()) {
         case boost::system::errc::success: {
-            // Message sent. Log?
+            /**
+             * @todo Message logging?
+             *
+             */
             break;
         }
 
