@@ -1,8 +1,12 @@
 /**
  * @file multicast_receiver.hpp
+ *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
+ *
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
+ *
  * @brief Receiver data using UDP in multicast mode
+ *
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
@@ -25,7 +29,6 @@ class MulticastReceiver {
     public:
         /**
          * @note The default construct may not be used
-         *
          */
         MulticastReceiver() = delete;
 
@@ -52,7 +55,6 @@ class MulticastReceiver {
 
         /**
          * @brief Destroy the Multicast Receiver object
-         *
          */
         ~MulticastReceiver();
 
@@ -61,33 +63,19 @@ class MulticastReceiver {
          *
          * @param buffer Buffet to store data
          * @param buffer_size Size of the buffer where to store data
+         * 
          * @return size_t Number of bytes received
          */
         size_t receive(char* buffer, const size_t buffer_size);
 
     private:
-        /**
-         * @brief boost/asio I/O execution context
-         *
-         */
-        boost::asio::io_context io_context;
+        boost::asio::io_context io_context;   /**< boost/asio I/O execution context */
+        boost::asio::ip::udp::socket* socket; /**< Network socket*/
 
         /**
-         * @brief Network socket
-         *
-         */
-        boost::asio::ip::udp::socket* socket;
-
-        /**
-         * @brief Sender address and port pair
-         *
+         * @brief Endpoints: addresses and ports pairs
          */
         boost::asio::ip::udp::endpoint sender_endpoint;
-
-        /**
-         * @brief Listener address and port pair
-         *
-         */
         boost::asio::ip::udp::endpoint listener_endpoint;
 
         /**

@@ -1,7 +1,10 @@
 /**
  * @file vision_sender.cpp
+ *
  * @author Lucas Haug <lucas.haug@thunderatz.org>
+ *
  * @brief Vision data sender with UDP and protobuf
+ *
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
@@ -33,7 +36,6 @@ void VisionSender::send(FieldState* p_field_state) {
     if (this->multicast_sender->send(buffer.c_str(), buffer.length()) == 0) {
         /**
          * @todo Warn send error
-         *
          */
     }
 }
@@ -41,7 +43,6 @@ void VisionSender::send(FieldState* p_field_state) {
 fira_message::sim_to_ref::Environment VisionSender::field_state_to_env_pb_msg(FieldState* p_field_state) {
     /**
      * @todo Update step and add field dimmensions
-     *
      */
     fira_message::sim_to_ref::Environment env_data;
     fira_message::Frame* frame = env_data.mutable_frame();

@@ -1,8 +1,12 @@
 /**
  * @file multicast_receiver.cpp
+ *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
+ *
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
+ *
  * @brief Receiver data using UDP in multicast mode
+ *
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
@@ -88,7 +92,6 @@ size_t MulticastReceiver::receive(char* buffer, const size_t buffer_size) {
         case boost::system::errc::success: {
             /**
              * @todo sender_endpoint loggin?
-             *
              */
             break;
         }
