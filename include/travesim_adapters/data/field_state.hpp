@@ -41,6 +41,8 @@ class FieldState {
         EntityState ball;
         EntityState yellow_team[NUM_OF_ROBOTS_PER_TEAM];
         EntityState blue_team[NUM_OF_ROBOTS_PER_TEAM];
+
+        unsigned int time_step;
 };
 }
 
