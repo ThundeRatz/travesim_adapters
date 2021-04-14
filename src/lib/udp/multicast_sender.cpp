@@ -28,7 +28,6 @@
 
 namespace travesim {
 namespace udp {
-
 MulticastSender::MulticastSender(std::string multicast_address, short multicast_port) {
     const boost::asio::ip::address multicast_ip = boost::asio::ip::address::from_string(multicast_address);
 
