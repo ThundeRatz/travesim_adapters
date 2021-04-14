@@ -28,6 +28,9 @@ int main() {
     travesim::FieldState field_state;
 
     field_state.ball.position.x = 2.4;
+    field_state.ball.velocity.y = 0.7;
+    field_state.yellow_team[0].angular_velocity = 1.54;
+    field_state.blue_team[2].angular_position = 3.14;
 
     fira_message::sim_to_ref::Environment env_data = my_sender.field_state_to_env_pb_msg(&field_state);
 
