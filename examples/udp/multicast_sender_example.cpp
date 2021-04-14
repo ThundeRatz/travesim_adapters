@@ -2,7 +2,7 @@
  * @file multicast_sender_example.cpp
  * @author Lucas Haug <lucas.haug@thuneratz.org>
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
- * @brief Example on how to use the MulticastReceiver
+ * @brief Example on how to use the MulticastSender
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
