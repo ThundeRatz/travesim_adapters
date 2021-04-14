@@ -25,11 +25,6 @@ namespace proto {
 class VisionSender {
     public:
         /**
-         * @note The default construct cannot be used
-         */
-        VisionSender() = delete;
-
-        /**
          * @brief Construct a new Vision Sender object
          *
          * @param multicast_address Vision multicast address

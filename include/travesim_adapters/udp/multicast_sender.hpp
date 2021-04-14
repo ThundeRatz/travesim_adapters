@@ -25,11 +25,6 @@ namespace udp {
 class MulticastSender {
     public:
         /**
-         * @note The default construct cannot be used
-         */
-        MulticastSender() = delete;
-
-        /**
          * @brief Construct a new Multicast Sender object
          *
          * @param multicast_address Multicas group address
