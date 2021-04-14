@@ -58,6 +58,10 @@ add_library(${PROJECT_NAME}_udp_comm
   src/lib/udp/multicast_sender.cpp
 )
 
+add_library(${PROJECT_NAME}_protobuf_comm
+  src/lib/protobuf/vision_sender.cpp
+)
+
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 
@@ -73,6 +77,11 @@ add_executable(multi_receiver_example
 
 target_link_libraries(${PROJECT_NAME}_udp_comm
   ${Boost_LIBRARIES}
+)
+
+target_link_libraries(${PROJECT_NAME}_protobuf_comm
+  ${PROJECT_NAME}_udp_comm
+  pb_msgs_lib
 )
 
 target_link_libraries(multi_sender_example
