@@ -18,3 +18,9 @@ RUN . devel/setup.sh && apt update --fix-missing && rosdep install ${PROJECT_NAM
 
 # Compile project
 RUN /ros_entrypoint.sh catkin_make
+
+RUN /ros_entrypoint.sh catkin_make install
+
+RUN /ros_entrypoint.sh catkin_make run_tests
+
+CMD cp -r ${CATKIN_WS}/build/test_results /var/ && /ros_entrypoint.sh catkin_test_results
