@@ -1,4 +1,4 @@
-name: Build project with docker
+name: Build and test with docker
 on: push
 
 jobs:
@@ -6,12 +6,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Build the stack
         run: docker-compose build
-      - name: Export test results
+
+      - name: Export tests results
         run: docker-compose up && docker-compose down
-      - name: Publish Unit Test Results
+
+      - name: Publish unit tests report
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
+          check_name: tests report
           files: test_results/**/*.xml
