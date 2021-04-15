@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     ros::NodeHandle nh;
 
     int32_t send_rate;
-    TeamsSender teams_sender(&nh);
+    travesim::ros_side::TeamsSender teams_sender(&nh);
 
     nh.param<int32_t>("send_rate", send_rate, 60);
 
