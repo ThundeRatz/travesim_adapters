@@ -58,10 +58,10 @@ void VisionReceiver::receive(const gazebo_msgs::ModelStates::ConstPtr& msg) {
             this->world_state[index].twist = msg->twist[i];
             this->world_state[index].model_name = msg->name[i];
             this->world_state[index].reference_frame = "world";
+
+            this->received_first_message = true;
         }
     }
-
-    this->received_first_message = true;
 }
 
 Vector2D VisionReceiver::Point_to_Vector2D(geometry_msgs::Point* point) {
