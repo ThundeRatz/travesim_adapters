@@ -19,6 +19,7 @@
 #define quaternion_to_theta(q0, q1, q2, q3) atan2(2*(q0*q1+q2*q3), 1 - 2*(q1*q1 + q2*q2))
 
 namespace travesim {
+namespace ros_side {
 VisionReceiver::VisionReceiver(ros::NodeHandle* nh_ptr) {
     for (int32_t i = 0; i < NUM_OF_ENTITIES_IN_FIELD; i++) {
         this->lookup_table.insert({ this->topics[i], i + 1 });
@@ -146,4 +147,5 @@ gazebo_msgs::ModelState VisionReceiver::RobotState_to_ModelState(RobotState* rob
 
     return retval;
 }
+}  // namespace ros_side
 }  // namespace travesim

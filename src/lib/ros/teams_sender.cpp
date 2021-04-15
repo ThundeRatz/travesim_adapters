@@ -14,6 +14,8 @@
 
 #define BUFFER_SIZE 2
 
+namespace travesim {
+namespace ros_side {
 TeamsSender::TeamsSender(ros::NodeHandle* nh) {
     for (uint8_t i = 0; i < NUM_OF_TOPICS_PER_TEAM; i++) {
         this->yellow_pub[i] = nh->advertise<std_msgs::Float64>(this->yellow_topics[i], BUFFER_SIZE);
@@ -35,3 +37,5 @@ void TeamsSender::transmit() {
         this->blue_pub[i].publish(blue_msg);
     }
 }
+}  // namespace ros_side
+}  // namespace travesim

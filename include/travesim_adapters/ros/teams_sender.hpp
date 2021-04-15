@@ -18,6 +18,8 @@
 
 #include <iostream>
 
+namespace travesim {
+namespace ros_side {
 class TeamsSender {
     private:
         ros::Publisher yellow_pub[NUM_OF_TOPICS_PER_TEAM];
@@ -43,5 +45,7 @@ class TeamsSender {
 
         TeamsSender(ros::NodeHandle* nh);
 };
+}  // ros_side
+}  // travesim
 
 #endif // __TEAMS_SENDER_H__

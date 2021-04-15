@@ -39,6 +39,7 @@
 typedef std::unordered_map<std::string, int32_t> lookup_table_t;
 
 namespace travesim {
+namespace ros_side {
 class VisionReceiver {
     private:
         lookup_table_t lookup_table;
@@ -82,6 +83,7 @@ class VisionReceiver {
 
         static gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state);
 };
+}  // ros_side
 }  // travesim
 
 #endif // __VISION_RECEIVER_H__
