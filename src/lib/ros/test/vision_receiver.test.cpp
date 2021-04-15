@@ -14,8 +14,7 @@
 
 #include "travesim_adapters/ros/vision_receiver.hpp"
 
-// Declare a test
-TEST(vision_adapter, model_name_to_index)
+TEST(vision_receiver, model_name_to_index)
 {
     ros::NodeHandle _nh;
     travesim::ros_side::VisionReceiver vision_receiver(&_nh);
