@@ -8,6 +8,7 @@
             "includePath": [
                 "/opt/ros/noetic/include/**",
                 "/usr/include/**",
+                "${workspaceFolder}/include/",
                 "${workspaceFolder}/../../build/travesim_adapters/proto/*"
             ],
             "name": "ROS"
