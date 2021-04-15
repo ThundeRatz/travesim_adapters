@@ -17,6 +17,9 @@ namespace travesim {
  *****************************************/
 
 std::ostream& operator <<(std::ostream& output, const FieldState& field_state) {
+    output << "TIME STEP: " << std::endl;
+    output << field_state.time_step << std::endl;
+
     output << "BALL STATE: " << std::endl;
     output << field_state.ball << std::endl;
 
