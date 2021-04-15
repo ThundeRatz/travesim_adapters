@@ -62,8 +62,8 @@ int main(int argc, char** argv) {
                                                                                  i);
             }
 
-            field_state.time_step++;
             vision_sender.send(&field_state);
+            field_state.time_step++;
         }
 
         ros::spinOnce();
