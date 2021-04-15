@@ -54,6 +54,7 @@ class VisionReceiver {
 
         ros::Subscriber subscriber;
         gazebo_msgs::ModelState world_state[NUM_OF_ENTITIES_IN_FIELD];
+        bool received_first_message;
 
     public:
         VisionReceiver(ros::NodeHandle* nh_ptr);
@@ -65,6 +66,8 @@ class VisionReceiver {
         void receive(const gazebo_msgs::ModelStates::ConstPtr& msg);
 
         int32_t model_name_to_index(std::string topic);
+
+        bool get_received_first_message();
 
         static travesim::Vector2D Point_to_Vector2D(geometry_msgs::Point* point);
 

@@ -32,11 +32,17 @@ VisionReceiver::VisionReceiver(ros::NodeHandle* nh_ptr) {
 
     this->ball = &this->world_state[NUM_OF_ENTITIES_IN_FIELD - 1];
 
+    this->received_first_message = false;
+
     this->subscriber = nh_ptr->subscribe("/gazebo/model_states", 2, &VisionReceiver::receive, this);
 }
 
 int32_t VisionReceiver::model_name_to_index(std::string topic) {
     return this->lookup_table[topic] - 1;
+}
+
+bool VisionReceiver::get_received_first_message() {
+    return this->received_first_message;
 }
 
 void VisionReceiver::receive(const gazebo_msgs::ModelStates::ConstPtr& msg) {
@@ -54,6 +60,8 @@ void VisionReceiver::receive(const gazebo_msgs::ModelStates::ConstPtr& msg) {
             this->world_state[index].reference_frame = "world";
         }
     }
+
+    this->received_first_message = true;
 }
 
 Vector2D VisionReceiver::Point_to_Vector2D(geometry_msgs::Point* point) {

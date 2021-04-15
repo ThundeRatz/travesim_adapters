@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
 
     ros::Rate loop_rate(send_rate);
 
-    travesim::VisionReceiver vision_receiver(&nh);
+    travesim::ros_side::VisionReceiver vision_receiver(&nh);
     travesim::proto::VisionSender vision_sender(multicast_address_str, multicast_port);
 
     travesim::FieldState field_state;
@@ -46,18 +46,25 @@ int main(int argc, char** argv) {
     ROS_INFO_STREAM("Vision adapter started with loop rate " << send_rate);
     ROS_INFO_STREAM("Vision sender multicast addr " << multicast_address_str << ":" << multicast_port);
 
+    field_state.time_step = 0;
+
     while (ros::ok()) {
-        field_state.ball = travesim::VisionReceiver::ModelState_to_EntityState(vision_receiver.ball);
+        if (vision_receiver.get_received_first_message()) {
+            field_state.ball = travesim::ros_side::VisionReceiver::ModelState_to_EntityState(vision_receiver.ball);
 
-        for (uint8_t i = 0; i < 3; i++) {
-            field_state.yellow_team[i] =
-                travesim::VisionReceiver::ModelState_to_RobotState(vision_receiver.yellow_team[i], true, i);
+            for (uint8_t i = 0; i < 3; i++) {
+                field_state.yellow_team[i] =
+                    travesim::ros_side::VisionReceiver::ModelState_to_RobotState(vision_receiver.yellow_team[i], true,
+                                                                                 i);
 
-            field_state.blue_team[i] =
-                travesim::VisionReceiver::ModelState_to_RobotState(vision_receiver.blue_team[i], false, i);
+                field_state.blue_team[i] =
+                    travesim::ros_side::VisionReceiver::ModelState_to_RobotState(vision_receiver.blue_team[i], false,
+                                                                                 i);
+            }
+
+            field_state.time_step++;
+            vision_sender.send(&field_state);
         }
-
-        vision_sender.send(&field_state);
 
         ros::spinOnce();
         loop_rate.sleep();
