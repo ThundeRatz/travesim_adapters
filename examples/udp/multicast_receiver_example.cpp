@@ -30,8 +30,8 @@
 
 int main(int argc, char* argv[]) {
     const std::string listen_address_str = "0.0.0.0";
-    const std::string multicast_address_str = "239.255.0.1";
-    const short multicast_port = 30001;
+    const std::string multicast_address_str = "224.0.0.1";
+    const short multicast_port = 10002;
 
     char data_buff[BUFFER_SIZE];
 
@@ -52,7 +52,6 @@ int main(int argc, char* argv[]) {
                 std::cout << "Loop count: " << i << std::endl;
             }
         }
-
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << "\n";
     }
