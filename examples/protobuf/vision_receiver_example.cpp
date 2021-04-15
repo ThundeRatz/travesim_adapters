@@ -1,10 +1,11 @@
 /**
- * @file multicast_receiver_example.cpp
+ * @file vision_receiver_example.cpp
  *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
+ * @author Felipe Gomes de Melo <felipe.gomes@thuneratz.org>
  *
- * @brief Example on how to use the MulticastReceiver
+ * @brief Example to read data published from vision adapter
  *
  * @date 04/2021
  *

@@ -37,8 +37,8 @@ VisionReceiver::VisionReceiver(ros::NodeHandle* nh_ptr) {
     this->subscriber = nh_ptr->subscribe("/gazebo/model_states", 2, &VisionReceiver::receive, this);
 }
 
-int32_t VisionReceiver::model_name_to_index(std::string topic) {
-    return this->lookup_table[topic] - 1;
+int32_t VisionReceiver::model_name_to_index(std::string model_name) {
+    return this->lookup_table[model_name] - 1;
 }
 
 bool VisionReceiver::get_received_first_message() {
