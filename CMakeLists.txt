@@ -12,6 +12,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system thread)
 
+## Add subdirectories
+add_subdirectory(proto)
+
 ###################################
 ## catkin specific configuration ##
 ###################################
@@ -43,7 +46,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 
 ## Declare a C++ library
-add_library(${PROJECT_NAME}
+add_library(${PROJECT_NAME}_core
   src/lib/data/team_command.cpp
   src/lib/data/entity_state.cpp
   src/lib/data/robot_state.cpp
@@ -52,15 +55,28 @@ add_library(${PROJECT_NAME}
   src/lib/teams_sender.cpp
 )
 
+add_library(${PROJECT_NAME}_udp_comm
+  src/lib/udp/multicast_receiver.cpp
+  src/lib/udp/multicast_sender.cpp
+)
+
+add_library(${PROJECT_NAME}_protobuf_comm
+  src/lib/protobuf/vision_sender.cpp
+)
+
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 
-add_executable(multi_sender_test
-  src/bin/tests/multicast_sender.cpp
+add_executable(multi_sender_example
+  examples/udp/multicast_sender_example.cpp
 )
 
-add_executable(multi_receiver_test
-  src/bin/tests/multicast_receiver.cpp
+add_executable(multi_receiver_example
+  examples/udp/multicast_receiver_example.cpp
+)
+
+add_executable(vision_sender_example
+  examples/protobuf/vision_sender_example.cpp
 )
 
 add_executable(vision_adapter
@@ -79,23 +95,38 @@ add_executable(teams_adapter
 
 ## Specify libraries to link a library or executable target against
 
-target_link_libraries(multi_sender_test
-  ${catkin_LIBRARIES}
+target_link_libraries(${PROJECT_NAME}_udp_comm
   ${Boost_LIBRARIES}
 )
 
-target_link_libraries(multi_receiver_test
+target_link_libraries(${PROJECT_NAME}_protobuf_comm
+  ${PROJECT_NAME}_udp_comm
+  pb_msgs_lib
+)
+
+target_link_libraries(multi_sender_example
+  ${PROJECT_NAME}_udp_comm
   ${catkin_LIBRARIES}
-  ${Boost_LIBRARIES}
+)
+
+target_link_libraries(multi_receiver_example
+  ${PROJECT_NAME}_udp_comm
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(vision_sender_example
+  ${PROJECT_NAME}_core
+  ${PROJECT_NAME}_protobuf_comm
+  ${catkin_LIBRARIES}
 )
 
 target_link_libraries(vision_adapter
-  ${PROJECT_NAME}
+  ${PROJECT_NAME}_core
   ${catkin_LIBRARIES}
 )
 
 target_link_libraries(teams_adapter
-  ${PROJECT_NAME}
+  ${PROJECT_NAME}_core
   ${catkin_LIBRARIES}
 )
 
@@ -127,9 +158,9 @@ catkin_add_gtest(${PROJECT_NAME}-test src/lib/data/test/robot_state.test.cpp)
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
   add_rostest_gtest(vision_receiver.test test/vision_receiver.test src/lib/test/vision_receiver.test.cpp)
-  target_link_libraries(vision_receiver.test ${catkin_LIBRARIES} ${PROJECT_NAME})
+  target_link_libraries(vision_receiver.test ${PROJECT_NAME}_core ${catkin_LIBRARIES})
 
-  target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME} ${catkin_LIBRARIES})
+  target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME}_core ${catkin_LIBRARIES})
 endif()
 
 ## Add folders to be run by python nosetests

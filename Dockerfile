@@ -25,4 +25,12 @@ RUN /ros_entrypoint.sh catkin_make install
 
 RUN /ros_entrypoint.sh catkin_make run_tests
 
-RUN /ros_entrypoint.sh catkin_test_results
+## By default, 'catkin_make run_tests' will only return non zero exit code
+# if the execution of tests returned an error. To throw an error upon test
+# failure, it is needed to run the following command. As we want to upload
+# the tests results (success and failure), we leave this line commented
+# and let the test report throw an error if needed
+
+# RUN /ros_entrypoint.sh catkin_test_results
+
+CMD cp -r ${CATKIN_WS}/build/test_results /var/

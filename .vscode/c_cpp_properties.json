@@ -1,17 +1,17 @@
 {
-  "configurations": [
-    {
-      "browse": {
-        "databaseFilename": "",
-        "limitSymbolsToIncludedHeaders": true
-      },
-      "includePath": [
-        "/opt/ros/noetic/include/**",
-        "/usr/include/**",
-        "${workspaceFolder}/include"
-      ],
-      "name": "ROS"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/opt/ros/noetic/include/**",
+                "/usr/include/**",
+                "${workspaceFolder}/../../build/travesim_adapters/proto/*"
+            ],
+            "name": "ROS"
+        }
+    ],
+    "version": 4
 }
