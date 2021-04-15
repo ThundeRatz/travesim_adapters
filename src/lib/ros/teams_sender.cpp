@@ -10,7 +10,7 @@
 
 #include <ros/ros.h>
 #include <std_msgs/Float64.h>
-#include "travesim_adapters/teams_sender.hpp"
+#include "travesim_adapters/ros/teams_sender.hpp"
 
 #define BUFFER_SIZE 2
 

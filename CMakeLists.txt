@@ -51,8 +51,11 @@ add_library(${PROJECT_NAME}_core
   src/lib/data/entity_state.cpp
   src/lib/data/robot_state.cpp
   src/lib/data/field_state.cpp
-  src/lib/vision_receiver.cpp
-  src/lib/teams_sender.cpp
+)
+
+add_library(${PROJECT_NAME}_ros
+  src/lib/ros/vision_receiver.cpp
+  src/lib/ros/teams_sender.cpp
 )
 
 add_library(${PROJECT_NAME}_udp_comm
@@ -104,6 +107,10 @@ target_link_libraries(${PROJECT_NAME}_protobuf_comm
   pb_msgs_lib
 )
 
+target_link_libraries(${PROJECT_NAME}_ros
+  ${PROJECT_NAME}_core
+)
+
 target_link_libraries(multi_sender_example
   ${PROJECT_NAME}_udp_comm
   ${catkin_LIBRARIES}
@@ -116,19 +123,21 @@ target_link_libraries(multi_receiver_example
 
 target_link_libraries(vision_sender_example
   ${PROJECT_NAME}_core
+  ${PROJECT_NAME}_ros
   ${PROJECT_NAME}_protobuf_comm
   ${catkin_LIBRARIES}
 )
 
 target_link_libraries(vision_adapter
   ${PROJECT_NAME}_core
+  ${PROJECT_NAME}_ros
   ${PROJECT_NAME}_protobuf_comm
-  ${PROJECT_NAME}_udp_comm
   ${catkin_LIBRARIES}
 )
 
 target_link_libraries(teams_adapter
   ${PROJECT_NAME}_core
+  ${PROJECT_NAME}_ros
   ${catkin_LIBRARIES}
 )
 
@@ -150,8 +159,6 @@ install(TARGETS vision_adapter
 #############
 
 ## Add gtest based cpp test target and link libraries
-catkin_add_gtest(${PROJECT_NAME}-test src/lib/data/test/robot_state.test.cpp)
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_travesim_adapters.cpp)
 # catkin_add_gtest(${PROJECT_NAME}-test test/test_vision_adapter.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME} ${catkin_LIBRARIES})
@@ -159,10 +166,26 @@ catkin_add_gtest(${PROJECT_NAME}-test src/lib/data/test/robot_state.test.cpp)
 
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
-  add_rostest_gtest(vision_receiver.test test/vision_receiver.test src/lib/test/vision_receiver.test.cpp)
-  target_link_libraries(vision_receiver.test ${PROJECT_NAME}_core ${catkin_LIBRARIES})
 
-  target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME}_core ${catkin_LIBRARIES})
+  catkin_add_gtest(robot_state.test src/lib/data/test/robot_state.test.cpp)
+
+  add_rostest_gtest(vision_receiver.test
+    test/vision_receiver.test
+    src/lib/ros/test/vision_receiver.test.cpp
+  )
+
+  target_link_libraries(vision_receiver.test
+    ${PROJECT_NAME}_core
+    ${PROJECT_NAME}_ros
+    ${catkin_LIBRARIES}
+  )
+
+  target_link_libraries(robot_state.test
+    ${PROJECT_NAME}_core
+    ${PROJECT_NAME}_ros
+    ${catkin_LIBRARIES}
+  )
+
 endif()
 
 ## Add folders to be run by python nosetests

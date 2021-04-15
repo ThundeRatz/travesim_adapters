@@ -10,7 +10,7 @@
 
 #include <ros/console.h>
 #include <gazebo_msgs/ModelStates.h>
-#include "travesim_adapters/vision_receiver.hpp"
+#include "travesim_adapters/ros/vision_receiver.hpp"
 
 #define DEFAULT_Z_VALUE 0.022
 #define DEFAULT_ENTITY_NAME "vss_ball"

@@ -12,8 +12,8 @@
 #include <ros/console.h>
 #include <std_msgs/Float64.h>
 #include <gazebo_msgs/ModelStates.h>
-#include "travesim_adapters/teams_topics.hpp"
-#include "travesim_adapters/teams_sender.hpp"
+#include "travesim_adapters/ros/teams_topics.hpp"
+#include "travesim_adapters/ros/teams_sender.hpp"
 
 #include <iostream>
 

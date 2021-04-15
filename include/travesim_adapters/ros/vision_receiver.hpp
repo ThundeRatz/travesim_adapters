@@ -21,7 +21,7 @@
 #include <iostream>
 #include <unordered_map>
 
-#include "travesim_adapters/teams_topics.hpp"
+#include "travesim_adapters/ros/teams_topics.hpp"
 #include "travesim_adapters/data/data_constants.hpp"
 #include "travesim_adapters/data/robot_state.hpp"
 #include "travesim_adapters/data/entity_state.hpp"

@@ -12,7 +12,7 @@
 #include <ros/console.h>
 #include <gazebo_msgs/ModelStates.h>
 
-#include "travesim_adapters/vision_receiver.hpp"
+#include "travesim_adapters/ros/vision_receiver.hpp"
 #include "travesim_adapters/protobuf/vision_sender.hpp"
 #include "travesim_adapters/data/field_state.hpp"
 #include "travesim_adapters/data/robot_state.hpp"

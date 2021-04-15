@@ -1,8 +1,18 @@
-// Bring in my package's API, which is what I'm testing
-#include "ros/ros.h"
-#include "ros/console.h"
-#include "travesim_adapters/vision_receiver.hpp"
+/**
+ * @file vision_receiver.test.cpp
+ * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
+ * @brief
+ * @date 04/2021
+ *
+ * @copyright MIT License - Copyright (c) 2021 ThundeRatz
+ *
+ */
+
+#include <ros/ros.h>
+#include <ros/console.h>
 #include <gtest/gtest.h>
+
+#include "travesim_adapters/ros/vision_receiver.hpp"
 
 // Declare a test
 TEST(vision_adapter, model_name_to_index)

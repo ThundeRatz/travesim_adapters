@@ -13,8 +13,8 @@
 
 #include <ros/ros.h>
 #include <ros/console.h>
+#include "travesim_adapters/ros/teams_topics.hpp"
 #include "travesim_adapters/data/data_constants.hpp"
-#include "travesim_adapters/teams_topics.hpp"
 
 #include <iostream>
 
