@@ -36,9 +36,6 @@ int main(int argc, char** argv) {
         ros::shutdown();
     }
 
-    // ros::param::param<int32_t>("vision_multicast_group/port", multicast_port, 10000);
-    // ros::param::param<std::string>("vision_multicast_group/address", multicast_address_str, "224.0.0.4");
-
     ros::Rate loop_rate(send_rate);
 
     travesim::VisionReceiver vision_receiver(&nh);
