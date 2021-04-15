@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Hidden files
+~*
+
+# Test reports
+test_results/
