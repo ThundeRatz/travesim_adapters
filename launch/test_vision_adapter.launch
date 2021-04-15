@@ -3,9 +3,13 @@
 
   <env name="ROSCONSOLE_CONFIG_FILE" value="$(find travesim_adapters)/config/rosconsole.conf"/>
 
+  <!-- <env name="ROSCONSOLE_FORMAT" value="[${severity}] [${file}:${line}]: ${message}"/> -->
+
+  <rosparam command="load" file="$(find travesim_adapters)/config/network.yml" />
+
   <node name="vision_adapter" pkg="travesim_adapters" type="vision_adapter" output="screen"/>
 
-  <include file="$(find vss_simulation)/launch/simulation_robot.launch">
+  <include file="$(find travesim)/launch/simulation_team.launch">
     <arg name="paused" value="false"/>
     <arg name="keyboard" value="false"/>
     <arg name="gui" value="false"/>

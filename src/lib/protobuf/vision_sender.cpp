@@ -10,6 +10,7 @@
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  */
 
+#include <ros/console.h>
 #include "travesim_adapters/protobuf/vision_sender.hpp"
 
 /*****************************************
@@ -33,9 +34,7 @@ void VisionSender::send(FieldState* p_field_state) {
     env_data.SerializeToString(&buffer);
 
     if (this->multicast_sender->send(buffer.c_str(), buffer.length()) == 0) {
-        /**
-         * @todo Warn send error
-         */
+        ROS_WARN_STREAM("Error sending vision protobuff message");
     }
 }
 
