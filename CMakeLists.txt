@@ -180,6 +180,8 @@ if(CATKIN_ENABLE_TESTING)
 
   catkin_add_gtest(robot_state.test src/lib/data/test/robot_state.test.cpp)
 
+  catkin_add_gtest(entity_state.test src/lib/data/test/entity_state.test.cpp)
+
   add_rostest_gtest(vision_receiver.test
     test/vision_receiver.test
     src/lib/ros/test/vision_receiver.test.cpp
@@ -188,6 +190,12 @@ if(CATKIN_ENABLE_TESTING)
   add_rostest_gtest(vision_adapter.test
     test/vision_adapter.test
     src/bin/test/vision_adapter.test.cpp
+  )
+
+  target_link_libraries(entity_state.test
+    ${PROJECT_NAME}_core
+    ${PROJECT_NAME}_ros
+    ${catkin_LIBRARIES}
   )
 
   target_link_libraries(robot_state.test

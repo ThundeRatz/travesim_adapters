@@ -54,29 +54,6 @@ TEST(robot_state_to_model_state, angle_conversion)
                      robot_state.angular_position);
 }
 
-TEST(vector2d_to_vector3, convert_from_vector2d)
-{
-    travesim::Vector2D vector2d(2, 4);
-
-    geometry_msgs::Vector3 vector3 = travesim::ros_side::VisionReceiver::Vector2D_to_Vector3(&vector2d);
-
-    EXPECT_DOUBLE_EQ(vector3.x, 2);
-    EXPECT_DOUBLE_EQ(vector3.y, 4);
-}
-
-TEST(vector2d_to_vector3, convert_from_vector3)
-{
-    geometry_msgs::Vector3 vector3;
-
-    vector3.x = 3;
-    vector3.y = -7;
-
-    travesim::Vector2D vector2d = travesim::ros_side::VisionReceiver::Vector3_to_Vector2D(&vector3);
-
-    EXPECT_DOUBLE_EQ(vector2d.x, 3);
-    EXPECT_DOUBLE_EQ(vector2d.y, -7);
-}
-
 // Run all the tests that were declared with TEST()
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);
