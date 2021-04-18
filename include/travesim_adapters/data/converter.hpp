@@ -20,6 +20,12 @@
 #include "travesim_adapters/data/robot_state.hpp"
 #include "travesim_adapters/data/entity_state.hpp"
 
+#define DEFAULT_Z_VALUE_BALL 0.032
+#define DEFAULT_Z_VALUE_ROBOT 0.012
+
+#define DEFAULT_ENTITY_NAME "vss_ball"
+#define DEFAULT_REFERENCE_FRAME "world"
+
 namespace travesim {
 namespace converter {
 /**
@@ -57,14 +63,6 @@ travesim::EntityState ModelState_to_EntityState(gazebo_msgs::ModelState* model_s
 travesim::RobotState ModelState_to_RobotState(gazebo_msgs::ModelState* model_state, bool is_yellow = true, int id = 0);
 
 /**
- * @brief Function to convert travesim::Vector2D to geometry_msgs::Point
- *
- * @param vector2d Data to be converted
- * @return geometry_msgs::Point Converted data
- */
-geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d);
-
-/**
  * @brief Function to convert travesim::Vector2D to geometry_msgs::Vector3
  *
  * @param vector2d Data to be converted
@@ -73,12 +71,20 @@ geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d);
 geometry_msgs::Vector3 Vector2D_to_Vector3(Vector2D* vector2d);
 
 /**
+ * @brief Function to convert travesim::Vector2D to geometry_msgs::Point
+ *
+ * @param vector2d Data to be converted
+ * @return geometry_msgs::Point Converted data
+ */
+geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d, int32_t z = DEFAULT_Z_VALUE_BALL);
+
+/**
  * @brief Function to convert travesim::EntityState to gazebo_msgs::ModelState
  *
  * @param entity_state Data to be converted
  * @return gazebo_msgs::ModelState Converted data
  */
-gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state);
+gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, int32_t z = DEFAULT_Z_VALUE_BALL);
 
 /**
  * @brief Function to convert travesim::RobotState to gazebo_msgs::ModelState
@@ -86,7 +92,7 @@ gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state);
  * @param entity_state Data to be converted
  * @return gazebo_msgs::ModelState Converted data
  */
-gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state);
+gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, int32_t z = DEFAULT_Z_VALUE_ROBOT);
 }  // namespace converter
 }  // namespace travesim
 

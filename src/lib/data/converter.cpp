@@ -10,10 +10,6 @@
 
 #include "travesim_adapters/data/converter.hpp"
 
-#define DEFAULT_Z_VALUE 0.022
-#define DEFAULT_ENTITY_NAME "vss_ball"
-#define DEFAULT_REFERENCE_FRAME "world"
-
 #define quaternion_to_theta(q0, q1, q2, q3) atan2(2*(q0*q1+q2*q3), 1 - 2*(q1*q1 + q2*q2))
 
 namespace travesim {
@@ -46,12 +42,12 @@ geometry_msgs::Vector3 Vector2D_to_Vector3(Vector2D* vector2d) {
     return retval;
 }
 
-geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d) {
+geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d, int32_t z) {
     geometry_msgs::Point retval;
 
     retval.x = vector2d->x;
     retval.y = vector2d->y;
-    retval.z = DEFAULT_Z_VALUE;
+    retval.z = z;
 
     return retval;
 }
@@ -79,13 +75,13 @@ RobotState ModelState_to_RobotState(gazebo_msgs::ModelState* model_state, bool i
     return retval;
 }
 
-gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state) {
+gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, int32_t z) {
     gazebo_msgs::ModelState retval;
 
     retval.model_name = DEFAULT_ENTITY_NAME;
     retval.reference_frame = DEFAULT_REFERENCE_FRAME;
 
-    retval.pose.position = Vector2D_to_Point(&entity_state->position);
+    retval.pose.position = Vector2D_to_Point(&entity_state->position, z);
 
     retval.pose.orientation.w = cos(entity_state->angular_position/2);
     retval.pose.orientation.x = sin(entity_state->angular_position/2);
@@ -101,8 +97,8 @@ gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state) {
     return retval;
 }
 
-gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state) {
-    gazebo_msgs::ModelState retval = EntityState_to_ModelState(dynamic_cast<EntityState*>(robot_state));
+gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, int32_t z) {
+    gazebo_msgs::ModelState retval = EntityState_to_ModelState(dynamic_cast<EntityState*>(robot_state), z);
 
     std::string base_name = robot_state->is_yellow ? "yellow_team/robot_" : "blue_team/robot_";
     retval.model_name = base_name.append(std::to_string(robot_state->id));
