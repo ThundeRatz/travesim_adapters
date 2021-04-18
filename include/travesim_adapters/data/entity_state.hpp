@@ -11,10 +11,6 @@
 #ifndef __ENTITY_STATE_H__
 #define __ENTITY_STATE_H__
 
-#include <geometry_msgs/Vector3.h>
-#include <geometry_msgs/Point.h>
-#include <gazebo_msgs/ModelState.h>
-
 #include <iostream>
 
 namespace travesim {

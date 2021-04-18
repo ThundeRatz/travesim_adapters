@@ -8,15 +8,10 @@
  * @date 04/2021
  */
 
-#include <geometry_msgs/Point.h>
 #include <cmath>
 #include <iomanip>
 #include "travesim_adapters/data/entity_state.hpp"
 #include "travesim_adapters/data/data_constants.hpp"
-
-#define DEFAULT_Z_VALUE 0.022
-#define DEFAULT_ENTITY_NAME "vss_ball"
-#define DEFAULT_REFERENCE_FRAME "world"
 
 namespace travesim {
 /*****************************************

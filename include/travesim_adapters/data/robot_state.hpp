@@ -12,7 +12,6 @@
 #define __ROBOT_STATE_H__
 
 #include <iostream>
-#include <gazebo_msgs/ModelState.h>
 
 #include "travesim_adapters/data/entity_state.hpp"
 
@@ -44,13 +43,6 @@ class RobotState :
                    bool is_yellow, int id);
 
         RobotState(EntityState* entity_state, bool is_yellow, int id);
-
-        /**
-         * @brief Convert object to data type used in Gazebo
-         *
-         * @return gazebo_msgs::ModelState converted data
-         */
-        gazebo_msgs::ModelState to_ModelState();
 
         /**
          * @brief Output stream operator overloading
