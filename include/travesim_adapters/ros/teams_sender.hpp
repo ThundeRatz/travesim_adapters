@@ -42,7 +42,7 @@ class TeamsSender {
 
         void transmit();
 
-        TeamsSender(ros::NodeHandle* nh);
+        TeamsSender();
 };
 }  // ros_side
 }  // travesim

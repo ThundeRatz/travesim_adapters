@@ -16,10 +16,12 @@
 
 namespace travesim {
 namespace ros_side {
-TeamsSender::TeamsSender(ros::NodeHandle* nh) {
+TeamsSender::TeamsSender() {
+    ros::NodeHandle nh;
+
     for (uint8_t i = 0; i < NUM_OF_COMMANDS_PER_TEAM; i++) {
-        this->yellow_pub[i] = nh->advertise<std_msgs::Float64>(this->yellow_topics[i], BUFFER_SIZE);
-        this->blue_pub[i] = nh->advertise<std_msgs::Float64>(this->blue_topics[i], BUFFER_SIZE);
+        this->yellow_pub[i] = nh.advertise<std_msgs::Float64>(this->yellow_topics[i], BUFFER_SIZE);
+        this->blue_pub[i] = nh.advertise<std_msgs::Float64>(this->blue_topics[i], BUFFER_SIZE);
         this->yellow_team_cmd[i] = 0;
         this->blue_team_cmd[i] = 0;
     }
