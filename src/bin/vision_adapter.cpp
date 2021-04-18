@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
 
     ros::Rate loop_rate(send_rate);
 
-    travesim::ros_side::VisionReceiver vision_receiver(&nh);
+    travesim::ros_side::VisionReceiver vision_receiver;
     travesim::proto::VisionSender vision_sender(multicast_address_str, multicast_port);
 
     travesim::FieldState field_state;

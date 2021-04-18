@@ -20,7 +20,7 @@
 
 namespace travesim {
 namespace ros_side {
-VisionReceiver::VisionReceiver(ros::NodeHandle* nh_ptr) {
+VisionReceiver::VisionReceiver() {
     for (int32_t i = 0; i < NUM_OF_ENTITIES_IN_FIELD; i++) {
         this->lookup_table.insert({ this->topics[i], i + 1 });
     }
@@ -34,7 +34,8 @@ VisionReceiver::VisionReceiver(ros::NodeHandle* nh_ptr) {
 
     this->received_first_message = false;
 
-    this->subscriber = nh_ptr->subscribe("/gazebo/model_states", 2, &VisionReceiver::receive, this);
+    ros::NodeHandle _nh;
+    this->subscriber = _nh.subscribe("/gazebo/model_states", 2, &VisionReceiver::receive, this);
 }
 
 int32_t VisionReceiver::model_name_to_index(std::string model_name) {

@@ -97,9 +97,9 @@ class VisionReceiver {
         /**
          * @brief Construct a new Vision Receiver object
          *
-         * @param nh_ptr NodeHandle pointer to create subscribers
+         * @note Must be called after ros::init()!
          */
-        VisionReceiver(ros::NodeHandle* nh_ptr);
+        VisionReceiver();
 
         /**
          * @brief Callback function for Gazebo subscriber

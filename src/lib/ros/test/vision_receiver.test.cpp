@@ -16,8 +16,7 @@
 
 TEST(vision_receiver, model_name_to_index)
 {
-    ros::NodeHandle _nh;
-    travesim::ros_side::VisionReceiver vision_receiver(&_nh);
+    travesim::ros_side::VisionReceiver vision_receiver;
 
     EXPECT_EQ(vision_receiver.model_name_to_index("yellow_team/robot_0"), 0);
     EXPECT_EQ(vision_receiver.model_name_to_index("yellow_team/robot_1"), 1);
