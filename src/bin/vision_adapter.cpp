@@ -13,10 +13,11 @@
 #include <gazebo_msgs/ModelStates.h>
 
 #include "travesim_adapters/ros/vision_receiver.hpp"
-#include "travesim_adapters/protobuf/vision_sender.hpp"
+#include "travesim_adapters/data/converter.hpp"
 #include "travesim_adapters/data/field_state.hpp"
 #include "travesim_adapters/data/robot_state.hpp"
 #include "travesim_adapters/data/entity_state.hpp"
+#include "travesim_adapters/protobuf/vision_sender.hpp"
 
 #include <iostream>
 
@@ -50,16 +51,14 @@ int main(int argc, char** argv) {
 
     while (ros::ok()) {
         if (vision_receiver.get_received_first_message()) {
-            field_state.ball = travesim::ros_side::VisionReceiver::ModelState_to_EntityState(vision_receiver.ball);
+            field_state.ball = travesim::converter::ModelState_to_EntityState(vision_receiver.ball);
 
             for (uint8_t i = 0; i < 3; i++) {
                 field_state.yellow_team[i] =
-                    travesim::ros_side::VisionReceiver::ModelState_to_RobotState(vision_receiver.yellow_team[i], true,
-                                                                                 i);
+                    travesim::converter::ModelState_to_RobotState(vision_receiver.yellow_team[i], true, i);
 
                 field_state.blue_team[i] =
-                    travesim::ros_side::VisionReceiver::ModelState_to_RobotState(vision_receiver.blue_team[i], false,
-                                                                                 i);
+                    travesim::converter::ModelState_to_RobotState(vision_receiver.blue_team[i], false, i);
             }
 
             vision_sender.send(&field_state);
