@@ -22,8 +22,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Doxygen Action
-        uses: mattnotmitt/doxygen-action@v1.1.0
+      - name: Thunder Doxygen Action
+        uses: FelipeGdM/doxygen-action@v0.1
+        with:
+          additional-packages: "font-fira-code"
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
