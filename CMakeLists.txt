@@ -178,10 +178,10 @@ if(CATKIN_ENABLE_TESTING)
 
   catkin_add_gtest(converter.test src/lib/data/test/converter.test.cpp)
 
-  add_rostest_gtest(vision_receiver.test
-    test/vision_receiver.test
-    src/lib/ros/test/vision_receiver.test.cpp
-  )
+  # add_rostest_gtest(vision_receiver.test
+  #   test/vision_receiver.test
+  #   src/lib/ros/test/vision_receiver.test.cpp
+  # )
 
   add_rostest_gtest(vision_adapter.test
     test/vision_adapter.test
@@ -194,11 +194,11 @@ if(CATKIN_ENABLE_TESTING)
     ${catkin_LIBRARIES}
   )
 
-  target_link_libraries(vision_receiver.test
-    ${PROJECT_NAME}_core
-    ${PROJECT_NAME}_ros
-    ${catkin_LIBRARIES}
-  )
+  # target_link_libraries(vision_receiver.test
+  #   ${PROJECT_NAME}_core
+  #   ${PROJECT_NAME}_ros
+  #   ${catkin_LIBRARIES}
+  # )
 
   target_link_libraries(vision_adapter.test
     ${PROJECT_NAME}_core
