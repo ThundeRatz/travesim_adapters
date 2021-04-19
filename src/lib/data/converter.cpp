@@ -105,5 +105,35 @@ gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, int32_
 
     return retval;
 }
+
+FieldState ModelStates_to_FieldState(gazebo_msgs::ModelStates::ConstPtr model_states) {
+    static FieldState field_state;
+    static lookup_table_t lookup_table({{YELLOW_ROBOT_0_NAME, &field_state.yellow_team[0]},
+                                           {YELLOW_ROBOT_1_NAME, &field_state.yellow_team[1]},
+                                           {YELLOW_ROBOT_2_NAME, &field_state.yellow_team[2]},
+                                           {BLUE_ROBOT_0_NAME, &field_state.blue_team[0]},
+                                           {BLUE_ROBOT_1_NAME, &field_state.blue_team[1]},
+                                           {BLUE_ROBOT_2_NAME, &field_state.blue_team[2]},
+                                           {BALL_NAME, &field_state.ball}});
+
+    uint32_t size = model_states->name.size();
+
+    for (uint32_t i = 0; i < size; i++) {
+        EntityState* entity_state_ptr = lookup_table[model_states->name[i]];
+
+        if (entity_state_ptr != nullptr) {
+            gazebo_msgs::ModelState model_state;
+
+            model_state.pose = model_states->pose[i];
+            model_state.twist = model_states->twist[i];
+            model_state.model_name = model_states->name[i];
+            model_state.reference_frame = DEFAULT_REFERENCE_FRAME;
+
+            (*entity_state_ptr) = ModelState_to_EntityState(&model_state);
+        }
+    }
+
+    return field_state;
+}
 }  // namespace converter
 }  // namespace travesim

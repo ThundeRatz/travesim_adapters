@@ -51,16 +51,7 @@ int main(int argc, char** argv) {
 
     while (ros::ok()) {
         if (vision_receiver.get_received_first_message()) {
-            field_state.ball = travesim::converter::ModelState_to_EntityState(vision_receiver.ball);
-
-            for (uint8_t i = 0; i < 3; i++) {
-                field_state.yellow_team[i] =
-                    travesim::converter::ModelState_to_EntityState(vision_receiver.yellow_team[i]);
-
-                field_state.blue_team[i] =
-                    travesim::converter::ModelState_to_EntityState(vision_receiver.blue_team[i]);
-            }
-
+            field_state = travesim::converter::ModelStates_to_FieldState(vision_receiver.world_state);
             vision_sender.send(&field_state);
             field_state.time_step++;
         }

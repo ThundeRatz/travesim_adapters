@@ -11,6 +11,9 @@
 #ifndef __CONVERTER_H__
 #define __CONVERTER_H__
 
+#include <iostream>
+#include <unordered_map>
+
 #include <geometry_msgs/Point.h>
 #include <geometry_msgs/Vector3.h>
 #include <gazebo_msgs/ModelState.h>
@@ -19,12 +22,25 @@
 #include "travesim_adapters/data/data_constants.hpp"
 #include "travesim_adapters/data/robot_state.hpp"
 #include "travesim_adapters/data/entity_state.hpp"
+#include "travesim_adapters/data/field_state.hpp"
 
 #define DEFAULT_Z_VALUE_BALL 0.032
 #define DEFAULT_Z_VALUE_ROBOT 0.012
 
-#define DEFAULT_ENTITY_NAME "vss_ball"
+#define YELLOW_ROBOT_0_NAME "yellow_team/robot_0"
+#define YELLOW_ROBOT_1_NAME "yellow_team/robot_1"
+#define YELLOW_ROBOT_2_NAME "yellow_team/robot_2"
+
+#define BLUE_ROBOT_0_NAME "blue_team/robot_0"
+#define BLUE_ROBOT_1_NAME "blue_team/robot_1"
+#define BLUE_ROBOT_2_NAME "blue_team/robot_2"
+
+#define BALL_NAME "vss_ball"
+
+#define DEFAULT_ENTITY_NAME BALL_NAME
 #define DEFAULT_REFERENCE_FRAME "world"
+
+typedef std::unordered_map<std::string, travesim::EntityState*> lookup_table_t;
 
 namespace travesim {
 namespace converter {
@@ -93,6 +109,8 @@ gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, int
  * @return gazebo_msgs::ModelState Converted data
  */
 gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, int32_t z = DEFAULT_Z_VALUE_ROBOT);
+
+travesim::FieldState ModelStates_to_FieldState(gazebo_msgs::ModelStates::ConstPtr model_states);
 }  // namespace converter
 }  // namespace travesim
 
