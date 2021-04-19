@@ -16,10 +16,8 @@
 #include <string>
 #include <google/protobuf/util/json_util.h>
 #include <google/protobuf/text_format.h>
-#include <boost/asio.hpp>
-#include "boost/bind.hpp"
 
-#include "travesim_adapters/protobuf/vision_sender.hpp"
+#include "packet.pb.h"
 #include "travesim_adapters/udp/multicast_receiver.hpp"
 
 /*****************************************
