@@ -11,4 +11,4 @@
 
 This project provides an adapter layer to non-ROS projects to work with [TraveSim](https://github.com/ThundeRatz/travesim)
 
-![Adapters architecture](./docs/assets/img/arquitetura_simulador.jpeg)
+![Adapters architecture](./docs/assets/img/arquitetura.png)
