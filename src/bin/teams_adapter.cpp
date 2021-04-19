@@ -1,7 +1,7 @@
 /**
  * @file teams_adapter.cpp
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
- * @brief
+ * @brief Teams commands adapter execution file
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz

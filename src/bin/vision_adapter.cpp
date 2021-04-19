@@ -1,11 +1,13 @@
 /**
  * @file vision_adapter.cpp
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
- * @brief
+ * @brief Vision adapter executable file
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *
+ * @see VisionReceiver
+ * @see VisionSender
  */
 
 #include <ros/ros.h>
