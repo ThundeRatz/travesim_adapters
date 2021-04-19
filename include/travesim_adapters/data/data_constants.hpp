@@ -15,7 +15,7 @@
  * @brief Robots related constants
  */
 #define NUM_OF_ROBOTS_PER_TEAM 3
-#define NUM_OF_TOPICS_PER_TEAM (NUM_OF_ROBOTS_PER_TEAM * 2)
+#define NUM_OF_COMMANDS_PER_TEAM (2 * NUM_OF_ROBOTS_PER_TEAM)
 #define NUM_OF_ENTITIES_IN_FIELD (2 * NUM_OF_ROBOTS_PER_TEAM + 1)
 
 /**
