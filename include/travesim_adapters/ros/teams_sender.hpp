@@ -22,23 +22,22 @@ namespace travesim {
 namespace ros_side {
 class TeamsSender {
     private:
-        ros::Publisher yellow_pub[NUM_OF_TOPICS_PER_TEAM];
-        ros::Publisher blue_pub[NUM_OF_TOPICS_PER_TEAM];
+        ros::Publisher yellow_pub[NUM_OF_COMMANDS_PER_TEAM];
+        ros::Publisher blue_pub[NUM_OF_COMMANDS_PER_TEAM];
 
-        const std::string yellow_topics[NUM_OF_TOPICS_PER_TEAM] =
-        { YELLOW_ROBOT_0_LEFT_TOPIC, YELLOW_ROBOT_0_RIGHT_TOPIC,
-          YELLOW_ROBOT_1_LEFT_TOPIC,
-          YELLOW_ROBOT_1_RIGHT_TOPIC,
-          YELLOW_ROBOT_2_LEFT_TOPIC,
-          YELLOW_ROBOT_2_RIGHT_TOPIC };
+        const std::string yellow_topics[NUM_OF_COMMANDS_PER_TEAM] = {
+            YELLOW_ROBOT_0_LEFT_TOPIC, YELLOW_ROBOT_0_RIGHT_TOPIC,
+            YELLOW_ROBOT_1_LEFT_TOPIC, YELLOW_ROBOT_1_RIGHT_TOPIC,
+            YELLOW_ROBOT_2_LEFT_TOPIC, YELLOW_ROBOT_2_RIGHT_TOPIC };
 
-        const std::string blue_topics[NUM_OF_TOPICS_PER_TEAM] = { BLUE_ROBOT_0_LEFT_TOPIC, BLUE_ROBOT_0_RIGHT_TOPIC,
-                                                                  BLUE_ROBOT_1_LEFT_TOPIC, BLUE_ROBOT_1_RIGHT_TOPIC,
-                                                                  BLUE_ROBOT_2_LEFT_TOPIC, BLUE_ROBOT_2_RIGHT_TOPIC };
+        const std::string blue_topics[NUM_OF_COMMANDS_PER_TEAM] = {
+            BLUE_ROBOT_0_LEFT_TOPIC, BLUE_ROBOT_0_RIGHT_TOPIC,
+            BLUE_ROBOT_1_LEFT_TOPIC, BLUE_ROBOT_1_RIGHT_TOPIC,
+            BLUE_ROBOT_2_LEFT_TOPIC, BLUE_ROBOT_2_RIGHT_TOPIC };
 
     public:
-        double yellow_team_cmd[NUM_OF_TOPICS_PER_TEAM];
-        double blue_team_cmd[NUM_OF_TOPICS_PER_TEAM];
+        double yellow_team_cmd[NUM_OF_COMMANDS_PER_TEAM];
+        double blue_team_cmd[NUM_OF_COMMANDS_PER_TEAM];
         void protobuf_callback();
 
         void transmit();
