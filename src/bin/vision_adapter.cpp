@@ -55,10 +55,10 @@ int main(int argc, char** argv) {
 
             for (uint8_t i = 0; i < 3; i++) {
                 field_state.yellow_team[i] =
-                    travesim::converter::ModelState_to_RobotState(vision_receiver.yellow_team[i], true, i);
+                    travesim::converter::ModelState_to_EntityState(vision_receiver.yellow_team[i]);
 
                 field_state.blue_team[i] =
-                    travesim::converter::ModelState_to_RobotState(vision_receiver.blue_team[i], false, i);
+                    travesim::converter::ModelState_to_EntityState(vision_receiver.blue_team[i]);
             }
 
             vision_sender.send(&field_state);
