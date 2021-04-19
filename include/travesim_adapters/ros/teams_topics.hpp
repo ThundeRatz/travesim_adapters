@@ -1,7 +1,7 @@
 /**
  * @file teams_topics.h
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
- * @brief
+ * @brief Declaration of default topics' names for robots control
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
