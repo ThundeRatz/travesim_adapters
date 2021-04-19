@@ -110,6 +110,12 @@ gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, int
  */
 gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, int32_t z = DEFAULT_Z_VALUE_ROBOT);
 
+/**
+ * @brief Function to convert gazebo_msgs::ModelStates to travesim::FieldState
+ *
+ * @param model_states Data to be converted
+ * @return travesim::FieldState Converted data
+ */
 travesim::FieldState ModelStates_to_FieldState(gazebo_msgs::ModelStates::ConstPtr model_states);
 }  // namespace converter
 }  // namespace travesim

@@ -108,6 +108,12 @@ gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, int32_
 
 FieldState ModelStates_to_FieldState(gazebo_msgs::ModelStates::ConstPtr model_states) {
     static FieldState field_state;
+
+    /**
+     * @brief This lookup table will map model_name -> field_state data location,
+     * so we can acess field_state elements from their's names
+     *
+     */
     static lookup_table_t lookup_table({{YELLOW_ROBOT_0_NAME, &field_state.yellow_team[0]},
                                            {YELLOW_ROBOT_1_NAME, &field_state.yellow_team[1]},
                                            {YELLOW_ROBOT_2_NAME, &field_state.yellow_team[2]},
