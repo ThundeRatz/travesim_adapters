@@ -29,7 +29,6 @@ int main(int argc, char** argv) {
     std::string multicast_address_str;
 
     ros::init(argc, argv, "vision_adapter");
-    ros::NodeHandle nh;
 
     ros::param::param<int32_t>("send_rate", send_rate, 60);
 
