@@ -39,6 +39,8 @@ MulticastReceiver::MulticastReceiver(std::string multicast_address, short multic
     this->listener_endpoint = boost::asio::ip::udp::endpoint(listener_ip, multicast_port);
 
     this->create_socket(multicast_ip);
+
+    this->specific_source = false;
 };
 
 MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port) {
@@ -47,12 +49,14 @@ MulticastReceiver::MulticastReceiver(std::string multicast_address, short multic
     this->listener_endpoint = boost::asio::ip::udp::endpoint(multicast_ip, multicast_port);
 
     this->create_socket(multicast_ip);
+
+    this->specific_source = false;
 };
 
 MulticastReceiver::~MulticastReceiver() {
     this->socket->close();
     delete this->socket;
-}
+};
 
 void MulticastReceiver::create_socket(const boost::asio::ip::address multicast_address) {
     this->socket = new boost::asio::ip::udp::socket(io_context);
@@ -77,12 +81,14 @@ size_t MulticastReceiver::receive(char* buffer, const size_t buffer_size) {
     bytes_received =
         this->socket->receive_from(boost::asio::buffer(buffer, buffer_size), current_endpoint, NO_FLAGS, ec);
 
-    if (this->sender_endpoint == boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0)) {
-        this->sender_endpoint = current_endpoint;
-    } else if (this->sender_endpoint != current_endpoint) {
-        if (current_endpoint != boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0)) {
-            std::string error_msg = "Error in multicast receiver. Any-source multicast not supported.";
-            throw std::runtime_error(error_msg);
+    if (this->specific_source) {
+        if (this->sender_endpoint == boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0)) {
+            this->sender_endpoint = current_endpoint;
+        } else if (this->sender_endpoint != current_endpoint) {
+            if (current_endpoint != boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0)) {
+                std::string error_msg = "Error in multicast receiver. Any-source multicast not enabled.";
+                throw std::runtime_error(error_msg);
+            }
         }
     }
 
@@ -105,6 +111,10 @@ size_t MulticastReceiver::receive(char* buffer, const size_t buffer_size) {
     }
 
     return bytes_received;
+};
+
+void MulticastReceiver::force_specific_source(bool specific_source) {
+    this->specific_source = specific_source;
 };
 }  // namespace udp
 }  // namespace travesim

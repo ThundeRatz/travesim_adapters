@@ -60,7 +60,17 @@ class MulticastReceiver {
          */
         size_t receive(char* buffer, const size_t buffer_size);
 
+        /**
+         * @brief Set wheter to enable any source or source specific multicast.
+         *        True for SSM, false for SSM, default is false.
+         *
+         * @param specific_source Whether to enable source specific or not.
+         */
+        void force_specific_source(bool specific_source);
+
     private:
+        bool specific_source; /**< True for SSM, false for ASM, default is false */
+
         boost::asio::io_context io_context;   /**< boost/asio I/O execution context */
         boost::asio::ip::udp::socket* socket; /**< Network socket*/
 
