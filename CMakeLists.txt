@@ -176,7 +176,9 @@ install(TARGETS vision_adapter
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
 
-  catkin_add_gtest(converter.test src/lib/data/test/converter.test.cpp)
+  catkin_add_gtest(ros_side_converter.test
+    src/lib/data/converter/test/ros_side.test.cpp
+  )
 
   # add_rostest_gtest(vision_receiver.test
   #   test/vision_receiver.test
@@ -188,7 +190,7 @@ if(CATKIN_ENABLE_TESTING)
     src/bin/test/vision_adapter.test.cpp
   )
 
-  target_link_libraries(converter.test
+  target_link_libraries(ros_side_converter.test
     ${PROJECT_NAME}_core
     ${PROJECT_NAME}_ros
     ${catkin_LIBRARIES}

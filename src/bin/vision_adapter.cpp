@@ -15,7 +15,7 @@
 #include <gazebo_msgs/ModelStates.h>
 
 #include "travesim_adapters/ros/vision_receiver.hpp"
-#include "travesim_adapters/data/converter.hpp"
+#include "travesim_adapters/data/converter/ros_side.hpp"
 #include "travesim_adapters/data/field_state.hpp"
 #include "travesim_adapters/data/robot_state.hpp"
 #include "travesim_adapters/data/entity_state.hpp"

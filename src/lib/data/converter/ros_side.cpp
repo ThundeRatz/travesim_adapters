@@ -1,14 +1,14 @@
 /**
  * @file converter.cpp
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
- * @brief Collection of data converters between protobuf and ROS formats
+ * @brief Collection of data converters between ROS and local formats
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *
  */
 
-#include "travesim_adapters/data/converter.hpp"
+#include "travesim_adapters/data/converter/ros_side.hpp"
 
 #define quaternion_to_theta(q0, q1, q2, q3) atan2(2*(q0*q1+q2*q3), 1 - 2*(q1*q1 + q2*q2))
 
