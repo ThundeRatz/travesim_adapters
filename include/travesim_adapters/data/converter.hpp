@@ -40,8 +40,6 @@
 #define DEFAULT_ENTITY_NAME BALL_NAME
 #define DEFAULT_REFERENCE_FRAME "world"
 
-typedef std::unordered_map<std::string, travesim::EntityState*> lookup_table_t;
-
 namespace travesim {
 namespace converter {
 /**

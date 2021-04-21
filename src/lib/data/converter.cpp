@@ -12,6 +12,8 @@
 
 #define quaternion_to_theta(q0, q1, q2, q3) atan2(2*(q0*q1+q2*q3), 1 - 2*(q1*q1 + q2*q2))
 
+typedef std::unordered_map<std::string, travesim::EntityState*> lookup_table_t;
+
 namespace travesim {
 namespace converter {
 Vector2D Point_to_Vector2D(geometry_msgs::Point* point) {
