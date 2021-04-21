@@ -19,6 +19,7 @@
 #include <gtest/gtest.h>
 
 #include "travesim_adapters/udp/multicast_receiver.hpp"
+#include "packet.pb.h"
 
 #define BUFFER_SIZE 1024U
 #define MAX_RETRIES 5
