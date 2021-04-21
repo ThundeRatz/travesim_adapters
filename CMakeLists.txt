@@ -3,6 +3,10 @@ project(travesim_adapters)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
+
+## Enable all warnings and treat warnings as errors
+add_compile_options(-Wall -Werror)
+
 ## Find catkin macros and libraries
 find_package(catkin REQUIRED COMPONENTS
   roscpp
