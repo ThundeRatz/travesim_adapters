@@ -33,15 +33,12 @@ namespace travesim {
 namespace udp {
 MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port,
                                      std::string listener_address) {
-    const boost::asio::ip::address multicast_boost_addr = boost::asio::ip::address::from_string(multicast_address);
-    const boost::asio::ip::address listener_boost_addr = boost::asio::ip::address::from_string(listener_address);
+    this->set_multicast_address(multicast_address);
+    this->set_listener_endpoint(listener_address, multicast_port);
 
-    this->listener_endpoint = boost::asio::ip::udp::endpoint(listener_boost_addr, multicast_port);
-    this->multicast_address = multicast_boost_addr;
+    this->force_specific_source(false);
 
     this->create_socket();
-
-    this->specific_source = false;
 };
 
 MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port) :
@@ -73,6 +70,16 @@ void MulticastReceiver::create_socket() {
 
 void MulticastReceiver::close_socket() {
     this->socket->close();
+};
+
+void MulticastReceiver::set_multicast_address(const std::string multicast_address) {
+    const boost::asio::ip::address multicast_boost_addr = boost::asio::ip::address::from_string(multicast_address);
+    this->multicast_address = multicast_boost_addr;
+};
+
+void MulticastReceiver::set_listener_endpoint(const std::string listener_address, const short listener_port) {
+    const boost::asio::ip::address listener_boost_addr = boost::asio::ip::address::from_string(listener_address);
+    this->listener_endpoint = boost::asio::ip::udp::endpoint(listener_boost_addr, listener_port);
 };
 
 size_t MulticastReceiver::receive(char* buffer, const size_t buffer_size) {

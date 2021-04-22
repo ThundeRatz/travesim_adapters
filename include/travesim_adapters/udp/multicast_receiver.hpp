@@ -91,6 +91,21 @@ class MulticastReceiver {
          * @brief Close the created socket
          */
         void close_socket();
+
+        /**
+         * @brief Set the multicast address
+         *
+         * @param multicast_address Multicast group address in a string
+         */
+        void set_multicast_address(const std::string multicast_address);
+
+        /**
+         * @brief Set the listener endpoint
+         *
+         * @param listener_address Listener address in a string
+         * @param listener_port Lsitener port number
+         */
+        void set_listener_endpoint(const std::string listener_address, const short listener_port);
 };
 }  // namespace udp
 }  // namespace travesim
