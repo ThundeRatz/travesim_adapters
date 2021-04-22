@@ -74,6 +74,8 @@ class MulticastReceiver {
         boost::asio::io_context io_context;   /**< boost/asio I/O execution context */
         boost::asio::ip::udp::socket* socket; /**< Network socket*/
 
+        boost::asio::ip::address multicast_address;
+
         /**
          * @brief Endpoints: addresses and ports pairs
          */
@@ -82,10 +84,13 @@ class MulticastReceiver {
 
         /**
          * @brief Create a socket object
-         *
-         * @param multicast_address Multicas group address
          */
-        void create_socket(const boost::asio::ip::address multicast_address);
+        void create_socket();
+
+        /**
+         * @brief Close the created socket
+         */
+        void close_socket();
 };
 }  // namespace udp
 }  // namespace travesim

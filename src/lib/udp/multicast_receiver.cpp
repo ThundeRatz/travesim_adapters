@@ -33,32 +33,27 @@ namespace travesim {
 namespace udp {
 MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port,
                                      std::string listener_address) {
-    const boost::asio::ip::address multicast_ip = boost::asio::ip::address::from_string(multicast_address);
-    const boost::asio::ip::address listener_ip = boost::asio::ip::address::from_string(listener_address);
+    const boost::asio::ip::address multicast_boost_addr = boost::asio::ip::address::from_string(multicast_address);
+    const boost::asio::ip::address listener_boost_addr = boost::asio::ip::address::from_string(listener_address);
 
-    this->listener_endpoint = boost::asio::ip::udp::endpoint(listener_ip, multicast_port);
+    this->listener_endpoint = boost::asio::ip::udp::endpoint(listener_boost_addr, multicast_port);
+    this->multicast_address = multicast_boost_addr;
 
-    this->create_socket(multicast_ip);
+    this->create_socket();
 
     this->specific_source = false;
 };
 
-MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port) {
-    const boost::asio::ip::address multicast_ip = boost::asio::ip::address::from_string(multicast_address);
-
-    this->listener_endpoint = boost::asio::ip::udp::endpoint(multicast_ip, multicast_port);
-
-    this->create_socket(multicast_ip);
-
-    this->specific_source = false;
+MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port) :
+    MulticastReceiver(multicast_address, multicast_port, multicast_address) {
 };
 
 MulticastReceiver::~MulticastReceiver() {
-    this->socket->close();
+    this->close_socket();
     delete this->socket;
 };
 
-void MulticastReceiver::create_socket(const boost::asio::ip::address multicast_address) {
+void MulticastReceiver::create_socket() {
     this->socket = new boost::asio::ip::udp::socket(io_context);
 
     // Create the socket so that multiple may be bound to the same address.
@@ -70,7 +65,11 @@ void MulticastReceiver::create_socket(const boost::asio::ip::address multicast_a
     this->socket->non_blocking(true);
 
     // Join the multicast group.
-    this->socket->set_option(boost::asio::ip::multicast::join_group(multicast_address));
+    this->socket->set_option(boost::asio::ip::multicast::join_group(this->multicast_address));
+};
+
+void MulticastReceiver::close_socket() {
+    this->socket->close();
 };
 
 size_t MulticastReceiver::receive(char* buffer, const size_t buffer_size) {
