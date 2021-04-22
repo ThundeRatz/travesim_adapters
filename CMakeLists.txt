@@ -54,6 +54,7 @@ add_library(${PROJECT_NAME}_core
 )
 
 add_library(${PROJECT_NAME}_udp_comm
+  src/lib/udp/sender.cpp
   src/lib/udp/multicast_receiver.cpp
   src/lib/udp/multicast_sender.cpp
 )
