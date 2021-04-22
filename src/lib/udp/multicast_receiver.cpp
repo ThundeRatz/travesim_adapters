@@ -58,7 +58,10 @@ void MulticastReceiver::create_socket() {
 
     // Create the socket so that multiple may be bound to the same address.
     this->socket->open(this->listener_endpoint.protocol());
+
     this->socket->set_option(boost::asio::ip::udp::socket::reuse_address(true));
+    this->socket->set_option(boost::asio::ip::multicast::hops(1));
+
     this->socket->bind(this->listener_endpoint);
 
     // Use non blocking for syncronous reading

@@ -37,6 +37,7 @@ MulticastSender::MulticastSender(std::string multicast_address, short multicast_
 
     this->socket = new boost::asio::ip::udp::socket(this->io_context);
     this->socket->open(this->endpoint.protocol());
+    this->socket->set_option(boost::asio::ip::multicast::hops(1));
 };
 
 MulticastSender::~MulticastSender() {
