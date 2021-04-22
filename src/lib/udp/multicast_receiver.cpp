@@ -69,7 +69,10 @@ void MulticastReceiver::create_socket() {
 };
 
 void MulticastReceiver::close_socket() {
-    this->socket->close();
+    if (this->socket->is_open()) {
+        this->socket->set_option(boost::asio::ip::multicast::leave_group(this->multicast_address));
+        this->socket->close();
+    }
 };
 
 void MulticastReceiver::set_multicast_address(const std::string multicast_address) {
