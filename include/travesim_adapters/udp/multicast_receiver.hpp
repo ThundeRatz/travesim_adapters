@@ -68,6 +68,32 @@ class MulticastReceiver {
          */
         void force_specific_source(bool specific_source);
 
+        /**
+         * @brief Reset th receiver maintaining the addresses and the port
+         */
+        void reset(void);
+
+        /**
+         * @brief Reset the receiver changing all addresses and the port
+         *
+         * @param multicast_address Multicas group address
+         * @param multicast_port Multicast group port
+         * @param listener_address Listener address, has a filtering role, setting
+         *                         where the data may be received
+         */
+        void reset(const std::string multicast_address, const short multicast_port,
+                          const std::string listener_address);
+
+        /**
+         * @brief Reset the receiver changing all addresses and the port
+         *
+         * @param multicast_address Multicas group address
+         * @param multicast_port Multicast group port
+         *
+         * @note Use multicast address as listen address
+         */
+        void reset(const std::string multicast_address, const short multicast_port);
+
     private:
         bool specific_source; /**< True for SSM, false for ASM, default is false */
 

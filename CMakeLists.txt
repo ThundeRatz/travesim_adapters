@@ -73,6 +73,10 @@ add_executable(multi_receiver_example
   examples/udp/multicast_receiver_example.cpp
 )
 
+add_executable(multi_receiver_reset_example
+  examples/udp/multicast_receiver_reset_example.cpp
+)
+
 add_executable(vision_sender_example
   examples/protobuf/vision_sender_example.cpp
 )
@@ -94,6 +98,11 @@ target_link_libraries(multi_sender_example
 )
 
 target_link_libraries(multi_receiver_example
+  ${PROJECT_NAME}_udp_comm
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(multi_receiver_reset_example
   ${PROJECT_NAME}_udp_comm
   ${catkin_LIBRARIES}
 )
