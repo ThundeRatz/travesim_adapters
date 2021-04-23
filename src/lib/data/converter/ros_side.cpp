@@ -44,7 +44,7 @@ geometry_msgs::Vector3 Vector2D_to_Vector3(Vector2D* vector2d) {
     return retval;
 }
 
-geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d, int32_t z) {
+geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d, double z) {
     geometry_msgs::Point retval;
 
     retval.x = vector2d->x;
@@ -77,7 +77,7 @@ RobotState ModelState_to_RobotState(gazebo_msgs::ModelState* model_state, bool i
     return retval;
 }
 
-gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, int32_t z) {
+gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, double z) {
     gazebo_msgs::ModelState retval;
 
     retval.model_name = DEFAULT_ENTITY_NAME;
@@ -99,7 +99,7 @@ gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, int
     return retval;
 }
 
-gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, int32_t z) {
+gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, double z) {
     gazebo_msgs::ModelState retval = EntityState_to_ModelState(dynamic_cast<EntityState*>(robot_state), z);
 
     std::string base_name = robot_state->is_yellow ? "yellow_team/robot_" : "blue_team/robot_";
