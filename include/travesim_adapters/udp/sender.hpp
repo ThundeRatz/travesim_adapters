@@ -35,7 +35,7 @@ class Sender {
         /**
          * @brief Destroy the Sender object
          */
-        ~Sender();
+        virtual ~Sender();
 
         /**
          * @brief Send data using UDP
