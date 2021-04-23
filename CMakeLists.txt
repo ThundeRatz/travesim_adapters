@@ -51,10 +51,10 @@ add_library(${PROJECT_NAME}_core
   src/lib/data/entity_state.cpp
   src/lib/data/robot_state.cpp
   src/lib/data/field_state.cpp
-  src/lib/data/converter/ros_side.cpp
 )
 
 add_library(${PROJECT_NAME}_ros
+  src/lib/data/converter/ros_side.cpp
   src/lib/ros/vision_receiver.cpp
   src/lib/ros/teams_sender.cpp
 )
@@ -171,6 +171,7 @@ target_link_libraries(teams_adapter
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
+
 install(TARGETS vision_adapter
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
