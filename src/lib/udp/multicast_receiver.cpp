@@ -38,7 +38,8 @@ MulticastReceiver::MulticastReceiver(std::string multicast_address, short multic
 
     this->force_specific_source(false);
 
-    this->create_socket();
+    this->socket = new boost::asio::ip::udp::socket(io_context);
+    this->open_socket();
 };
 
 MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port) :
@@ -50,9 +51,7 @@ MulticastReceiver::~MulticastReceiver() {
     delete this->socket;
 };
 
-void MulticastReceiver::create_socket() {
-    this->socket = new boost::asio::ip::udp::socket(io_context);
-
+void MulticastReceiver::open_socket() {
     // Create the socket so that multiple may be bound to the same address.
     this->socket->open(this->listener_endpoint.protocol());
 
@@ -133,7 +132,7 @@ void MulticastReceiver::reset(void) {
     this->sender_endpoint = boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0);
 
     this->close_socket();
-    this->create_socket();
+    this->open_socket();
 };
 
 }  // namespace udp

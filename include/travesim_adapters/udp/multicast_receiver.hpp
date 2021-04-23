@@ -109,7 +109,7 @@ class MulticastReceiver {
         /**
          * @brief Create a socket object
          */
-        void create_socket();
+        void open_socket();
 
         /**
          * @brief Close the created socket
