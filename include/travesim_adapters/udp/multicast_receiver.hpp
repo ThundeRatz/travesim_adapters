@@ -11,8 +11,7 @@
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  */
 
-#include <boost/asio.hpp>
-#include <string>
+#include "travesim_adapters/udp/receiver.hpp"
 
 #ifndef __MULTICAST_RECEIVER_H__
 #define __MULTICAST_RECEIVER_H__
@@ -22,18 +21,18 @@ namespace udp {
 /**
  * @brief Receiver class using UDP in multicast mode
  */
-class MulticastReceiver {
+class MulticastReceiver : public Receiver {
     public:
         /**
          * @brief Construct a new Multicast Receiver object
          *
          * @param multicast_address Multicas group address
          * @param multicast_port Multicast group port
-         * @param listener_address Listener address, has a filtering role, setting
+         * @param receiver_address Receiver address, has a filtering role, setting
          *                         where the data may be received
          */
         MulticastReceiver(const std::string multicast_address, const short multicast_port,
-                          const std::string listener_address);
+                          const std::string receiver_address);
 
         /**
          * @brief Construct a new Multicast Receiver object
@@ -51,24 +50,6 @@ class MulticastReceiver {
         ~MulticastReceiver();
 
         /**
-         * @brief Receive data using UDP
-         *
-         * @param buffer Buffet to store data
-         * @param buffer_size Size of the buffer where to store data
-         *
-         * @return size_t Number of bytes received
-         */
-        size_t receive(char* buffer, const size_t buffer_size);
-
-        /**
-         * @brief Set wheter to enable any source or source specific multicast.
-         *        True for SSM, false for SSM, default is false.
-         *
-         * @param specific_source Whether to enable source specific or not.
-         */
-        void force_specific_source(bool specific_source);
-
-        /**
          * @brief Set the multicast address
          *
          * @param multicast_address Multicast group address in a string
@@ -77,34 +58,8 @@ class MulticastReceiver {
          */
         void set_multicast_address(const std::string multicast_address);
 
-        /**
-         * @brief Set the listener endpoint
-         *
-         * @param listener_address Listener address in a string
-         * @param listener_port Lsitener port number
-         *
-         * @warning reset() must be called after changing the endpoint
-         */
-        void set_listener_endpoint(const std::string listener_address, const short listener_port);
-
-        /**
-         * @brief Reset th receiver maintaining the addresses and the port
-         */
-        void reset(void);
-
     private:
-        bool specific_source; /**< True for SSM, false for ASM, default is false */
-
-        boost::asio::io_context io_context;   /**< boost/asio I/O execution context */
-        boost::asio::ip::udp::socket* socket; /**< Network socket*/
-
         boost::asio::ip::address multicast_address;
-
-        /**
-         * @brief Endpoints: addresses and ports pairs
-         */
-        boost::asio::ip::udp::endpoint sender_endpoint;
-        boost::asio::ip::udp::endpoint listener_endpoint;
 
         /**
          * @brief Create a socket object

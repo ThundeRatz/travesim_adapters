@@ -11,34 +11,18 @@
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  */
 
-#include <iostream>
-#include <string>
-#include <exception>
-#include <boost/asio.hpp>
-#include "boost/bind.hpp"
-
 #include "travesim_adapters/udp/multicast_receiver.hpp"
-
-/*****************************************
- * Private Constants
- *****************************************/
-
-#define NO_FLAGS 0U
-
-/*****************************************
- * Class Methods Bodies Definitions
- *****************************************/
 
 namespace travesim {
 namespace udp {
+/*****************************************
+ * Public Methods Bodies Definitions
+ *****************************************/
+
 MulticastReceiver::MulticastReceiver(std::string multicast_address, short multicast_port,
-                                     std::string listener_address) {
+                                     std::string receiver_address) : Receiver(receiver_address, multicast_port) {
     this->set_multicast_address(multicast_address);
-    this->set_listener_endpoint(listener_address, multicast_port);
 
-    this->force_specific_source(false);
-
-    this->socket = new boost::asio::ip::udp::socket(io_context);
     this->open_socket();
 };
 
@@ -48,23 +32,31 @@ MulticastReceiver::MulticastReceiver(std::string multicast_address, short multic
 
 MulticastReceiver::~MulticastReceiver() {
     this->close_socket();
-    delete this->socket;
 };
+
+void MulticastReceiver::set_multicast_address(const std::string multicast_address) {
+    const boost::asio::ip::address multicast_boost_addr = boost::asio::ip::address::from_string(multicast_address);
+    this->multicast_address = multicast_boost_addr;
+};
+
+/*****************************************
+ * Protected Methods Bodies Definitions
+ *****************************************/
 
 void MulticastReceiver::open_socket() {
     // Create the socket so that multiple may be bound to the same address.
-    this->socket->open(this->listener_endpoint.protocol());
+    this->socket->open(this->receiver_endpoint.protocol());
 
     this->socket->set_option(boost::asio::ip::udp::socket::reuse_address(true));
     this->socket->set_option(boost::asio::ip::multicast::hops(1));
 
-    this->socket->bind(this->listener_endpoint);
+    // Join the multicast group.
+    this->socket->set_option(boost::asio::ip::multicast::join_group(this->multicast_address));
+
+    this->socket->bind(this->receiver_endpoint);
 
     // Use non blocking for syncronous reading
     this->socket->non_blocking(true);
-
-    // Join the multicast group.
-    this->socket->set_option(boost::asio::ip::multicast::join_group(this->multicast_address));
 };
 
 void MulticastReceiver::close_socket() {
@@ -73,67 +65,5 @@ void MulticastReceiver::close_socket() {
         this->socket->close();
     }
 };
-
-void MulticastReceiver::set_multicast_address(const std::string multicast_address) {
-    const boost::asio::ip::address multicast_boost_addr = boost::asio::ip::address::from_string(multicast_address);
-    this->multicast_address = multicast_boost_addr;
-};
-
-void MulticastReceiver::set_listener_endpoint(const std::string listener_address, const short listener_port) {
-    const boost::asio::ip::address listener_boost_addr = boost::asio::ip::address::from_string(listener_address);
-    this->listener_endpoint = boost::asio::ip::udp::endpoint(listener_boost_addr, listener_port);
-};
-
-size_t MulticastReceiver::receive(char* buffer, const size_t buffer_size) {
-    size_t bytes_received;
-    boost::system::error_code ec;
-    boost::asio::ip::udp::endpoint current_endpoint;
-
-    bytes_received =
-        this->socket->receive_from(boost::asio::buffer(buffer, buffer_size), current_endpoint, NO_FLAGS, ec);
-
-    if (this->specific_source) {
-        if (this->sender_endpoint == boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0)) {
-            this->sender_endpoint = current_endpoint;
-        } else if (this->sender_endpoint != current_endpoint) {
-            if (current_endpoint != boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0)) {
-                std::string error_msg = "Error in multicast receiver. Any-source multicast not enabled.";
-                throw std::runtime_error(error_msg);
-            }
-        }
-    }
-
-    switch (ec.value()) {
-        case boost::system::errc::success: {
-            /**
-             * @todo sender_endpoint loggin?
-             */
-            break;
-        }
-
-        case boost::asio::error::would_block: {
-            bytes_received = 0;
-            break;
-        }
-
-        default: {
-            throw boost::system::system_error(ec);
-        }
-    }
-
-    return bytes_received;
-};
-
-void MulticastReceiver::force_specific_source(bool specific_source) {
-    this->specific_source = specific_source;
-};
-
-void MulticastReceiver::reset(void) {
-    this->sender_endpoint = boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0);
-
-    this->close_socket();
-    this->open_socket();
-};
-
 }  // namespace udp
 }  // namespace travesim
