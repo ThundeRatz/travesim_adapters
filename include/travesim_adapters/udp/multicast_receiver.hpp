@@ -69,30 +69,28 @@ class MulticastReceiver {
         void force_specific_source(bool specific_source);
 
         /**
+         * @brief Set the multicast address
+         *
+         * @param multicast_address Multicast group address in a string
+         *
+         * @warning reset() must be called after changing the address
+         */
+        void set_multicast_address(const std::string multicast_address);
+
+        /**
+         * @brief Set the listener endpoint
+         *
+         * @param listener_address Listener address in a string
+         * @param listener_port Lsitener port number
+         *
+         * @warning reset() must be called after changing the endpoint
+         */
+        void set_listener_endpoint(const std::string listener_address, const short listener_port);
+
+        /**
          * @brief Reset th receiver maintaining the addresses and the port
          */
         void reset(void);
-
-        /**
-         * @brief Reset the receiver changing all addresses and the port
-         *
-         * @param multicast_address Multicas group address
-         * @param multicast_port Multicast group port
-         * @param listener_address Listener address, has a filtering role, setting
-         *                         where the data may be received
-         */
-        void reset(const std::string multicast_address, const short multicast_port,
-                          const std::string listener_address);
-
-        /**
-         * @brief Reset the receiver changing all addresses and the port
-         *
-         * @param multicast_address Multicas group address
-         * @param multicast_port Multicast group port
-         *
-         * @note Use multicast address as listen address
-         */
-        void reset(const std::string multicast_address, const short multicast_port);
 
     private:
         bool specific_source; /**< True for SSM, false for ASM, default is false */
@@ -117,21 +115,6 @@ class MulticastReceiver {
          * @brief Close the created socket
          */
         void close_socket();
-
-        /**
-         * @brief Set the multicast address
-         *
-         * @param multicast_address Multicast group address in a string
-         */
-        void set_multicast_address(const std::string multicast_address);
-
-        /**
-         * @brief Set the listener endpoint
-         *
-         * @param listener_address Listener address in a string
-         * @param listener_port Lsitener port number
-         */
-        void set_listener_endpoint(const std::string listener_address, const short listener_port);
 };
 }  // namespace udp
 }  // namespace travesim

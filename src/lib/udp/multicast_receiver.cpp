@@ -136,16 +136,5 @@ void MulticastReceiver::reset(void) {
     this->create_socket();
 };
 
-void MulticastReceiver::reset(const std::string multicast_address, const short multicast_port,
-                              const std::string listener_address) {
-    this->set_multicast_address(multicast_address);
-    this->set_listener_endpoint(listener_address, multicast_port);
-
-    this->reset();
-};
-
-void MulticastReceiver::reset(const std::string multicast_address, const short multicast_port) {
-    this->reset(multicast_address, multicast_port, multicast_address);
-};
 }  // namespace udp
 }  // namespace travesim
