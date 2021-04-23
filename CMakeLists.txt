@@ -25,7 +25,7 @@ add_subdirectory(proto)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 #  LIBRARIES travesim_adapters
 #  CATKIN_DEPENDS Boost roscpp std_msgs
 #  DEPENDS system_lib
@@ -51,6 +51,12 @@ add_library(${PROJECT_NAME}_core
   src/lib/data/entity_state.cpp
   src/lib/data/robot_state.cpp
   src/lib/data/field_state.cpp
+  src/lib/data/converter/ros_side.cpp
+)
+
+add_library(${PROJECT_NAME}_ros
+  src/lib/ros/vision_receiver.cpp
+  src/lib/ros/teams_sender.cpp
 )
 
 add_library(${PROJECT_NAME}_udp_comm
@@ -77,6 +83,24 @@ add_executable(vision_sender_example
   examples/protobuf/vision_sender_example.cpp
 )
 
+add_executable(vision_receiver_example
+  examples/protobuf/vision_receiver_example.cpp
+)
+
+add_executable(vision_adapter
+  src/bin/vision_adapter.cpp
+)
+
+add_executable(teams_adapter
+  src/bin/teams_adapter.cpp
+)
+
+## Rename C++ executable without prefix
+## The above recommended prefix causes long target names, the following renames the
+## target back to the shorter version for ease of user use
+## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
+# set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
+
 ## Specify libraries to link a library or executable target against
 
 target_link_libraries(${PROJECT_NAME}_udp_comm
@@ -86,6 +110,10 @@ target_link_libraries(${PROJECT_NAME}_udp_comm
 target_link_libraries(${PROJECT_NAME}_protobuf_comm
   ${PROJECT_NAME}_udp_comm
   pb_msgs_lib
+)
+
+target_link_libraries(${PROJECT_NAME}_ros
+  ${PROJECT_NAME}_core
 )
 
 target_link_libraries(multi_sender_example
@@ -104,15 +132,73 @@ target_link_libraries(vision_sender_example
   ${catkin_LIBRARIES}
 )
 
+target_link_libraries(vision_receiver_example
+  ${PROJECT_NAME}_protobuf_comm
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(vision_adapter
+  ${PROJECT_NAME}_core
+  ${PROJECT_NAME}_ros
+  ${PROJECT_NAME}_protobuf_comm
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(teams_adapter
+  ${PROJECT_NAME}_core
+  ${PROJECT_NAME}_ros
+  ${catkin_LIBRARIES}
+)
+
+#############
+## Install ##
+#############
+
+# all install targets should use catkin DESTINATION variables
+# See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
+
+## Mark executables for installation
+## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
+install(TARGETS vision_adapter
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
 #############
 ## Testing ##
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_travesim_adapters.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_vision_adapter.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
-#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
+#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME} ${catkin_LIBRARIES})
 # endif()
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+
+  catkin_add_gtest(ros_side_converter.test
+    src/lib/data/converter/test/ros_side.test.cpp
+  )
+
+  add_rostest_gtest(vision_adapter.test
+    test/vision_adapter.test
+    src/bin/test/vision_adapter.test.cpp
+  )
+
+  target_link_libraries(ros_side_converter.test
+    ${PROJECT_NAME}_core
+    ${PROJECT_NAME}_ros
+    ${catkin_LIBRARIES}
+  )
+
+  target_link_libraries(vision_adapter.test
+    ${PROJECT_NAME}_core
+    ${PROJECT_NAME}_ros
+    ${PROJECT_NAME}_protobuf_comm
+    ${catkin_LIBRARIES}
+  )
+
+endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)

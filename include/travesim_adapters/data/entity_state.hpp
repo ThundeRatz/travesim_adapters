@@ -29,6 +29,13 @@ class Vector2D {
         Vector2D(double x = 0, double y = 0);
 
         /**
+         * @brief Perform a counter-clockwise rotation of the vector
+         *
+         * @param theta Rotation angle in radians
+         */
+        void rotate(double theta);
+
+        /**
          * @brief Output stream operator overloading
          *
          */

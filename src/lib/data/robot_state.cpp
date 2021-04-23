@@ -27,6 +27,15 @@ RobotState::RobotState(Vector2D position, double angular_position, Vector2D velo
     this->id = id;
 }
 
+RobotState::RobotState(EntityState* entity_state, bool is_yellow, int id) :
+    EntityState(entity_state->position,
+                entity_state->angular_position,
+                entity_state->velocity,
+                entity_state->angular_velocity) {
+    this->is_yellow = is_yellow;
+    this->id = id;
+}
+
 std::ostream& operator <<(std::ostream& output, const RobotState& robot_state) {
     output << std::fixed << std::setprecision(PRINTING_DECIMAL_PRECISION);
 

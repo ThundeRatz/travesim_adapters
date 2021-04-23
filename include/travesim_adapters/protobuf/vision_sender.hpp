@@ -54,7 +54,7 @@ class VisionSender {
         static fira_message::sim_to_ref::Environment field_state_to_env_pb_msg(FieldState* p_field_state);
 
     private:
-        udp::MulticastSender* multicast_sender; /**< Pointer to UDP multicast sender */
+        udp::MulticastSender* multicast_sender;  /**< Pointer to UDP multicast sender */
 };
 }  // namespace proto
 }  // namespace travesim

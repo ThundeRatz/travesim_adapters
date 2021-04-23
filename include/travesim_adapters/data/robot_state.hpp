@@ -12,6 +12,7 @@
 #define __ROBOT_STATE_H__
 
 #include <iostream>
+
 #include "travesim_adapters/data/entity_state.hpp"
 
 namespace travesim {
@@ -40,6 +41,15 @@ class RobotState :
          */
         RobotState(Vector2D position, double angular_position, Vector2D velocity, double angular_velocity,
                    bool is_yellow, int id);
+
+        /**
+         * @brief Construct a new Robot State object from EntityState object
+         *
+         * @param entity_state Object to be promoted
+         * @param is_yellow Wheter the robot is from the yellow team or not
+         * @param id Identification number
+         */
+        RobotState(EntityState* entity_state, bool is_yellow, int id);
 
         /**
          * @brief Output stream operator overloading
