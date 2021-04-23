@@ -8,6 +8,7 @@
  * @date 04/2021
  */
 
+#include <cmath>
 #include <iomanip>
 #include "travesim_adapters/data/entity_state.hpp"
 #include "travesim_adapters/data/data_constants.hpp"
@@ -20,6 +21,13 @@ namespace travesim {
 Vector2D::Vector2D(double x, double y) {
     this->x = x;
     this->y = y;
+}
+
+void Vector2D::rotate(double theta) {
+    double old_x = this->x, old_y = this->y;
+
+    this->x = cos(theta)*old_x + sin(theta)*old_y;
+    this->y = -sin(theta)*old_x + cos(theta)*old_y;
 }
 
 std::ostream& operator <<(std::ostream& output, const Vector2D& vector_2d) {

@@ -1,10 +1,11 @@
 /**
- * @file multicast_receiver_example.cpp
+ * @file vision_receiver_example.cpp
  *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
+ * @author Felipe Gomes de Melo <felipe.gomes@thuneratz.org>
  *
- * @brief Example on how to use the MulticastReceiver
+ * @brief Example to read data published from vision adapter
  *
  * @date 04/2021
  *
@@ -13,9 +14,10 @@
 
 #include <iostream>
 #include <string>
-#include <boost/asio.hpp>
-#include "boost/bind.hpp"
+#include <google/protobuf/util/json_util.h>
+#include <google/protobuf/text_format.h>
 
+#include "packet.pb.h"
 #include "travesim_adapters/udp/multicast_receiver.hpp"
 
 /*****************************************
@@ -44,8 +46,18 @@ int main(int argc, char* argv[]) {
             data_size = my_receiver.receive(data_buff, BUFFER_SIZE);
 
             if (data_size > 0) {
-                std::string received_msg(data_buff, data_size);
-                std::cout << received_msg << std::endl;
+                fira_message::sim_to_ref::Environment env_data;
+                env_data.ParseFromString(data_buff);
+
+                std::string parsed_msg;
+
+                google::protobuf::util::JsonPrintOptions options;
+                options.add_whitespace = true;
+                options.always_print_primitive_fields = true;
+
+                google::protobuf::util::MessageToJsonString(env_data, &parsed_msg, options);
+
+                std::cout << parsed_msg << std::endl;
             }
 
             if (i % 100000 == 0) {

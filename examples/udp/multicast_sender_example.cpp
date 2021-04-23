@@ -22,8 +22,8 @@
  *****************************************/
 
 int main() {
-    const short multicast_port = 30001;
-    const std::string multicast_address_str = "239.255.0.1";
+    const std::string multicast_address_str = "224.0.0.1";
+    const short multicast_port = 10002;
     const int max_message_count = 20;
 
     try {
@@ -40,7 +40,6 @@ int main() {
             my_timer.expires_after(std::chrono::milliseconds(200));
             my_timer.wait();
         }
-
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << "\n";
     }
