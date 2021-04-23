@@ -3,7 +3,7 @@
  *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
-
+ *
  * @brief Send data using UDP in multicast mode
  *
  * @date 04/2021
@@ -21,7 +21,8 @@ namespace udp {
 /**
  * @brief Sender class using UDP in multicast mode
  */
-class MulticastSender : public Sender {
+class MulticastSender :
+    public Sender {
     public:
         /**
          * @brief Construct a new Multicast Sender object

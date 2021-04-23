@@ -21,7 +21,6 @@
 
 #define NO_FLAGS 0U
 
-
 namespace travesim {
 namespace udp {
 /*****************************************

@@ -3,7 +3,7 @@
  *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
-
+ *
  * @brief Send data using UDP
  *
  * @date 04/2021

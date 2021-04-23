@@ -3,7 +3,7 @@
  *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
-
+ *
  * @brief Send data using UDP in unicast mode
  *
  * @date 04/2021
@@ -21,7 +21,8 @@ namespace udp {
 /**
  * @brief Sender class using UDP in unicast mode
  */
-class UnicastSender : public Sender {
+class UnicastSender :
+    public Sender {
     public:
         /**
          * @brief Construct a new UnicastSender object

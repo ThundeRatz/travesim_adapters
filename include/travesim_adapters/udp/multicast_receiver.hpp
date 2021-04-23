@@ -21,7 +21,8 @@ namespace udp {
 /**
  * @brief Receiver class using UDP in multicast mode
  */
-class MulticastReceiver : public Receiver {
+class MulticastReceiver :
+    public Receiver {
     public:
         /**
          * @brief Construct a new Multicast Receiver object
@@ -62,12 +63,12 @@ class MulticastReceiver : public Receiver {
         boost::asio::ip::address multicast_address;
 
         /**
-         * @brief Create a socket object
+         * @brief Open the socket with the desired options
          */
         void open_socket();
 
         /**
-         * @brief Close the created socket
+         * @brief Close the socket
          */
         void close_socket();
 };

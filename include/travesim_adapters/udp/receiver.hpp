@@ -75,7 +75,7 @@ class Receiver {
         void reset(void);
 
     protected:
-        bool specific_source; /**< True for specific source, false for any source, default is false */
+        bool specific_source;  /**< True for specific source, false for any source, default is false */
 
         boost::asio::io_context io_context;   /**< boost/asio I/O execution context */
         boost::asio::ip::udp::socket* socket; /**< Network socket*/
@@ -90,6 +90,8 @@ class Receiver {
          * @brief Open the socket with the desired options
          *
          * @code{.cpp}
+         *  // Example:
+         *
          *  // Create the socket so that multiple may be bound to the same address.
          *  this->socket->open(this->receiver_endpoint.protocol());
          *
