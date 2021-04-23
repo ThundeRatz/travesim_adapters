@@ -29,7 +29,7 @@ class UnicastSender : public Sender {
          * @param receiver_address Address where to send data
          * @param receiver_port Port where to send data
          */
-        Sender(const std::string receiver_address, const short receiver_port);
+        UnicastSender(const std::string receiver_address, const short receiver_port);
 };
 }  // namespace udp
 }  // namespace travesim
