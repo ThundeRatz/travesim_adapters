@@ -29,6 +29,11 @@ class UnicastReceiver :
          *
          * @param receiver_address Address where to send data
          * @param receiver_port Port where to send data
+         *
+         * @note The unicast addresses must be in the block 127.0.0.0/8, see
+         *       [IANA IPv4 Address Space Registry]
+         *       (https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml)
+         *       or the [RFC6890](https://tools.ietf.org/html/rfc6890).
          */
         UnicastReceiver(const std::string receiver_address, const short receiver_port);
 

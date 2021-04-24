@@ -31,6 +31,11 @@ class MulticastReceiver :
          * @param multicast_port Multicast group port
          * @param receiver_address Receiver address, has a filtering role, setting
          *                         where the data may be received
+         *
+         * @note The multicast addresses must be in the range 224.0.0.0 through
+         *       239.255.255.255, see [IPv4 Multicast Address Space Registry]
+         *       (https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml)
+         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112).
          */
         MulticastReceiver(const std::string multicast_address, const short multicast_port,
                           const std::string receiver_address);
@@ -42,6 +47,11 @@ class MulticastReceiver :
          * @param multicast_port Multicast group port
          *
          * @note Use multicast address as listen address
+         *
+         * @note The multicast addresses must be in the range 224.0.0.0 through
+         *       239.255.255.255, see [IPv4 Multicast Address Space Registry]
+         *       (https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml)
+         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112).
          */
         MulticastReceiver(const std::string multicast_address, const short multicast_port);
 
@@ -56,6 +66,11 @@ class MulticastReceiver :
          * @param multicast_address Multicast group address in a string
          *
          * @warning reset() must be called after changing the address
+         *
+         * @note The multicast addresses must be in the range 224.0.0.0 through
+         *       239.255.255.255, see [IPv4 Multicast Address Space Registry]
+         *       (https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml)
+         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112).
          */
         void set_multicast_address(const std::string multicast_address);
 
