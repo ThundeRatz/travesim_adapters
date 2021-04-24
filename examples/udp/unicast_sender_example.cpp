@@ -24,7 +24,7 @@
 int main() {
     const short unicast_port = 30001;
     const std::string unicast_address_str = "127.0.0.1";
-    const int max_message_count = 20;
+    const int max_message_count = 10;
 
     try {
         boost::asio::io_context io_context;
