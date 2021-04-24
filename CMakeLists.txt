@@ -51,10 +51,10 @@ add_library(${PROJECT_NAME}_core
   src/lib/data/entity_state.cpp
   src/lib/data/robot_state.cpp
   src/lib/data/field_state.cpp
+  src/lib/data/converter/ros_side.cpp
 )
 
 add_library(${PROJECT_NAME}_ros
-  src/lib/data/converter/ros_side.cpp
   src/lib/ros/vision_receiver.cpp
   src/lib/ros/teams_sender.cpp
 )
