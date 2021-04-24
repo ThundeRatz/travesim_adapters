@@ -40,7 +40,6 @@ int main() {
             my_timer.expires_after(std::chrono::milliseconds(200));
             my_timer.wait();
         }
-
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << "\n";
     }

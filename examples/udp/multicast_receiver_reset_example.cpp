@@ -83,7 +83,6 @@ int main(int argc, char* argv[]) {
             ros::spinOnce();
             loop_rate.sleep();
         }
-
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << "\n";
     }

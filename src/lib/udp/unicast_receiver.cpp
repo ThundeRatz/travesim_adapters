@@ -19,7 +19,8 @@ namespace udp {
  * Public Methods Bodies Definitions
  *****************************************/
 
-UnicastReceiver::UnicastReceiver(std::string receiver_address, short receiver_port) : Receiver(receiver_address, receiver_port) {
+UnicastReceiver::UnicastReceiver(std::string receiver_address, short receiver_port) : Receiver(receiver_address,
+                                                                                               receiver_port) {
     this->open_socket();
 };
 
