@@ -33,7 +33,7 @@ class MulticastSender :
          * @note The multicast addresses must be in the range 224.0.0.0 through
          *       239.255.255.255, see multicast [IPv4 Multicast Address Space Registry]
          *       (https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml)
-         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112).
+         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112) for more informations.
          */
         MulticastSender(const std::string multicast_address, const short multicast_port);
 };

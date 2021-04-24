@@ -33,7 +33,7 @@ class UnicastSender :
          * @note The unicast addresses must be in the block 127.0.0.0/8, see
          *       [IANA IPv4 Address Space Registry]
          *       (https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml)
-         *       or the [RFC6890](https://tools.ietf.org/html/rfc6890).
+         *       or the [RFC6890](https://tools.ietf.org/html/rfc6890) for more informations.
          */
         UnicastSender(const std::string receiver_address, const short receiver_port);
 };

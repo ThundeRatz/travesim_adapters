@@ -35,7 +35,7 @@ class MulticastReceiver :
          * @note The multicast addresses must be in the range 224.0.0.0 through
          *       239.255.255.255, see [IPv4 Multicast Address Space Registry]
          *       (https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml)
-         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112).
+         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112) for more informations.
          */
         MulticastReceiver(const std::string multicast_address, const short multicast_port,
                           const std::string receiver_address);
@@ -51,7 +51,7 @@ class MulticastReceiver :
          * @note The multicast addresses must be in the range 224.0.0.0 through
          *       239.255.255.255, see [IPv4 Multicast Address Space Registry]
          *       (https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml)
-         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112).
+         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112) for more informations.
          */
         MulticastReceiver(const std::string multicast_address, const short multicast_port);
 
@@ -70,7 +70,7 @@ class MulticastReceiver :
          * @note The multicast addresses must be in the range 224.0.0.0 through
          *       239.255.255.255, see [IPv4 Multicast Address Space Registry]
          *       (https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml)
-         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112).
+         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112) for more informations.
          */
         void set_multicast_address(const std::string multicast_address);
 
