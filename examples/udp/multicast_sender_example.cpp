@@ -24,7 +24,7 @@
 int main() {
     const std::string multicast_address_str = "224.0.0.1";
     const short multicast_port = 10002;
-    const int max_message_count = 20;
+    const int max_message_count = 10;
 
     try {
         boost::asio::io_context io_context;
