@@ -31,9 +31,7 @@
 namespace travesim {
 namespace udp {
 Sender::Sender(std::string receiver_address, short receiver_port) {
-    const boost::asio::ip::address receiver_boost_addr = boost::asio::ip::address::from_string(receiver_address);
-
-    this->endpoint = boost::asio::ip::udp::endpoint(receiver_boost_addr, receiver_port);
+    this->set_receiver_endpoint(receiver_address, receiver_port);
 
     this->socket = new boost::asio::ip::udp::socket(this->io_context);
     this->socket->open(this->endpoint.protocol());
@@ -65,6 +63,12 @@ size_t Sender::send(const char* buffer, const size_t buffer_size) {
     }
 
     return bytes_sent;
+};
+
+void Sender::set_receiver_endpoint(const std::string receiver_address, const short receiver_port) {
+    const boost::asio::ip::address receiver_boost_addr = boost::asio::ip::address::from_string(receiver_address);
+
+    this->endpoint = boost::asio::ip::udp::endpoint(receiver_boost_addr, receiver_port);
 };
 }  // namespace udp
 }  // namespace travesim

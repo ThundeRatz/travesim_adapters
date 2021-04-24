@@ -47,6 +47,14 @@ class Sender {
          */
         size_t send(const char* buffer, const size_t buffer_size);
 
+        /**
+         * @brief Set the receiver endpoint object
+         *
+         * @param receiver_address Address where to send data
+         * @param receiver_port Port where to send data
+         */
+        void set_receiver_endpoint(const std::string receiver_address, const short receiver_port);
+
     protected:
         boost::asio::io_context io_context;      /**< boost/asio I/O execution context */
         boost::asio::ip::udp::socket* socket;    /**< Network socket */
