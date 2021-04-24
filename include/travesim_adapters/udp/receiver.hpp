@@ -52,6 +52,16 @@ class Receiver {
         size_t receive(char* buffer, const size_t buffer_size);
 
         /**
+         * @brief Receive the most recent data using UDP
+         *
+         * @param buffer Buffet to store data
+         * @param buffer_size Size of the buffer where to store data
+         *
+         * @return size_t Number of bytes received
+         */
+        // size_t receive_last(char* buffer, const size_t buffer_size);
+
+        /**
          * @brief Set wheter to enable any source or source specific multicast.
          *        True for specific source, false for any source, default is false.
          *
@@ -89,9 +99,8 @@ class Receiver {
         /**
          * @brief Open the socket with the desired options
          *
+         * @par Example:
          * @code{.cpp}
-         *  // Example:
-         *
          *  // Create the socket so that multiple may be bound to the same address.
          *  this->socket->open(this->receiver_endpoint.protocol());
          *
