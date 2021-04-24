@@ -79,6 +79,48 @@ size_t Receiver::receive(char* buffer, const size_t buffer_size) {
     return bytes_received;
 };
 
+size_t Receiver::receive_latest(char* buffer, const size_t buffer_size) {
+    size_t bytes_received;
+    boost::system::error_code ec;
+    boost::asio::ip::udp::endpoint current_endpoint;
+
+    do {
+        bytes_received =
+            this->socket->receive_from(boost::asio::buffer(buffer, buffer_size), current_endpoint, NO_FLAGS, ec);
+    } while (this->socket->available() > 0);
+
+    if (this->specific_source) {
+        if (this->sender_endpoint == boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0)) {
+            this->sender_endpoint = current_endpoint;
+        } else if (this->sender_endpoint != current_endpoint) {
+            if (current_endpoint != boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0)) {
+                std::string error_msg = "Error in receiver. Any-source not enabled.";
+                throw std::runtime_error(error_msg);
+            }
+        }
+    }
+
+    switch (ec.value()) {
+        case boost::system::errc::success: {
+            /**
+             * @todo sender_endpoint loggin?
+             */
+            break;
+        }
+
+        case boost::asio::error::would_block: {
+            bytes_received = 0;
+            break;
+        }
+
+        default: {
+            throw boost::system::system_error(ec);
+        }
+    }
+
+    return bytes_received;
+};
+
 void Receiver::force_specific_source(bool specific_source) {
     this->specific_source = specific_source;
 };

@@ -52,14 +52,14 @@ class Receiver {
         size_t receive(char* buffer, const size_t buffer_size);
 
         /**
-         * @brief Receive the most recent data using UDP
+         * @brief Receive the latest data using UDP
          *
          * @param buffer Buffet to store data
          * @param buffer_size Size of the buffer where to store data
          *
          * @return size_t Number of bytes received
          */
-        // size_t receive_last(char* buffer, const size_t buffer_size);
+        size_t receive_latest(char* buffer, const size_t buffer_size);
 
         /**
          * @brief Set wheter to enable any source or source specific multicast.
