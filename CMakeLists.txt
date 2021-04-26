@@ -177,6 +177,10 @@ install(TARGETS vision_adapter
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
 
+  add_executable(gazebo_services.mock
+    test/mocks/bin/gazebo_services.mock.cpp
+  )
+
   catkin_add_gtest(ros_side_converter.test
     src/lib/data/converter/test/ros_side.test.cpp
   )
@@ -186,6 +190,17 @@ if(CATKIN_ENABLE_TESTING)
     src/bin/test/vision_adapter.test.cpp
   )
 
+  add_rostest_gtest(replacer_sender.test
+    test/replacer_sender.test
+    src/lib/ros/test/replacer_sender.test.cpp
+  )
+
+  target_link_libraries(gazebo_services.mock
+    ${PROJECT_NAME}_core
+    ${PROJECT_NAME}_ros
+    ${catkin_LIBRARIES}
+  )
+
   target_link_libraries(ros_side_converter.test
     ${PROJECT_NAME}_core
     ${PROJECT_NAME}_ros
@@ -193,6 +208,13 @@ if(CATKIN_ENABLE_TESTING)
   )
 
   target_link_libraries(vision_adapter.test
+    ${PROJECT_NAME}_core
+    ${PROJECT_NAME}_ros
+    ${PROJECT_NAME}_protobuf_comm
+    ${catkin_LIBRARIES}
+  )
+
+  target_link_libraries(replacer_sender.test
     ${PROJECT_NAME}_core
     ${PROJECT_NAME}_ros
     ${PROJECT_NAME}_protobuf_comm
