@@ -119,6 +119,18 @@ class Receiver {
          * @brief Close the socket
          */
         virtual void close_socket();
+
+    private:
+        /**
+         * @brief Validate whether the current sender endpoint matches the first sender
+         *        endpoint when using specific source.
+         *
+         * @param current_sender_endpoint The endpoint from where the last data came from
+         *
+         * @throw std::runtime_error When messages from multiple senders are received and
+         *        any-source is not enabled.
+         */
+        void validate_sender_endpoint(boost::asio::ip::udp::endpoint current_sender_endpoint);
 };
 }  // namespace udp
 }  // namespace travesim

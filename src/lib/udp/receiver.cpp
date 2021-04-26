@@ -49,16 +49,7 @@ size_t Receiver::receive(char* buffer, const size_t buffer_size) {
     bytes_received =
         this->socket->receive_from(boost::asio::buffer(buffer, buffer_size), current_endpoint, NO_FLAGS, ec);
 
-    if (this->specific_source) {
-        if (this->sender_endpoint == INVALID_ENDPOINT) {
-            this->sender_endpoint = current_endpoint;
-        } else if (this->sender_endpoint != current_endpoint) {
-            if (current_endpoint != INVALID_ENDPOINT) {
-                std::string error_msg = "Error in receiver. Any-source not enabled.";
-                throw std::runtime_error(error_msg);
-            }
-        }
-    }
+    this->validate_sender_endpoint(current_endpoint);
 
     switch (ec.value()) {
         case boost::system::errc::success: {
@@ -91,16 +82,7 @@ size_t Receiver::receive_latest(char* buffer, const size_t buffer_size) {
             this->socket->receive_from(boost::asio::buffer(buffer, buffer_size), current_endpoint, NO_FLAGS, ec);
     } while (this->socket->available() > 0);
 
-    if (this->specific_source) {
-        if (this->sender_endpoint == INVALID_ENDPOINT) {
-            this->sender_endpoint = current_endpoint;
-        } else if (this->sender_endpoint != current_endpoint) {
-            if (current_endpoint != INVALID_ENDPOINT) {
-                std::string error_msg = "Error in receiver. Any-source not enabled.";
-                throw std::runtime_error(error_msg);
-            }
-        }
-    }
+    this->validate_sender_endpoint(current_endpoint);
 
     switch (ec.value()) {
         case boost::system::errc::success: {
@@ -146,6 +128,19 @@ void Receiver::reset(void) {
 void Receiver::close_socket() {
     if (this->socket->is_open()) {
         this->socket->close();
+    }
+};
+
+inline void Receiver::validate_sender_endpoint(boost::asio::ip::udp::endpoint current_sender_endpoint) {
+    if (this->specific_source) {
+        if (this->sender_endpoint == INVALID_ENDPOINT) {
+            this->sender_endpoint = current_sender_endpoint;
+        } else if (this->sender_endpoint != current_sender_endpoint) {
+            if (current_sender_endpoint != INVALID_ENDPOINT) {
+                std::string error_msg = "Error in receiver. Any-source not enabled.";
+                throw std::runtime_error(error_msg);
+            }
+        }
     }
 };
 }  // namespace udp
