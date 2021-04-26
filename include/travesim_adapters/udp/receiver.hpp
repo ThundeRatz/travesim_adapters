@@ -85,16 +85,8 @@ class Receiver {
         void reset(void);
 
     protected:
-        bool specific_source;  /**< True for specific source, false for any source, default is false */
-
-        boost::asio::io_context io_context;   /**< boost/asio I/O execution context */
-        boost::asio::ip::udp::socket* socket; /**< Network socket*/
-
-        /**
-         * @brief Endpoints: addresses and ports pairs
-         */
-        boost::asio::ip::udp::endpoint sender_endpoint;
-        boost::asio::ip::udp::endpoint receiver_endpoint;
+        boost::asio::ip::udp::socket* socket;             /**< Network socket*/
+        boost::asio::ip::udp::endpoint receiver_endpoint; /**< Receiver address and port pair */
 
         /**
          * @brief Open the socket with the desired options
@@ -121,6 +113,12 @@ class Receiver {
         virtual void close_socket();
 
     private:
+        boost::asio::io_context io_context;  /**< boost/asio I/O execution context */
+
+        boost::asio::ip::udp::endpoint sender_endpoint;  /**< Sender address and port pair */
+
+        bool specific_source;  /**< True for specific source, false for any source, default is false */
+
         /**
          * @brief Validate whether the current sender endpoint matches the first sender
          *        endpoint when using specific source.
