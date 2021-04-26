@@ -57,6 +57,7 @@ add_library(${PROJECT_NAME}_core
 add_library(${PROJECT_NAME}_ros
   src/lib/ros/vision_receiver.cpp
   src/lib/ros/teams_sender.cpp
+  src/lib/ros/replacer_sender.cpp
 )
 
 add_library(${PROJECT_NAME}_udp_comm
