@@ -131,6 +131,10 @@ void Receiver::close_socket() {
     }
 };
 
+/*****************************************
+ * Private Methods Bodies Definitions
+ *****************************************/
+
 inline void Receiver::validate_sender_endpoint(boost::asio::ip::udp::endpoint current_sender_endpoint) {
     if (this->specific_source) {
         if (this->sender_endpoint == INVALID_ENDPOINT) {
