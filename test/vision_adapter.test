@@ -7,7 +7,7 @@
 
   <rosparam command="load" file="$(find travesim_adapters)/config/network.yml" />
 
-  <node pkg="rosbag" type="play" name="player" output="screen" args="--loop $(find travesim_adapters)/test/mocks/gazebo_model_states.bag"/>
+  <node pkg="rosbag" type="play" name="player" output="screen" args="--loop $(find travesim_adapters)/test/mocks/data/gazebo_model_states.bag"/>
 
   <node name="vision_adapter" pkg="travesim_adapters" type="vision_adapter" output="screen"/>
   <test test-name="test_vision_adapter" pkg="travesim_adapters" type="vision_adapter.test" />
