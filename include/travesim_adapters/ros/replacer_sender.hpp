@@ -16,6 +16,15 @@
 
 namespace travesim {
 namespace ros_side {
+enum simulation_command_t {
+    PAUSE,
+    RESUME,
+    RESET_WORLD,
+    RESET_SIMULATION
+};
+
+typedef std::vector<gazebo_msgs::ModelStatePtr> state_vector_t;
+
 class ReplacerSender {
     private:
         ros::NodeHandlePtr _nh;
@@ -25,9 +34,11 @@ class ReplacerSender {
     public:
         ReplacerSender();
 
-        bool set_team_state(std::vector<gazebo_msgs::ModelStatePtr>* model_states);
+        bool set_models_state(state_vector_t* model_states);
 
         bool set_model_state(gazebo_msgs::ModelStatePtr model_state);
+
+        bool send_command(simulation_command_t command);
 
         void reconnect_service_client();
 };
