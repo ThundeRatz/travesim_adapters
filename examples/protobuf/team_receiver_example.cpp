@@ -41,11 +41,11 @@ int main(int argc, char* argv[]) {
 
         size_t data_size = 0;
 
-        for (long int i = 0;; i++) {
+        while (true) {
             bool received_new_msg = yellow_receiver.receive(&team_yellow_cmd);
 
             if (received_new_msg) {
-                std::cout << team_yellow_cmd << CLEAR_TERMINAL;
+                std::cout << CLEAR_TERMINAL << team_yellow_cmd;
             }
 
             my_timer.expires_after(std::chrono::milliseconds(1));
