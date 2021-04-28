@@ -46,7 +46,7 @@ bool TeamReceiver::receive(TeamCommand* p_team_cmd) {
         packet_data.ParseFromArray(buffer, BUFFER_SIZE);
 
         if (packet_data.has_cmd()) {
-            *p_team_cmd = this->packet_pb_msg_to_team_command(&packet_data);
+            this->packet_pb_msg_to_team_command(&packet_data, p_team_cmd);
 
             last_team_cmd = *p_team_cmd;
 
@@ -71,9 +71,7 @@ void TeamReceiver::reset(void) {
     this->unicast_receiver->reset();
 }
 
-TeamCommand TeamReceiver::packet_pb_msg_to_team_command(fira_message::sim_to_ref::Packet* p_packet) {
-    TeamCommand team_cmd;
-
+void TeamReceiver::packet_pb_msg_to_team_command(fira_message::sim_to_ref::Packet* p_packet, TeamCommand* p_team_cmd) {
     for (const auto& robot_cmd : p_packet->cmd().robot_commands()) {
         if (robot_cmd.yellowteam() == this->is_yellow) {
             int robot_id = robot_cmd.id();
@@ -88,15 +86,13 @@ TeamCommand TeamReceiver::packet_pb_msg_to_team_command(fira_message::sim_to_ref
                 continue;
             }
 
-            team_cmd.robot_command[robot_id].left_speed = robot_cmd.wheel_left();
-            team_cmd.robot_command[robot_id].right_speed = robot_cmd.wheel_right();
+            p_team_cmd->robot_command[robot_id].left_speed = robot_cmd.wheel_left();
+            p_team_cmd->robot_command[robot_id].right_speed = robot_cmd.wheel_right();
         } else {
             ROS_WARN("Error: Team %s receiver and command colors don't match!",
                      this->is_yellow ? "yellow" : "blue");
         }
     }
-
-    return team_cmd;
 }
 }  // namespace proto
 }  // namespace travesim

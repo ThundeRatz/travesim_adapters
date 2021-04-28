@@ -71,13 +71,12 @@ class TeamReceiver {
         void reset(void);
 
         /**
-         * @brief Convert a Packet protobuf message object to a TeamCommand object
+         * @brief Update a TeamCommand object from a Packet protobuf message
          *
          * @param p_packet Pointer to the packet message to be converted
-         *
-         * @return TeamCommand
+         * @param p_team_cmd Pointer where to store the team command
          */
-        TeamCommand packet_pb_msg_to_team_command(fira_message::sim_to_ref::Packet* p_packet);
+        void packet_pb_msg_to_team_command(fira_message::sim_to_ref::Packet* p_packet, TeamCommand* p_team_cmd);
 
     private:
         udp::UnicastReceiver* unicast_receiver;  /**< UDP unicast receiver */
