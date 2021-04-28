@@ -70,6 +70,7 @@ add_library(${PROJECT_NAME}_udp_comm
 
 add_library(${PROJECT_NAME}_protobuf_comm
   src/lib/protobuf/vision_sender.cpp
+  src/lib/protobuf/team_receiver.cpp
 )
 
 ## Declare a C++ executable
