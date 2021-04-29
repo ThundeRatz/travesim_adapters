@@ -39,8 +39,6 @@ int main(int argc, char* argv[]) {
         boost::asio::steady_timer my_timer(io_context);
         travesim::proto::TeamReceiver yellow_receiver(receiver_address, receiver_port, true);
 
-        size_t data_size = 0;
-
         while (true) {
             bool received_new_msg = yellow_receiver.receive(&team_yellow_cmd);
 
