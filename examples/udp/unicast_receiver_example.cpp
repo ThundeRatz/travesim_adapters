@@ -1,10 +1,10 @@
 /**
- * @file multicast_receiver_example.cpp
+ * @file unicast_receiver_example.cpp
  *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
  *
- * @brief Example on how to use the MulticastReceiver
+ * @brief Example on how to use the UnicastReceiver
  *
  * @date 04/2021
  *
@@ -12,11 +12,8 @@
  */
 
 #include <iostream>
-#include <string>
-#include <boost/asio.hpp>
-#include "boost/bind.hpp"
 
-#include "travesim_adapters/udp/multicast_receiver.hpp"
+#include "travesim_adapters/udp/unicast_receiver.hpp"
 
 /*****************************************
  * Private Constants
@@ -29,16 +26,17 @@
  *****************************************/
 
 int main(int argc, char* argv[]) {
-    const std::string listen_address_str = "0.0.0.0";
-    const std::string multicast_address_str = "224.0.0.1";
-    const short multicast_port = 10002;
+    const std::string unicast_address_str = "127.0.0.1";
+    const short unicast_port = 30001;
 
     char data_buff[BUFFER_SIZE];
 
     try {
         boost::asio::io_context io_context;
         boost::asio::steady_timer my_timer(io_context);
-        travesim::udp::MulticastReceiver my_receiver(multicast_address_str, multicast_port);
+        travesim::udp::UnicastReceiver my_receiver(unicast_address_str, unicast_port);
+
+        my_receiver.force_specific_source(true);
 
         size_t data_size = 0;
 
@@ -48,10 +46,6 @@ int main(int argc, char* argv[]) {
             if (data_size > 0) {
                 std::string received_msg(data_buff, data_size);
                 std::cout << received_msg << std::endl;
-            }
-
-            if (i % 100000 == 0) {
-                std::cout << "Loop count: " << i << std::endl;
             }
 
             my_timer.expires_after(std::chrono::milliseconds(200));

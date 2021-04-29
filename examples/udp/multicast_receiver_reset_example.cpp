@@ -8,8 +8,12 @@
  *
  * @date 04/2021
  *
+ * @note This example depends on ROS
+ *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  */
+
+#include <ros/ros.h>
 
 #include <iostream>
 #include <string>
@@ -30,32 +34,54 @@
 
 int main(int argc, char* argv[]) {
     const std::string listen_address_str = "0.0.0.0";
-    const std::string multicast_address_str = "224.0.0.1";
-    const short multicast_port = 10002;
+    const std::string multicast_address_str = "239.255.0.1";
+    const short multicast_port = 30001;
 
     char data_buff[BUFFER_SIZE];
 
+    ros::init(argc, argv, "reset_example_node", ros::init_options::AnonymousName);
+    ros::NodeHandle nh;
+
+    bool reset = false;
+
+    ros::param::set("reset", reset);
+
     try {
-        boost::asio::io_context io_context;
-        boost::asio::steady_timer my_timer(io_context);
         travesim::udp::MulticastReceiver my_receiver(multicast_address_str, multicast_port);
+
+        my_receiver.force_specific_source(true);
 
         size_t data_size = 0;
 
-        for (long int i = 0;; i++) {
+        int counter = 0;
+
+        ros::Rate loop_rate(60);
+
+        while (ros::ok()) {
             data_size = my_receiver.receive(data_buff, BUFFER_SIZE);
 
             if (data_size > 0) {
                 std::string received_msg(data_buff, data_size);
-                std::cout << received_msg << std::endl;
+                ROS_INFO_STREAM(received_msg << std::endl);
             }
 
-            if (i % 100000 == 0) {
-                std::cout << "Loop count: " << i << std::endl;
+            if (counter % 100 == 0) {
+                ROS_INFO_STREAM("Loop count: " << counter << std::endl);
             }
 
-            my_timer.expires_after(std::chrono::milliseconds(200));
-            my_timer.wait();
+            ros::param::get("reset", reset);
+
+            if (reset) {
+                ROS_INFO_STREAM("Receiver reseted!" << std::endl);
+                reset = false;
+                ros::param::set("reset", reset);
+                my_receiver.reset();
+            }
+
+            counter++;
+
+            ros::spinOnce();
+            loop_rate.sleep();
         }
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << "\n";
