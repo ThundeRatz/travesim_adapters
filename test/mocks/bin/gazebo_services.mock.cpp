@@ -19,17 +19,17 @@
 
 #include <iostream>
 
-std::unordered_map<std::string, gazebo_msgs::ModelStatePtr> world_data;
+std::unordered_map<std::string, gazebo_msgs::ModelState> world_data;
 
 bool set_model_state(gazebo_msgs::SetModelState::Request& req, gazebo_msgs::SetModelState::Response& res) {
-    world_data[req.model_state.model_name] = gazebo_msgs::ModelStatePtr(&req.model_state);
+    world_data[req.model_state.model_name] = req.model_state;
     res.success = true;
     return true;
 }
 
 bool get_model_state(gazebo_msgs::GetModelState::Request& req, gazebo_msgs::GetModelState::Response& res) {
-    res.pose = world_data.at(req.model_name)->pose;
-    res.twist = world_data.at(req.model_name)->twist;
+    res.pose = world_data.at(req.model_name).pose;
+    res.twist = world_data.at(req.model_name).twist;
     res.success = true;
     return true;
 }
