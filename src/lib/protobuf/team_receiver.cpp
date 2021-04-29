@@ -41,7 +41,7 @@ TeamReceiver::~TeamReceiver() {
 bool TeamReceiver::receive(TeamCommand* p_team_cmd) {
     char buffer[BUFFER_SIZE];
 
-    if (this->unicast_receiver->receive(buffer, BUFFER_SIZE) > 0) {
+    if (this->unicast_receiver->receive_latest(buffer, BUFFER_SIZE) > 0) {
         fira_message::sim_to_ref::Packet packet_data;
         packet_data.ParseFromArray(buffer, BUFFER_SIZE);
 
