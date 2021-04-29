@@ -29,7 +29,7 @@ class ReplacerSender {
     private:
         ros::NodeHandlePtr _nh;
 
-        ros::ServiceClient gzclient;
+        ros::ServiceClient gz_service;
 
     public:
         ReplacerSender();
