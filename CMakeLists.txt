@@ -193,6 +193,7 @@ target_link_libraries(vision_adapter
 target_link_libraries(teams_adapter
   ${PROJECT_NAME}_core
   ${PROJECT_NAME}_ros
+  ${PROJECT_NAME}_protobuf_comm
   ${catkin_LIBRARIES}
 )
 
