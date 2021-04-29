@@ -29,7 +29,7 @@ TeamsSender::TeamsSender() {
     }
 }
 
-void TeamsSender::transmit(TeamCommand* yellow_team_command, TeamCommand* blue_team_command) {
+void TeamsSender::send(TeamCommand* yellow_team_command, TeamCommand* blue_team_command) {
     std_msgs::Float64 yellow_left_msg, yellow_right_msg;
     std_msgs::Float64 blue_left_msg, blue_right_msg;
 

@@ -73,7 +73,7 @@ class TeamsSender {
          * @brief Send the stored commands to Gazebo controllers
          *
          */
-        void transmit(TeamCommand* yellow_team_command, TeamCommand* blue_team_command);
+        void send(TeamCommand* yellow_team_command, TeamCommand* blue_team_command);
 };
 }  // ros_side
 }  // travesim

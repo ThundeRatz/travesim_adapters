@@ -58,7 +58,7 @@ int main(int argc, char** argv) {
         yellow_receiver.receive(&yellow_command);
         blue_receiver.receive(&blue_command);
 
-        teams_sender.transmit(&yellow_command, &blue_command);
+        teams_sender.send(&yellow_command, &blue_command);
 
         ros::spinOnce();
         loop_rate.sleep();
