@@ -12,19 +12,14 @@
 #include <string>
 #include <google/protobuf/util/json_util.h>
 #include <google/protobuf/text_format.h>
-#include <boost/asio.hpp>
-#include <boost/bind.hpp>
-
 #include <ros/ros.h>
 #include <ros/console.h>
 #include <gazebo_msgs/ModelStates.h>
 
 #include <gtest/gtest.h>
 
-#include "travesim_adapters/ros/vision_receiver.hpp"
-
-#include "travesim_adapters/protobuf/vision_sender.hpp"
 #include "travesim_adapters/udp/multicast_receiver.hpp"
+#include "packet.pb.h"
 
 #define BUFFER_SIZE 1024U
 #define MAX_RETRIES 5

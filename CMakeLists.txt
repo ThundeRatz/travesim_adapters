@@ -55,7 +55,7 @@ add_library(${PROJECT_NAME}_core
   src/lib/data/entity_state.cpp
   src/lib/data/robot_state.cpp
   src/lib/data/field_state.cpp
-  src/lib/data/converter.cpp
+  src/lib/data/converter/ros_side.cpp
 )
 
 add_library(${PROJECT_NAME}_ros
@@ -180,29 +180,20 @@ install(TARGETS vision_adapter
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
 
-  catkin_add_gtest(converter.test src/lib/data/test/converter.test.cpp)
-
-  # add_rostest_gtest(vision_receiver.test
-  #   test/vision_receiver.test
-  #   src/lib/ros/test/vision_receiver.test.cpp
-  # )
+  catkin_add_gtest(ros_side_converter.test
+    src/lib/data/converter/test/ros_side.test.cpp
+  )
 
   add_rostest_gtest(vision_adapter.test
     test/vision_adapter.test
     src/bin/test/vision_adapter.test.cpp
   )
 
-  target_link_libraries(converter.test
+  target_link_libraries(ros_side_converter.test
     ${PROJECT_NAME}_core
     ${PROJECT_NAME}_ros
     ${catkin_LIBRARIES}
   )
-
-  # target_link_libraries(vision_receiver.test
-  #   ${PROJECT_NAME}_core
-  #   ${PROJECT_NAME}_ros
-  #   ${catkin_LIBRARIES}
-  # )
 
   target_link_libraries(vision_adapter.test
     ${PROJECT_NAME}_core

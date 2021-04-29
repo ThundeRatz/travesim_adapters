@@ -1,16 +1,18 @@
 /**
  * @file converter.cpp
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
- * @brief Collection of data converters between protobuf and ROS formats
+ * @brief Collection of data converters between ROS and local formats
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *
  */
 
-#include "travesim_adapters/data/converter.hpp"
+#include "travesim_adapters/data/converter/ros_side.hpp"
 
 #define quaternion_to_theta(q0, q1, q2, q3) atan2(2*(q0*q1+q2*q3), 1 - 2*(q1*q1 + q2*q2))
+
+typedef std::unordered_map<std::string, travesim::EntityState*> lookup_table_t;
 
 namespace travesim {
 namespace converter {
@@ -42,7 +44,7 @@ geometry_msgs::Vector3 Vector2D_to_Vector3(Vector2D* vector2d) {
     return retval;
 }
 
-geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d, int32_t z) {
+geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d, double z) {
     geometry_msgs::Point retval;
 
     retval.x = vector2d->x;
@@ -75,7 +77,7 @@ RobotState ModelState_to_RobotState(gazebo_msgs::ModelState* model_state, bool i
     return retval;
 }
 
-gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, int32_t z) {
+gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, double z) {
     gazebo_msgs::ModelState retval;
 
     retval.model_name = DEFAULT_ENTITY_NAME;
@@ -97,7 +99,7 @@ gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, int
     return retval;
 }
 
-gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, int32_t z) {
+gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, double z) {
     gazebo_msgs::ModelState retval = EntityState_to_ModelState(dynamic_cast<EntityState*>(robot_state), z);
 
     std::string base_name = robot_state->is_yellow ? "yellow_team/robot_" : "blue_team/robot_";

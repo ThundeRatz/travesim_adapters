@@ -1,7 +1,7 @@
 /**
- * @file converter.hpp
+ * @file ros_side.hpp
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
- * @brief Collection of data converters between protobuf and ROS formats
+ * @brief Collection of data converters between ROS and local formats
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
@@ -39,8 +39,6 @@
 
 #define DEFAULT_ENTITY_NAME BALL_NAME
 #define DEFAULT_REFERENCE_FRAME "world"
-
-typedef std::unordered_map<std::string, travesim::EntityState*> lookup_table_t;
 
 namespace travesim {
 namespace converter {
@@ -92,7 +90,7 @@ geometry_msgs::Vector3 Vector2D_to_Vector3(Vector2D* vector2d);
  * @param vector2d Data to be converted
  * @return geometry_msgs::Point Converted data
  */
-geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d, int32_t z = DEFAULT_Z_VALUE_BALL);
+geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d, double z = DEFAULT_Z_VALUE_BALL);
 
 /**
  * @brief Function to convert travesim::EntityState to gazebo_msgs::ModelState
@@ -100,7 +98,7 @@ geometry_msgs::Point Vector2D_to_Point(Vector2D* vector2d, int32_t z = DEFAULT_Z
  * @param entity_state Data to be converted
  * @return gazebo_msgs::ModelState Converted data
  */
-gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, int32_t z = DEFAULT_Z_VALUE_BALL);
+gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, double z = DEFAULT_Z_VALUE_BALL);
 
 /**
  * @brief Function to convert travesim::RobotState to gazebo_msgs::ModelState
@@ -108,7 +106,7 @@ gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, int
  * @param entity_state Data to be converted
  * @return gazebo_msgs::ModelState Converted data
  */
-gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, int32_t z = DEFAULT_Z_VALUE_ROBOT);
+gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, double z = DEFAULT_Z_VALUE_ROBOT);
 
 /**
  * @brief Function to convert gazebo_msgs::ModelStates to travesim::FieldState
