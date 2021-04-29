@@ -22,12 +22,6 @@ namespace ros_side {
 ReplacerSender::ReplacerSender() {
     _nh = ros::NodeHandlePtr(new ros::NodeHandle());
     this->reconnect_service_client();
-
-    /**
-     * @brief Create gzclient for the first time
-     */
-
-    // this->gzclient = this->_nh->serviceClient<gazebo_msgs::SetModelState>("/gazebo/set_model_state", true);
 }
 
 void ReplacerSender::reconnect_service_client() {
