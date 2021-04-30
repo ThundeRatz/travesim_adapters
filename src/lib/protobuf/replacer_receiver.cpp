@@ -3,7 +3,7 @@
  *
  * @author Lucas Haug <lucas.haug@thunderatz.org>
  *
- * @brief Team control data receiver with UDP and protobuf
+ * @brief Replacer receiver with UDP and protobuf
  *
  * @date 04/2021
  *
