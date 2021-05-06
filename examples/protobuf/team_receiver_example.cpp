@@ -1,11 +1,11 @@
 /**
- * @file vision_receiver_example.cpp
+ * @file team_receiver_example.cpp
  *
  * @author Lucas Haug <lucas.haug@thuneratz.org>
  * @author Lucas Schneider <lucas.schneider@thuneratz.org>
  * @author Felipe Gomes de Melo <felipe.gomes@thuneratz.org>
  *
- * @brief Example to read data published from vision adapter
+ * @brief Example to read data published from a team
  *
  * @date 04/2021
  *
