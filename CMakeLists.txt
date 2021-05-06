@@ -135,6 +135,7 @@ target_link_libraries(${PROJECT_NAME}_udp_comm
 
 target_link_libraries(${PROJECT_NAME}_protobuf_comm
   ${PROJECT_NAME}_udp_comm
+  ${PROJECT_NAME}_core
   pb_msgs_lib
 )
 
@@ -168,7 +169,6 @@ target_link_libraries(uni_sender_example
 )
 
 target_link_libraries(vision_sender_example
-  ${PROJECT_NAME}_core
   ${PROJECT_NAME}_protobuf_comm
   ${catkin_LIBRARIES}
 )
@@ -179,20 +179,17 @@ target_link_libraries(vision_receiver_example
 )
 
 target_link_libraries(team_receiver_example
-  ${PROJECT_NAME}_core
   ${PROJECT_NAME}_protobuf_comm
   ${catkin_LIBRARIES}
 )
 
 target_link_libraries(vision_adapter
-  ${PROJECT_NAME}_core
   ${PROJECT_NAME}_ros
   ${PROJECT_NAME}_protobuf_comm
   ${catkin_LIBRARIES}
 )
 
 target_link_libraries(teams_adapter
-  ${PROJECT_NAME}_core
   ${PROJECT_NAME}_ros
   ${PROJECT_NAME}_protobuf_comm
   ${catkin_LIBRARIES}
