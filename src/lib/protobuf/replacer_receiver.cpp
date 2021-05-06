@@ -71,17 +71,34 @@ void ReplacerReceiver::reset(void) {
     this->unicast_receiver->reset();
 }
 
-EntityState ReplacerReceiver::ball_rplcmt_pb_to_entity_state(const fira_message::sim_to_ref::BallReplacement* p_ball_pb_msg) {
+EntityState ReplacerReceiver::ball_rplcmt_pb_to_entity_state(
+    const fira_message::sim_to_ref::BallReplacement* p_ball_pb_msg) {
     EntityState ball_state;
+
+    ball_state.position.x = p_ball_pb_msg->x();
+    ball_state.position.y = p_ball_pb_msg->y();
+    ball_state.velocity.x = p_ball_pb_msg->vx();
+    ball_state.velocity.y = p_ball_pb_msg->vy();
 
     return ball_state;
 }
 
-RobotState ReplacerReceiver::robot_rplcmt_pb_to_robot_state(const fira_message::sim_to_ref::RobotReplacement* p_robot_pb_msg) {
+RobotState ReplacerReceiver::robot_rplcmt_pb_to_robot_state(
+    const fira_message::sim_to_ref::RobotReplacement* p_robot_pb_msg) {
     RobotState robot_state;
+
+    robot_state.is_yellow = p_robot_pb_msg->yellowteam();
+    robot_state.id = p_robot_pb_msg->position().robot_id();
+
+    robot_state.position.x = p_robot_pb_msg->position().x();
+    robot_state.position.y = p_robot_pb_msg->position().y();
+    robot_state.angular_position = p_robot_pb_msg->position().orientation();
+
+    robot_state.velocity.x = p_robot_pb_msg->position().vx();
+    robot_state.velocity.y = p_robot_pb_msg->position().vy();
+    robot_state.angular_velocity = p_robot_pb_msg->position().vorientation();
 
     return robot_state;
 }
-
 }  // namespace proto
 }  // namespace travesim
