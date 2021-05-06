@@ -10,31 +10,41 @@
 
 #include <ros/ros.h>
 #include <std_msgs/Float64.h>
+
 #include "travesim_adapters/ros/teams_sender.hpp"
 
 #define BUFFER_SIZE 2
 
 namespace travesim {
 namespace ros_side {
-TeamsSender::TeamsSender(ros::NodeHandle* nh) {
-    for (uint8_t i = 0; i < NUM_OF_COMMANDS_PER_TEAM; i++) {
-        this->yellow_pub[i] = nh->advertise<std_msgs::Float64>(this->yellow_topics[i], BUFFER_SIZE);
-        this->blue_pub[i] = nh->advertise<std_msgs::Float64>(this->blue_topics[i], BUFFER_SIZE);
-        this->yellow_team_cmd[i] = 0;
-        this->blue_team_cmd[i] = 0;
+TeamsSender::TeamsSender() {
+    ros::NodeHandle nh;
+
+    for (uint8_t i = 0; i < NUM_OF_ROBOTS_PER_TEAM; i++) {
+        this->yellow_pub[i] = {.left = nh.advertise<std_msgs::Float64>(this->yellow_topics[2*i], BUFFER_SIZE),
+                               .right = nh.advertise<std_msgs::Float64>(this->yellow_topics[2*i+1], BUFFER_SIZE)};
+
+        this->blue_pub[i] = {.left = nh.advertise<std_msgs::Float64>(this->blue_topics[2*i], BUFFER_SIZE),
+                             .right = nh.advertise<std_msgs::Float64>(this->blue_topics[2*i+1], BUFFER_SIZE)};
     }
 }
 
-void TeamsSender::transmit() {
-    std_msgs::Float64 yellow_msg;
-    std_msgs::Float64 blue_msg;
+void TeamsSender::send(TeamCommand* yellow_team_command, TeamCommand* blue_team_command) {
+    std_msgs::Float64 yellow_left_msg, yellow_right_msg;
+    std_msgs::Float64 blue_left_msg, blue_right_msg;
 
-    for (uint8_t i = 0; i < NUM_OF_COMMANDS_PER_TEAM; i++) {
-        yellow_msg.data = this->yellow_team_cmd[i];
-        blue_msg.data = this->blue_team_cmd[i];
+    for (uint8_t i = 0; i < NUM_OF_ROBOTS_PER_TEAM; i++) {
+        yellow_left_msg.data = yellow_team_command->robot_command[i].left_speed;
+        yellow_right_msg.data = yellow_team_command->robot_command[i].right_speed;
 
-        this->yellow_pub[i].publish(yellow_msg);
-        this->blue_pub[i].publish(blue_msg);
+        blue_left_msg.data = blue_team_command->robot_command[i].left_speed;
+        blue_right_msg.data = blue_team_command->robot_command[i].right_speed;
+
+        this->yellow_pub[i].left.publish(yellow_left_msg);
+        this->yellow_pub[i].right.publish(yellow_right_msg);
+
+        this->blue_pub[i].left.publish(blue_left_msg);
+        this->blue_pub[i].right.publish(blue_right_msg);
     }
 }
 }  // namespace ros_side

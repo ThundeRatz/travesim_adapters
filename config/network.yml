@@ -4,7 +4,7 @@ vision_multicast_group:
 
 replacer_client:
   address: "127.0.0.1"
-  port: 20011
+  port: 20013
 
 teams_control_client:
   yellow:
@@ -12,4 +12,4 @@ teams_control_client:
     port: 20011
   blue:
     address: "127.0.0.1"
-    port: 20011
+    port: 20012

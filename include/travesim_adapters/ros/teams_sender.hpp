@@ -13,36 +13,67 @@
 
 #include <ros/ros.h>
 #include <ros/console.h>
+
 #include "travesim_adapters/ros/teams_topics.hpp"
+#include "travesim_adapters/data/team_command.hpp"
 #include "travesim_adapters/data/data_constants.hpp"
 
 #include <iostream>
 
 namespace travesim {
 namespace ros_side {
+/**
+ * @brief Helper struct to group same robot command topics
+ */
+typedef struct {
+    ros::Publisher left;
+    ros::Publisher right;
+} robot_command_pub_t;
+
 class TeamsSender {
     private:
-        ros::Publisher yellow_pub[NUM_OF_COMMANDS_PER_TEAM];
-        ros::Publisher blue_pub[NUM_OF_COMMANDS_PER_TEAM];
+        /**
+         * @brief Yellow team ROS publishers
+         *
+         */
+        robot_command_pub_t yellow_pub[NUM_OF_ROBOTS_PER_TEAM];
 
-        const std::string yellow_topics[NUM_OF_COMMANDS_PER_TEAM] = {
+        /**
+         * @brief Blue team ROS publishers
+         *
+         */
+        robot_command_pub_t blue_pub[NUM_OF_ROBOTS_PER_TEAM];
+
+        /**
+         * @brief List of yellow team's topics names
+         *
+         */
+        const std::string yellow_topics[2*NUM_OF_ROBOTS_PER_TEAM] = {
             YELLOW_ROBOT_0_LEFT_TOPIC, YELLOW_ROBOT_0_RIGHT_TOPIC,
             YELLOW_ROBOT_1_LEFT_TOPIC, YELLOW_ROBOT_1_RIGHT_TOPIC,
             YELLOW_ROBOT_2_LEFT_TOPIC, YELLOW_ROBOT_2_RIGHT_TOPIC };
 
-        const std::string blue_topics[NUM_OF_COMMANDS_PER_TEAM] = {
+        /**
+         * @brief List of blue team's topics names
+         *
+         */
+        const std::string blue_topics[2*NUM_OF_ROBOTS_PER_TEAM] = {
             BLUE_ROBOT_0_LEFT_TOPIC, BLUE_ROBOT_0_RIGHT_TOPIC,
             BLUE_ROBOT_1_LEFT_TOPIC, BLUE_ROBOT_1_RIGHT_TOPIC,
             BLUE_ROBOT_2_LEFT_TOPIC, BLUE_ROBOT_2_RIGHT_TOPIC };
 
     public:
-        double yellow_team_cmd[NUM_OF_COMMANDS_PER_TEAM];
-        double blue_team_cmd[NUM_OF_COMMANDS_PER_TEAM];
-        void protobuf_callback();
+        /**
+         * @brief Construct a new Teams Sender object
+         *
+         */
+        TeamsSender();
 
-        void transmit();
-
-        TeamsSender(ros::NodeHandle* nh);
+        /**
+         * @brief Send the stored commands to Gazebo controllers
+         *
+         */
+        void send(TeamCommand* yellow_team_command, TeamCommand* blue_team_command);
 };
 }  // ros_side
 }  // travesim
