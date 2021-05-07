@@ -36,7 +36,7 @@ ReplacerReceiver::~ReplacerReceiver() {
     delete this->unicast_receiver;
 }
 
-bool ReplacerReceiver::receive(std::queue<EntityState>* p_replament_queue) {
+bool ReplacerReceiver::receive(std::queue<std::shared_ptr<EntityState>>* p_replament_queue) {
     char buffer[BUFFER_SIZE];
 
     if (this->unicast_receiver->receive(buffer, BUFFER_SIZE) > 0) {
@@ -46,13 +46,13 @@ bool ReplacerReceiver::receive(std::queue<EntityState>* p_replament_queue) {
         if (packet_data.has_replace()) {
             for (const auto& robot_replacement : packet_data.replace().robots()) {
                 RobotState robot_state = this->robot_rplcmt_pb_to_robot_state(&robot_replacement);
-                p_replament_queue->push(robot_state);
+                p_replament_queue->push(std::make_shared<RobotState>(robot_state));
             }
 
             if (packet_data.replace().has_ball()) {
                 const fira_message::sim_to_ref::BallReplacement ball = packet_data.replace().ball();
                 EntityState ball_state = this->ball_rplcmt_pb_to_entity_state(&ball);
-                p_replament_queue->push(ball_state);
+                p_replament_queue->push(std::make_shared<EntityState>(ball_state));
             }
 
             return true;

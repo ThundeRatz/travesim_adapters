@@ -12,6 +12,7 @@
  */
 
 #include <queue>
+#include <memory>
 #include <iostream>
 
 #include "travesim_adapters/protobuf/replacer_receiver.hpp"
@@ -24,7 +25,7 @@ int main(int argc, char* argv[]) {
     const std::string receiver_address = "127.0.0.1";
     const short receiver_port = 20011;
 
-    std::queue<travesim::EntityState> states_queue;
+    std::queue<std::shared_ptr<travesim::EntityState>> states_queue;
 
     try {
         travesim::proto::ReplacerReceiver replacer_receiver(receiver_address, receiver_port, true);
@@ -34,19 +35,17 @@ int main(int argc, char* argv[]) {
 
             if (received_new_msg) {
                 while (!states_queue.empty()) {
-                    travesim::EntityState* state = dynamic_cast<travesim::RobotState*>(&states_queue.front());
+                    std::shared_ptr<travesim::RobotState> state = std::dynamic_pointer_cast<travesim::RobotState>(states_queue.front());
 
                     if (state != nullptr) {
-                        std::cout << dynamic_cast<travesim::RobotState&>(states_queue.front());
+                        std::cout << *state;
                     } else {
-                        std::cout << states_queue.front();
+                        std::cout << *states_queue.front();
                     }
 
                     states_queue.pop();
 
                     std::cout << std::endl;
-
-                    delete state;
                 }
             }
         }
