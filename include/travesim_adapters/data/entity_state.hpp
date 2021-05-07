@@ -71,6 +71,8 @@ class EntityState {
          */
         EntityState(Vector2D position, double angular_position, Vector2D velocity, double angular_velocity);
 
+        virtual ~EntityState() = default;
+
         /**
          * @brief Output stream operator overloading
          *
