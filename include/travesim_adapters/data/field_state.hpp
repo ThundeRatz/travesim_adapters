@@ -34,7 +34,7 @@ class FieldState {
          */
         friend std::ostream& operator <<(std::ostream& output, const FieldState& field_state);
 
-        unsigned int time_step; /**< ODE time step */
+        unsigned int time_step;  /**< ODE time step */
 
         /**
          * @brief Field entities
