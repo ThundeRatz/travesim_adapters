@@ -40,6 +40,7 @@ int main(int argc, char* argv[]) {
                     if (state != nullptr) {
                         std::cout << *state;
                     } else {
+                        std::cout << "BALL" << std::endl;
                         std::cout << *states_queue.front();
                     }
 

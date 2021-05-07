@@ -56,11 +56,11 @@ EntityState::EntityState(Vector2D position, double angular_position, Vector2D ve
 std::ostream& operator <<(std::ostream& output, const EntityState& entity_state) {
     output << std::fixed << std::setprecision(PRINTING_DECIMAL_PRECISION);
 
-    output << "POSITION: " << std::endl;
+    output << "POSITION: ";
     output << entity_state.position << " | ";
     output << "THETA: "<< std::setw(PRINTING_MIN_WIDTH) << entity_state.angular_position << std::endl;
 
-    output << "VELOCITY: " << std::endl;
+    output << "VELOCITY: ";
     output << entity_state.velocity << " | ";
     output << "THETA: "<< std::setw(PRINTING_MIN_WIDTH) << entity_state.angular_velocity << std::endl;
 
