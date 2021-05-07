@@ -113,6 +113,10 @@ add_executable(team_receiver_example
   examples/protobuf/team_receiver_example.cpp
 )
 
+add_executable(replacer_receiver_example
+  examples/protobuf/replacer_receiver_example.cpp
+)
+
 add_executable(vision_adapter
   src/bin/vision_adapter.cpp
 )
@@ -179,6 +183,11 @@ target_link_libraries(vision_receiver_example
 )
 
 target_link_libraries(team_receiver_example
+  ${PROJECT_NAME}_protobuf_comm
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(replacer_receiver_example
   ${PROJECT_NAME}_protobuf_comm
   ${catkin_LIBRARIES}
 )
