@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
     const std::string receiver_address = "127.0.0.1";
     const short receiver_port = 20011;
 
-    std::queue<std::shared_ptr<travesim::EntityState> > states_queue;
+    std::queue<std::shared_ptr<travesim::EntityState>> states_queue;
 
     try {
         travesim::proto::ReplacerReceiver replacer_receiver(receiver_address, receiver_port, true);

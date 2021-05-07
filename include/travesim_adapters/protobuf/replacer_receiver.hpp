@@ -54,7 +54,7 @@ class ReplacerReceiver {
          *
          * @return true if a new message was received, false otherwise
          */
-        bool receive(std::queue<std::shared_ptr<EntityState> >* p_replament_queue);
+        bool receive(std::queue<std::shared_ptr<EntityState>>* p_replament_queue);
 
         /**
          * @brief Set the receiver endpoint

@@ -36,7 +36,7 @@ ReplacerReceiver::~ReplacerReceiver() {
     delete this->unicast_receiver;
 }
 
-bool ReplacerReceiver::receive(std::queue<std::shared_ptr<EntityState> >* p_replament_queue) {
+bool ReplacerReceiver::receive(std::queue<std::shared_ptr<EntityState>>* p_replament_queue) {
     char buffer[BUFFER_SIZE];
 
     if (this->unicast_receiver->receive(buffer, BUFFER_SIZE) > 0) {
