@@ -39,6 +39,10 @@ bool VisionSender::send(FieldState* p_field_state) {
     return true;
 }
 
+void VisionSender::set_multicast_endpoint(const std::string multicast_address, const short multicast_port) {
+    this->multicast_sender->set_receiver_endpoint(multicast_address, multicast_port);
+}
+
 fira_message::sim_to_ref::Environment VisionSender::field_state_to_env_pb_msg(FieldState* p_field_state) {
     fira_message::sim_to_ref::Environment env_data;
     fira_message::Frame* frame = env_data.mutable_frame();
