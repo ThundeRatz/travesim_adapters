@@ -60,7 +60,7 @@ class Sender {
         boost::asio::ip::udp::endpoint endpoint; /**< Multicast address and port pair */
 
     private:
-        boost::asio::io_context io_context;      /**< boost/asio I/O execution context */
+        boost::asio::io_context io_context;  /**< boost/asio I/O execution context */
 };
 }  // namespace udp
 }  // namespace travesim
