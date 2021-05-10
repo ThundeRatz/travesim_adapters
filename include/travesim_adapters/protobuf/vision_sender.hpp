@@ -43,8 +43,10 @@ class VisionSender {
          * @brief Send vision data with UDP and protobuf
          *
          * @param p_field_state Pointer to field state to be sent
+         *
+         * @return True if sent data successfully, false otherwise
          */
-        void send(FieldState* p_field_state);
+        bool send(FieldState* p_field_state);
 
         /**
          * @brief Convert a FieldState object to a Environment protobuf message object

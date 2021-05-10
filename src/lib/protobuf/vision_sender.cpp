@@ -24,7 +24,7 @@ VisionSender::VisionSender(const std::string multicast_address, const short mult
         std::unique_ptr<udp::MulticastSender>(new udp::MulticastSender(multicast_address, multicast_port));
 }
 
-void VisionSender::send(FieldState* p_field_state) {
+bool VisionSender::send(FieldState* p_field_state) {
     fira_message::sim_to_ref::Environment env_data = this->field_state_to_env_pb_msg(p_field_state);
 
     std::string buffer;
@@ -32,7 +32,11 @@ void VisionSender::send(FieldState* p_field_state) {
 
     if (this->multicast_sender->send(buffer.c_str(), buffer.length()) == 0) {
         ROS_WARN_STREAM("Error sending vision protobuff message");
+
+        return false;
     }
+
+    return true;
 }
 
 fira_message::sim_to_ref::Environment VisionSender::field_state_to_env_pb_msg(FieldState* p_field_state) {
