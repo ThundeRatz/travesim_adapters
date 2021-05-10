@@ -20,11 +20,8 @@
 namespace travesim {
 namespace proto {
 VisionSender::VisionSender(const std::string multicast_address, const short multicast_port) {
-    this->multicast_sender = new udp::MulticastSender(multicast_address, multicast_port);
-}
-
-VisionSender::~VisionSender() {
-    delete this->multicast_sender;
+    this->multicast_sender =
+        std::unique_ptr<udp::MulticastSender>(new udp::MulticastSender(multicast_address, multicast_port));
 }
 
 void VisionSender::send(FieldState* p_field_state) {

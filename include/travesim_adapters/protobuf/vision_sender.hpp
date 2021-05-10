@@ -10,6 +10,8 @@
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  */
 
+#include <memory>
+
 #include "travesim_adapters/udp/multicast_sender.hpp"
 #include "travesim_adapters/data/field_state.hpp"
 #include "packet.pb.h"
@@ -33,11 +35,6 @@ class VisionSender {
         VisionSender(const std::string multicast_address, const short multicast_port);
 
         /**
-         * @brief Destroy the Vision Sender object
-         */
-        ~VisionSender();
-
-        /**
          * @brief Send vision data with UDP and protobuf
          *
          * @param p_field_state Pointer to field state to be sent
@@ -54,7 +51,7 @@ class VisionSender {
         static fira_message::sim_to_ref::Environment field_state_to_env_pb_msg(FieldState* p_field_state);
 
     private:
-        udp::MulticastSender* multicast_sender;  /**< Pointer to UDP multicast sender */
+        std::unique_ptr<udp::MulticastSender> multicast_sender;  /**< Pointer to UDP multicast sender */
 };
 }  // namespace proto
 }  // namespace travesim

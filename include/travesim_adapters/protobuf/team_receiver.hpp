@@ -10,6 +10,8 @@
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  */
 
+#include <memory>
+
 #include "travesim_adapters/udp/unicast_receiver.hpp"
 #include "travesim_adapters/data/team_command.hpp"
 #include "packet.pb.h"
@@ -37,11 +39,6 @@ class TeamReceiver {
          *       or the [RFC6890](https://tools.ietf.org/html/rfc6890) for more informations.
          */
         TeamReceiver(const std::string receiver_address, const short receiver_port, bool is_yellow);
-
-        /**
-         * @brief Destroy the TeamReceiver object
-         */
-        ~TeamReceiver();
 
         /**
          * @brief Receive the command from a team
@@ -79,7 +76,7 @@ class TeamReceiver {
         void packet_pb_msg_to_team_command(fira_message::sim_to_ref::Packet* p_packet, TeamCommand* p_team_cmd);
 
     private:
-        udp::UnicastReceiver* unicast_receiver;  /**< UDP unicast receiver */
+        std::unique_ptr<udp::UnicastReceiver> unicast_receiver;  /**< UDP unicast receiver */
 
         bool is_yellow;  /**< true for yellow, false for blue */
 
