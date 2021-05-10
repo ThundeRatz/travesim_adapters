@@ -33,14 +33,15 @@ class ReplacerReceiver {
          *
          * @param receiver_address Replacer receiver address
          * @param receiver_port Replacer receiver port
-         * @param force_specific_source Whether to enable source specific or not.
+         * @param force_specific_source Whether to enable source specific or not, default false
          *
          * @note The unicast addresses must be in the block 127.0.0.0/8, see
          *       [IANA IPv4 Address Space Registry]
          *       (https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml)
          *       or the [RFC6890](https://tools.ietf.org/html/rfc6890) for more informations.
          */
-        ReplacerReceiver(const std::string receiver_address, const short receiver_port, bool force_specific_source);
+        ReplacerReceiver(const std::string receiver_address, const short receiver_port,
+                         bool force_specific_source = false);
 
         /**
          * @brief Receive the replacement commands

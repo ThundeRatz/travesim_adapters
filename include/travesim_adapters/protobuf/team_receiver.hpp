@@ -32,13 +32,15 @@ class TeamReceiver {
          * @param receiver_address Team control address
          * @param receiver_port Team control port
          * @param is_yellow Wheter to tecontrol team yellow or blue
+         * @param force_specific_source Whether to enable source specific or not, default false
          *
          * @note The unicast addresses must be in the block 127.0.0.0/8, see
          *       [IANA IPv4 Address Space Registry]
          *       (https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml)
          *       or the [RFC6890](https://tools.ietf.org/html/rfc6890) for more informations.
          */
-        TeamReceiver(const std::string receiver_address, const short receiver_port, bool is_yellow);
+        TeamReceiver(const std::string receiver_address, const short receiver_port, bool is_yellow,
+                     bool force_specific_source = false);
 
         /**
          * @brief Receive the command from a team
