@@ -28,12 +28,9 @@ namespace travesim {
 namespace proto {
 ReplacerReceiver::ReplacerReceiver(const std::string receiver_address, const short receiver_port,
                                    bool force_specific_source) {
-    this->unicast_receiver = new udp::UnicastReceiver(receiver_address, receiver_port);
+    this->unicast_receiver =
+        std::unique_ptr<udp::UnicastReceiver>(new udp::UnicastReceiver(receiver_address, receiver_port));
     this->unicast_receiver->force_specific_source(force_specific_source);
-}
-
-ReplacerReceiver::~ReplacerReceiver() {
-    delete this->unicast_receiver;
 }
 
 bool ReplacerReceiver::receive(std::queue<std::shared_ptr<EntityState>>* p_replament_queue) {

@@ -43,11 +43,6 @@ class ReplacerReceiver {
         ReplacerReceiver(const std::string receiver_address, const short receiver_port, bool force_specific_source);
 
         /**
-         * @brief Destroy the ReplacerReceiver object
-         */
-        ~ReplacerReceiver();
-
-        /**
          * @brief Receive the replacement commands
          *
          * @param p_replament_queue Pointer to a queue where to store the desired replacements
@@ -93,7 +88,7 @@ class ReplacerReceiver {
         RobotState robot_rplcmt_pb_to_robot_state(const fira_message::sim_to_ref::RobotReplacement* p_robot_pb_msg);
 
     private:
-        udp::UnicastReceiver* unicast_receiver;  /**< UDP unicast receiver */
+        std::unique_ptr<udp::UnicastReceiver> unicast_receiver;  /**< UDP unicast receiver */
 };
 }  // namespace proto
 }  // namespace travesim
