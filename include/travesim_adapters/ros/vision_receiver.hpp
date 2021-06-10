@@ -1,6 +1,7 @@
 /**
  * @file vision_receiver.hpp
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
+ * @author Lucas Haug <lucas.haug@thunderatz.org>
  * @brief ROS vision receiver class definition
  * @date 04/2021
  *
@@ -24,22 +25,28 @@ namespace ros_side {
 class VisionReceiver {
     private:
         /**
+         * @brief Cache to save the world state
+         */
+        gazebo_msgs::ModelStates::ConstPtr world_state;
+
+        /**
          * @brief Subscriber for Gazebo model_states topic
          */
         ros::Subscriber subscriber;
 
         /**
-         * @brief Flag to prevent message sending before
-         * the first message arives
+         * @brief Flag to indicate if a message was recieved
          */
-        bool received_first_message;
+        bool received_message;
 
-    public:
         /**
-         * @brief Cache to save the world state
+         * @brief Callback function for Gazebo subscriber
+         *
+         * @param msg Received message
          */
-        gazebo_msgs::ModelStates::ConstPtr world_state;
+        void receive_callback(const gazebo_msgs::ModelStates::ConstPtr& msg);
 
+        public:
         /**
          * @brief Construct a new Vision Receiver object
          *
@@ -48,19 +55,13 @@ class VisionReceiver {
         VisionReceiver();
 
         /**
-         * @brief Callback function for Gazebo subscriber
+         * @brief Get last received message
          *
-         * @param msg
-         */
-        void receive(const gazebo_msgs::ModelStates::ConstPtr& msg);
-
-        /**
-         * @brief Get the received first message flag
+         * @param msg Pointer where to store the message
          *
-         * @return true If a message have already arrived
-         * @return false Othwerwise
+         * @return true if a new message was received, false otherwise
          */
-        bool get_received_first_message();
+        bool receive(gazebo_msgs::ModelStates::ConstPtr* msg);
 };
 }  // ros_side
 }  // travesim

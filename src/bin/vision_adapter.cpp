@@ -41,14 +41,15 @@ int main(int argc, char** argv) {
     travesim::proto::VisionSender vision_sender(multicast_address_str, multicast_port);
 
     travesim::FieldState field_state;
+    gazebo_msgs::ModelStates::ConstPtr world_state;
 
     ROS_INFO_STREAM("Vision sender multicast endpoint " << multicast_address_str << ":" << multicast_port);
 
     field_state.time_step = 0;
 
     while (ros::ok()) {
-        if (vision_receiver.get_received_first_message()) {
-            field_state = travesim::converter::ModelStates_to_FieldState(vision_receiver.world_state);
+        if (vision_receiver.receive(&world_state)) {
+            field_state = travesim::converter::ModelStates_to_FieldState(world_state);
             vision_sender.send(&field_state);
             field_state.time_step++;
         }
