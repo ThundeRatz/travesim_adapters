@@ -1,6 +1,7 @@
 /**
  * @file vision_adapter.cpp
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
+ * @author Lucas Haug <lucas.haug@thunderatz.org>
  * @brief Vision adapter executable file
  * @date 04/2021
  *
@@ -27,11 +28,8 @@ int main(int argc, char** argv) {
     ros::init(argc, argv, "vision_adapter");
     ros::NodeHandle nh;
 
-    int32_t send_rate;
     int32_t multicast_port;
     std::string multicast_address_str;
-
-    ros::param::param<int32_t>("send_rate", send_rate, 60);
 
     if (!ros::param::get("vision_multicast_group/port", multicast_port) ||
         !ros::param::get("vision_multicast_group/address", multicast_address_str)) {
@@ -39,15 +37,12 @@ int main(int argc, char** argv) {
         ros::shutdown();
     }
 
-    ros::Rate loop_rate(send_rate);
-
     travesim::ros_side::VisionReceiver vision_receiver;
     travesim::proto::VisionSender vision_sender(multicast_address_str, multicast_port);
 
     travesim::FieldState field_state;
 
-    ROS_INFO_STREAM("Vision adapter started with loop rate " << send_rate);
-    ROS_INFO_STREAM("Vision sender multicast addr " << multicast_address_str << ":" << multicast_port);
+    ROS_INFO_STREAM("Vision sender multicast endpoint " << multicast_address_str << ":" << multicast_port);
 
     field_state.time_step = 0;
 
@@ -59,6 +54,5 @@ int main(int argc, char** argv) {
         }
 
         ros::spinOnce();
-        loop_rate.sleep();
     }
 }

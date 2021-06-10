@@ -1,6 +1,7 @@
 /**
  * @file teams_adapter.cpp
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
+ * @author Lucas Haug <lucas.haug@thunderatz.org>
  * @brief Teams commands adapter execution file
  * @date 04/2021
  *
@@ -25,11 +26,8 @@ int main(int argc, char** argv) {
     ros::init(argc, argv, "teams_adapter");
     ros::NodeHandle nh;
 
-    int32_t send_rate;
     int32_t yellow_port, blue_port;
     std::string yellow_address_str, blue_address_str;
-
-    ros::param::param<int32_t>("send_rate", send_rate, 60);
 
     if (!ros::param::get("teams_control_client/yellow/port", yellow_port) ||
         !ros::param::get("teams_control_client/yellow/address", yellow_address_str)) {
@@ -50,17 +48,15 @@ int main(int argc, char** argv) {
 
     travesim::TeamCommand yellow_command, blue_command;
 
-    ros::Rate loop_rate(send_rate);
-
-    ROS_INFO_STREAM("Teams adapter started with loop rate " << send_rate);
+    ROS_INFO_STREAM("Teams adapter started!");
+    ROS_INFO_STREAM("Yellow team receiver endpoint: " << yellow_address_str << ":" << yellow_port);
+    ROS_INFO_STREAM("Blue team receiver endpoint: " << blue_address_str << ":" << blue_port);
 
     while (ros::ok()) {
-        yellow_receiver.receive(&yellow_command);
-        blue_receiver.receive(&blue_command);
-
-        teams_sender.send(&yellow_command, &blue_command);
+        if (yellow_receiver.receive(&yellow_command) || blue_receiver.receive(&blue_command)) {
+            teams_sender.send(&yellow_command, &blue_command);
+        }
 
         ros::spinOnce();
-        loop_rate.sleep();
     }
 }
