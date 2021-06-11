@@ -27,9 +27,9 @@ add_subdirectory(proto)
 
 ## Generate dynamic reconfigure parameters in the 'cfg' folder
 generate_dynamic_reconfigure_options(
-  cfg/vision.cfg
-  cfg/teams.cfg
-  cfg/replacer.cfg
+  cfg/Vision.cfg
+  cfg/Teams.cfg
+  cfg/Replacer.cfg
 )
 
 ###################################
