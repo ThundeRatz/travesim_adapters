@@ -11,6 +11,8 @@ add_compile_options(-Wall -Werror)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  dynamic_reconfigure
+  rospy
 )
 
 ## System dependencies are found with CMake's conventions
@@ -18,6 +20,14 @@ find_package(Boost REQUIRED COMPONENTS system thread)
 
 ## Add subdirectories
 add_subdirectory(proto)
+
+################################################
+## Declare ROS dynamic reconfigure parameters ##
+################################################
+
+## Generate dynamic reconfigure parameters in the 'cfg' folder
+generate_dynamic_reconfigure_options(
+)
 
 ###################################
 ## catkin specific configuration ##
@@ -125,11 +135,10 @@ add_executable(teams_adapter
   src/bin/teams_adapter.cpp
 )
 
-## Rename C++ executable without prefix
-## The above recommended prefix causes long target names, the following renames the
-## target back to the shorter version for ease of user use
-## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
-# set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
+## Add cmake target dependencies of the executables
+## same as for the libraries above
+
+# add_dependencies(<target> ${PROJECT_NAME}_gencfg)
 
 ## Specify libraries to link a library or executable target against
 
