@@ -17,58 +17,29 @@
  * Private Constants
  *****************************************/
 
-#define REPLACER_CONFIGURER_NAMESPACE "replacer"
+#define REPLACER_CONFIGURER_NAMESPACE BASE_CONFIGURER_NAMESPACE "replacer"
 
 namespace travesim {
 /*****************************************
  * Public Methods Bodies Definitions
  *****************************************/
 
-ReplacerConfigurer::ReplacerConfigurer(void) {
-    this->reconfigured = false;
-
-    this->node_handle = std::unique_ptr<ros::NodeHandle>(new ros::NodeHandle(REPLACER_CONFIGURER_NAMESPACE));
-
-    this->server = std::unique_ptr<server_t>(new server_t(this->mutex, *(this->node_handle)));
-
-    server_t::CallbackType server_cb;
-    server_cb = boost::bind(&ReplacerConfigurer::callback, this, _1, _2);
-    this->server->setCallback(server_cb);
-
-    // Update the default config in the dynamic reconfigurer
-    boost::recursive_mutex::scoped_lock scoped_lock(this->mutex);
-    this->server->getConfigDefault(this->config);
-    this->server->updateConfig(this->config);
+ReplacerConfigurer::ReplacerConfigurer(void) : AdapterConfigurer<travesim_adapters::ReplacerConfig>::AdapterConfigurer(REPLACER_CONFIGURER_NAMESPACE) {
 }
 
 std::string ReplacerConfigurer::get_address(void) {
+    boost::recursive_mutex::scoped_lock scoped_lock(this->mutex);
     return this->config.replacer_address;
 }
 
 uint16_t ReplacerConfigurer::get_port(void) {
+    boost::recursive_mutex::scoped_lock scoped_lock(this->mutex);
     return this->config.replacer_port;
 }
 
 bool ReplacerConfigurer::get_specific_source(void) {
+    boost::recursive_mutex::scoped_lock scoped_lock(this->mutex);
     return this->config.specific_source;
-}
-
-bool ReplacerConfigurer::get_reset(void) {
-    bool should_reset = this->config.reset || this->reconfigured;
-
-    if (should_reset) {
-        boost::recursive_mutex::scoped_lock scoped_lock(this->mutex);
-
-        this->reconfigured = false;
-
-        this->config.reset = this->reconfigured;
-
-        this->server->updateConfig(this->config);
-
-        return true;
-    }
-
-    return false;
 }
 
 std::ostream& operator <<(std::ostream& output, const ReplacerConfigurer& repl_conf) {
@@ -78,14 +49,5 @@ std::ostream& operator <<(std::ostream& output, const ReplacerConfigurer& repl_c
     output << "Reset: " << ((repl_conf.config.reset || repl_conf.reconfigured) ? "True" : "False") << std::endl;
 
     return output;
-}
-
-/*****************************************
- * Private Methods Bodies Definitions
- *****************************************/
-
-void ReplacerConfigurer::callback(travesim_adapters::ReplacerConfig& config, uint32_t level) {
-    this->config = config;
-    this->reconfigured = true;
 }
 }
