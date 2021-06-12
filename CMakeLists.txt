@@ -91,6 +91,10 @@ add_library(${PROJECT_NAME}_protobuf_comm
   src/lib/protobuf/replacer_receiver.cpp
 )
 
+add_library(${PROJECT_NAME}_configurers
+  src/lib/configurers/replacer_configurer.cpp
+)
+
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 
@@ -130,6 +134,10 @@ add_executable(replacer_receiver_example
   examples/protobuf/replacer_receiver_example.cpp
 )
 
+add_executable(replacer_configurer_example
+  examples/configurers/replacer_configurer_example.cpp
+)
+
 add_executable(vision_adapter
   src/bin/vision_adapter.cpp
 )
@@ -141,7 +149,7 @@ add_executable(teams_adapter
 ## Add cmake target dependencies of the executables
 ## same as for the libraries above
 
-# add_dependencies(<target> ${PROJECT_NAME}_gencfg)
+add_dependencies(${PROJECT_NAME}_configurers ${PROJECT_NAME}_gencfg)
 
 ## Specify libraries to link a library or executable target against
 
@@ -201,6 +209,11 @@ target_link_libraries(team_receiver_example
 
 target_link_libraries(replacer_receiver_example
   ${PROJECT_NAME}_protobuf_comm
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(replacer_configurer_example
+  ${PROJECT_NAME}_configurers
   ${catkin_LIBRARIES}
 )
 
