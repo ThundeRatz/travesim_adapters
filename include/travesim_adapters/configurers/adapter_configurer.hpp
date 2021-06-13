@@ -31,7 +31,8 @@ namespace travesim {
  * Class Definition
  *****************************************/
 
-template <class AdapterConfigType> class AdapterConfigurer {
+template <class AdapterConfigType>
+class AdapterConfigurer {
     public:
         /**
          * @brief Construct a new AdapterConfigurer object
@@ -80,12 +81,13 @@ template <class AdapterConfigType> class AdapterConfigurer {
  * Class Public Methods Implementation
  *****************************************/
 
-template <class AdapterConfigType> AdapterConfigurer<AdapterConfigType>::AdapterConfigurer() : AdapterConfigurer(
+template <class AdapterConfigType>
+AdapterConfigurer<AdapterConfigType>::AdapterConfigurer() : AdapterConfigurer(
         BASE_CONFIGURER_NAMESPACE) {
 }
 
-template <class AdapterConfigType> AdapterConfigurer<AdapterConfigType>::AdapterConfigurer(std::string config_namespace)
-{
+template <class AdapterConfigType>
+AdapterConfigurer<AdapterConfigType>::AdapterConfigurer(std::string config_namespace) {
     this->reconfigured = false;
 
     this->node_handle = std::unique_ptr<ros::NodeHandle>(new ros::NodeHandle(config_namespace));
@@ -103,7 +105,8 @@ template <class AdapterConfigType> AdapterConfigurer<AdapterConfigType>::Adapter
     this->server->updateConfig(this->config);
 }
 
-template <class AdapterConfigType> bool AdapterConfigurer<AdapterConfigType>::get_reset(void) {
+template <class AdapterConfigType>
+bool AdapterConfigurer<AdapterConfigType>::get_reset(void) {
     bool should_reset = this->config.reset || this->reconfigured;
 
     if (should_reset) {
@@ -125,8 +128,8 @@ template <class AdapterConfigType> bool AdapterConfigurer<AdapterConfigType>::ge
  * Class Private Methods Implementation
  *****************************************/
 
-template <class AdapterConfigType> void AdapterConfigurer<AdapterConfigType>::callback(AdapterConfigType& config,
-                                                                                       uint32_t           level) {
+template <class AdapterConfigType>
+void AdapterConfigurer<AdapterConfigType>::callback(AdapterConfigType& config, uint32_t level) {
     this->config = config;
     this->reconfigured = true;
 }
