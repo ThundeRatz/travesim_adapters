@@ -12,6 +12,7 @@
  */
 
 #include "travesim_adapters/configurers/replacer_configurer.hpp"
+#include "travesim_adapters/configurers/configurers_utils.hpp"
 
 /*****************************************
  * Private Constants
@@ -30,7 +31,18 @@ ReplacerConfigurer::ReplacerConfigurer(void) : AdapterConfigurer<travesim_adapte
 
 std::string ReplacerConfigurer::get_address(void) {
     boost::recursive_mutex::scoped_lock scoped_lock(this->mutex);
-    return this->config.replacer_address;
+
+    std::string address = this->config.replacer_address;
+
+    IPValidationType validation = check_valid_ip(address, MIN_UNICAST_ADDRESS, MAX_UNICAST_ADDRESS);
+
+    if (validation == IPValidationType::VALID) {
+        return address;
+    } else {
+        ROS_ERROR_STREAM(get_error_msg(validation));
+
+        return INVALID_ADDRESS;
+    }
 }
 
 uint16_t ReplacerConfigurer::get_port(void) {

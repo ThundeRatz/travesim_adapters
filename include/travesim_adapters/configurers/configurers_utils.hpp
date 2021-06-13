@@ -14,6 +14,18 @@
 #include <string>
 #include <sstream>
 
+/*****************************************
+ * Public Constants
+ *****************************************/
+
+#define MIN_UNICAST_ADDRESS "127.0.0.0"
+#define MAX_UNICAST_ADDRESS "127.255.255.255"
+
+#define MIN_MULTICAST_ADDRESS "224.0.0.0"
+#define MAX_MULTICAST_ADDRESS "239.255.255.255"
+
+#define INVALID_ADDRESS "0.0.0.0"
+
 namespace travesim {
 /*****************************************
  * Public Types

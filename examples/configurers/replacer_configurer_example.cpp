@@ -31,6 +31,8 @@ int main(int argc, char** argv) {
     while (ros::ok()) {
         if (replacer_configurer.get_reset()) {
             ROS_INFO_STREAM("========== Current Config ==========" << std::endl << replacer_configurer);
+
+            std::string address = replacer_configurer.get_address();
         }
 
         ros::spinOnce();
