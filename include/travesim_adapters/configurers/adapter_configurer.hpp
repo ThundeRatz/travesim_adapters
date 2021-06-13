@@ -31,8 +31,7 @@ namespace travesim {
  * Class Definition
  *****************************************/
 
-template <class AdapterConfigType>
-class AdapterConfigurer {
+template <class AdapterConfigType> class AdapterConfigurer {
     public:
         /**
          * @brief Construct a new AdapterConfigurer object
@@ -65,7 +64,7 @@ class AdapterConfigurer {
     private:
         std::unique_ptr<ros::NodeHandle> node_handle;  /**< Pointer to ROS Node Handle */
 
-        std::unique_ptr<dynamic_reconfigure::Server<AdapterConfigType>> server; /**< Dynamic Reconfigure Server */
+        std::unique_ptr<dynamic_reconfigure::Server<AdapterConfigType>> server;  /**< Dynamic Reconfigure Server */
 
         /**
          * @brief Dynamic Reconfigure Server Callback
@@ -81,12 +80,12 @@ class AdapterConfigurer {
  * Class Public Methods Implementation
  *****************************************/
 
-template <class AdapterConfigType>
-AdapterConfigurer<AdapterConfigType>::AdapterConfigurer() : AdapterConfigurer(BASE_CONFIGURER_NAMESPACE) {
+template <class AdapterConfigType> AdapterConfigurer<AdapterConfigType>::AdapterConfigurer() : AdapterConfigurer(
+        BASE_CONFIGURER_NAMESPACE) {
 }
 
-template <class AdapterConfigType>
-AdapterConfigurer<AdapterConfigType>::AdapterConfigurer(std::string config_namespace) {
+template <class AdapterConfigType> AdapterConfigurer<AdapterConfigType>::AdapterConfigurer(std::string config_namespace)
+{
     this->reconfigured = false;
 
     this->node_handle = std::unique_ptr<ros::NodeHandle>(new ros::NodeHandle(config_namespace));
@@ -104,8 +103,7 @@ AdapterConfigurer<AdapterConfigType>::AdapterConfigurer(std::string config_names
     this->server->updateConfig(this->config);
 }
 
-template <class AdapterConfigType>
-bool AdapterConfigurer<AdapterConfigType>::get_reset(void) {
+template <class AdapterConfigType> bool AdapterConfigurer<AdapterConfigType>::get_reset(void) {
     bool should_reset = this->config.reset || this->reconfigured;
 
     if (should_reset) {
@@ -127,8 +125,8 @@ bool AdapterConfigurer<AdapterConfigType>::get_reset(void) {
  * Class Private Methods Implementation
  *****************************************/
 
-template <class AdapterConfigType>
-void AdapterConfigurer<AdapterConfigType>::callback(AdapterConfigType& config, uint32_t level) {
+template <class AdapterConfigType> void AdapterConfigurer<AdapterConfigType>::callback(AdapterConfigType& config,
+                                                                                       uint32_t           level) {
     this->config = config;
     this->reconfigured = true;
 }

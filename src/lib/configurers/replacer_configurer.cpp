@@ -24,7 +24,8 @@ namespace travesim {
  * Public Methods Bodies Definitions
  *****************************************/
 
-ReplacerConfigurer::ReplacerConfigurer(void) : AdapterConfigurer<travesim_adapters::ReplacerConfig>::AdapterConfigurer(REPLACER_CONFIGURER_NAMESPACE) {
+ReplacerConfigurer::ReplacerConfigurer(void) : AdapterConfigurer<travesim_adapters::ReplacerConfig>::AdapterConfigurer(
+        REPLACER_CONFIGURER_NAMESPACE) {
 }
 
 std::string ReplacerConfigurer::get_address(void) {

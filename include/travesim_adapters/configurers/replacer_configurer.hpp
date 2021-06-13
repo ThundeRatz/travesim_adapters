@@ -25,7 +25,8 @@ namespace travesim {
  * @brief ReplacerConfigurer class definition
  */
 
-class ReplacerConfigurer : public AdapterConfigurer<travesim_adapters::ReplacerConfig> {
+class ReplacerConfigurer :
+    public AdapterConfigurer<travesim_adapters::ReplacerConfig> {
     public:
         /**
          * @brief Construct a new ReplacerConfigurer object
