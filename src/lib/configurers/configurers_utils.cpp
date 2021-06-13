@@ -77,6 +77,7 @@ IPValidationType check_valid_ip(std::string ip, std::string min_ip, std::string 
     uint min_ip_uint[IPV4_NUM_OF_BYTES] = {0};
     uint max_ip_uint[IPV4_NUM_OF_BYTES] = {0};
 
+    // Check formats
     if (!ipv4_string_to_uint(ip, ip_uint)) {
         return IPValidationType::INVALID_FORMAT;
     }
@@ -89,18 +90,37 @@ IPValidationType check_valid_ip(std::string ip, std::string min_ip, std::string 
         return IPValidationType::INVALID_FORMAT;
     }
 
+    // Check numbers
     for (uint i = 0; i < IPV4_NUM_OF_BYTES; i++) {
         if (ip_uint[i] > 0xFF) {
             return IPValidationType::INVALID_NUMBERS;
         }
 
-        if (ip_uint[i] > max_ip_uint[i]) {
-            return IPValidationType::OUT_OF_RANGE;
+        if (min_ip_uint[i] > 0xFF) {
+            return IPValidationType::INVALID_NUMBERS;
         }
 
-        if (ip_uint[i] < min_ip_uint[i]) {
-            return IPValidationType::OUT_OF_RANGE;
+        if (max_ip_uint[i] > 0xFF) {
+            return IPValidationType::INVALID_NUMBERS;
         }
+    }
+
+    // Check range
+    uint32_t ip_num = 0;
+    uint32_t max_num = 0;
+    uint32_t min_num = 0;
+
+    for (uint8_t i = 0; i < IPV4_NUM_OF_BYTES; i++) {
+        ip_num = ip_num << 8;
+        ip_num += ip_uint[i];
+        min_num = min_num << 8;
+        min_num += min_ip_uint[i];
+        max_num = max_num << 8;
+        max_num += max_ip_uint[i];
+    }
+
+    if ((ip_num < min_num) || (ip_num > max_num)) {
+        return IPValidationType::OUT_OF_RANGE;
     }
 
     return IPValidationType::VALID;
