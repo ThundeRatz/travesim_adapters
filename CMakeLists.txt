@@ -95,6 +95,7 @@ add_library(${PROJECT_NAME}_configurers
   src/lib/configurers/configurers_utils.cpp
   src/lib/configurers/replacer_configurer.cpp
   src/lib/configurers/teams_configurer.cpp
+  src/lib/configurers/vision_configurer.cpp
 )
 
 ## Declare a C++ executable
@@ -142,6 +143,10 @@ add_executable(replacer_configurer_example
 
 add_executable(teams_configurer_example
   examples/configurers/teams_configurer_example.cpp
+)
+
+add_executable(vision_configurer_example
+  examples/configurers/vision_configurer_example.cpp
 )
 
 add_executable(vision_adapter
@@ -224,6 +229,11 @@ target_link_libraries(replacer_configurer_example
 )
 
 target_link_libraries(teams_configurer_example
+  ${PROJECT_NAME}_configurers
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(vision_configurer_example
   ${PROJECT_NAME}_configurers
   ${catkin_LIBRARIES}
 )
