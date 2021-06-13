@@ -86,12 +86,13 @@ TEST(configurers_utils, get_error_msg)
 {
     using namespace travesim;
 
-    EXPECT_EQ(get_error_msg(IPValidationType::VALID), "No error");
-    EXPECT_EQ(get_error_msg(IPValidationType::INVALID_FORMAT), "The IP string is wrong formatted");
+    EXPECT_EQ(get_error_msg(IPValidationType::VALID), "No error.");
+    EXPECT_EQ(get_error_msg(IPValidationType::INVALID_FORMAT), "The IP string is wrong formatted.");
     EXPECT_EQ(get_error_msg(IPValidationType::INVALID_NUMBERS),
-              "The numbers on the ip are not representable by 8 bits");
-    EXPECT_EQ(get_error_msg(IPValidationType::OUT_OF_RANGE), "The IP is not in the specified range");
-    EXPECT_EQ(get_error_msg(IPValidationType(42)), "No error");
+              "The numbers on the ip are not representable by 8 bits.");
+    EXPECT_EQ(get_error_msg(IPValidationType::OUT_OF_RANGE),
+              "The IP is not in the specified range. Hover over the parameterto see the range.");
+    EXPECT_EQ(get_error_msg(IPValidationType(42)), "No error.");
 }
 
 // Run all the tests that were declared with TEST()

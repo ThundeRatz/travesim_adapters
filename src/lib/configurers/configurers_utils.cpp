@@ -129,19 +129,19 @@ IPValidationType check_valid_ip(std::string ip, std::string min_ip, std::string 
 std::string get_error_msg(IPValidationType error) {
     switch (error) {
         case (IPValidationType::INVALID_FORMAT): {
-            return "The IP string is wrong formatted";
+            return "The IP string is wrong formatted.";
         }
 
         case (IPValidationType::INVALID_NUMBERS): {
-            return "The numbers on the ip are not representable by 8 bits";
+            return "The numbers on the ip are not representable by 8 bits.";
         }
 
         case (IPValidationType::OUT_OF_RANGE): {
-            return "The IP is not in the specified range";
+            return "The IP is not in the specified range. Hover over the parameterto see the range.";
         }
 
         default: {
-            return "No error";
+            return "No error.";
         }
     }
 }
