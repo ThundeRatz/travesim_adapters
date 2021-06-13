@@ -14,11 +14,25 @@
 #include <string>
 #include <sstream>
 
+namespace travesim {
+/*****************************************
+ * Public Types
+ *****************************************/
+
+/**
+ * @brief Type used to validate a IP string
+ */
+enum IPValidationType {
+    VALID,           /**< Valid IP address */
+    INVALID_FORMAT,  /**< Wrong formatted IP string */
+    INVALID_NUMBERS, /**< The numbers on the ip are not representable by 8 bits */
+    OUT_OF_RANGE     /**< The IP is not in the specified range */
+};
+
 /*****************************************
  * Public Funtions Prototypes
  *****************************************/
 
-namespace travesim {
 /**
  * @brief Converts a IPv4 in a string to a array of unsigned integers,
  *        where the most significant byte of the IP address is in the
@@ -42,7 +56,16 @@ bool ipv4_string_to_uint(std::string ip_string, uint* ip_uint);
  * @param min_ip Minimum IP interval value
  * @param max_ip Maximum IP interval value
  *
- * @return true if the IP is valid, false otherwise
+ * @return @ref IPValidationType
  */
-bool check_valid_ip(std::string ip, std::string min_ip, std::string max_ip);
+IPValidationType check_valid_ip(std::string ip, std::string min_ip, std::string max_ip);
+
+/**
+ * @brief Get the error msg based on the validation type
+ *
+ * @param error Which error to get the message
+ *
+ * @return std::string representing the error
+ */
+std::string get_error_msg(IPValidationType error);
 }  // namespace travesim
