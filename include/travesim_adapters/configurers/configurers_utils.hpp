@@ -21,8 +21,7 @@ namespace travesim {
  *        where the most significant byte of the IP address is in the
  *        position 0 and the last significant in the position 3.
  *
- * @note Expects IPv4 in the format "x.y.z.w",
- *       where x, y, z and w are numbers.
+ * @note Expects IPv4 in the quad-dotted notation.
  *
  * @param ip_string IPv4 string to be converted
  * @param ip_uint Pointer where to store the converted IPv4
@@ -34,8 +33,7 @@ bool ipv4_string_to_uint(std::string ip_string, uint* ip_uint);
 /**
  * @brief Checks if a IP is valid and is in the specified range
  *
- * @note Expects IPv4 in the format "x.y.z.w",
- *       where x, y, z and w are numbers.
+ * @note Expects IPv4 in the quad-dotted notation.
  *
  * @param ip IP string to be converted
  * @param min_ip Minimum IP interval value
