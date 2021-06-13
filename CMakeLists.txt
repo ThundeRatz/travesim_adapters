@@ -92,6 +92,7 @@ add_library(${PROJECT_NAME}_protobuf_comm
 )
 
 add_library(${PROJECT_NAME}_configurers
+  src/lib/configurers/configurers_utils.cpp
   src/lib/configurers/replacer_configurer.cpp
 )
 

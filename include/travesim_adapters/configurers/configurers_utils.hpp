@@ -11,6 +11,9 @@
  *
  */
 
+#include <string>
+#include <sstream>
+
 /*****************************************
  * Public Funtions Prototypes
  *****************************************/

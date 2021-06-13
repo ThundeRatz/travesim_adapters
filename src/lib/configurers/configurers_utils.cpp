@@ -11,6 +11,8 @@
  *
  */
 
+#include "travesim_adapters/configurers/configurers_utils.hpp"
+
 /*****************************************
  * Private Constants
  *****************************************/
@@ -37,7 +39,7 @@ bool ipv4_string_to_uint(std::string ip_string, uint* ip_uint) {
         }
     }
 
-    for (int i = 1; i < IPV4_NUM_OF_BYTES; i++) {
+    for (uint i = 1; i < IPV4_NUM_OF_BYTES; i++) {
         if (ip_stream.rdbuf()->in_avail() == 0) {
             return false;
         } else {
@@ -87,7 +89,7 @@ bool check_valid_ip(std::string ip, std::string min_ip, std::string max_ip) {
         return false;
     }
 
-    for (int i = 0; i < IPV4_NUM_OF_BYTES; i++) {
+    for (uint i = 0; i < IPV4_NUM_OF_BYTES; i++) {
         if (ip_uint[i] > 0xFF) {
             return false;
         }
