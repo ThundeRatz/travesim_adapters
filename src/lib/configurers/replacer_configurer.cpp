@@ -56,8 +56,8 @@ bool ReplacerConfigurer::get_specific_source(void) {
 }
 
 std::ostream& operator <<(std::ostream& output, const ReplacerConfigurer& repl_conf) {
-    output << "Replacer Address: " << repl_conf.config.replacer_address << std::endl;
-    output << "Replacer Port: " << repl_conf.config.replacer_port << std::endl;
+    output << "Replacer Endpoint: " << repl_conf.config.replacer_address;
+    output << ":" << repl_conf.config.replacer_port << std::endl;
     output << "Specific Source: " << (repl_conf.config.specific_source ? "True" : "False") << std::endl;
     output << "Reset: " << ((repl_conf.config.reset || repl_conf.reconfigured) ? "True" : "False") << std::endl;
 
