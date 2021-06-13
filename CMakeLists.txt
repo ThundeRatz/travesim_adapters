@@ -261,6 +261,10 @@ if(CATKIN_ENABLE_TESTING)
     src/lib/data/converter/test/ros_side.test.cpp
   )
 
+  catkin_add_gtest(configurers_utils.test
+    src/lib/configurers/test/configurers_utils.test.cpp
+  )
+
   add_rostest_gtest(vision_adapter.test
     test/vision_adapter.test
     src/bin/test/vision_adapter.test.cpp
@@ -269,6 +273,11 @@ if(CATKIN_ENABLE_TESTING)
   target_link_libraries(ros_side_converter.test
     ${PROJECT_NAME}_core
     ${PROJECT_NAME}_ros
+    ${catkin_LIBRARIES}
+  )
+
+  target_link_libraries(configurers_utils.test
+    ${PROJECT_NAME}_configurers
     ${catkin_LIBRARIES}
   )
 
