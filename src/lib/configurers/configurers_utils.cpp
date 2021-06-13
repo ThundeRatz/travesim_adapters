@@ -72,36 +72,36 @@ bool ipv4_string_to_uint(std::string ip_string, uint* ip_uint) {
     return true;
 }
 
-IPValidationType check_valid_ip(std::string ip, std::string min_ip, std::string max_ip) {
+IPValidation check_valid_ip(std::string ip, std::string min_ip, std::string max_ip) {
     uint ip_uint[IPV4_NUM_OF_BYTES] = {0};
     uint min_ip_uint[IPV4_NUM_OF_BYTES] = {0};
     uint max_ip_uint[IPV4_NUM_OF_BYTES] = {0};
 
     // Check formats
     if (!ipv4_string_to_uint(ip, ip_uint)) {
-        return IPValidationType::INVALID_FORMAT;
+        return IPValidation::INVALID_FORMAT;
     }
 
     if (!ipv4_string_to_uint(min_ip, min_ip_uint)) {
-        return IPValidationType::INVALID_FORMAT;
+        return IPValidation::INVALID_FORMAT;
     }
 
     if (!ipv4_string_to_uint(max_ip, max_ip_uint)) {
-        return IPValidationType::INVALID_FORMAT;
+        return IPValidation::INVALID_FORMAT;
     }
 
     // Check numbers
     for (uint i = 0; i < IPV4_NUM_OF_BYTES; i++) {
         if (ip_uint[i] > 0xFF) {
-            return IPValidationType::INVALID_NUMBERS;
+            return IPValidation::INVALID_NUMBERS;
         }
 
         if (min_ip_uint[i] > 0xFF) {
-            return IPValidationType::INVALID_NUMBERS;
+            return IPValidation::INVALID_NUMBERS;
         }
 
         if (max_ip_uint[i] > 0xFF) {
-            return IPValidationType::INVALID_NUMBERS;
+            return IPValidation::INVALID_NUMBERS;
         }
     }
 
@@ -120,23 +120,23 @@ IPValidationType check_valid_ip(std::string ip, std::string min_ip, std::string 
     }
 
     if ((ip_num < min_num) || (ip_num > max_num)) {
-        return IPValidationType::OUT_OF_RANGE;
+        return IPValidation::OUT_OF_RANGE;
     }
 
-    return IPValidationType::VALID;
+    return IPValidation::VALID;
 }
 
-std::string get_error_msg(IPValidationType error) {
+std::string get_error_msg(IPValidation error) {
     switch (error) {
-        case (IPValidationType::INVALID_FORMAT): {
+        case (IPValidation::INVALID_FORMAT): {
             return "The IP string is wrong formatted.";
         }
 
-        case (IPValidationType::INVALID_NUMBERS): {
+        case (IPValidation::INVALID_NUMBERS): {
             return "The numbers on the ip are not representable by 8 bits.";
         }
 
-        case (IPValidationType::OUT_OF_RANGE): {
+        case (IPValidation::OUT_OF_RANGE): {
             return "The IP is not in the specified range. Hover over the parameterto see the range.";
         }
 

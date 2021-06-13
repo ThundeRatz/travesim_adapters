@@ -34,7 +34,7 @@ namespace travesim {
 /**
  * @brief Type used to validate a IP string
  */
-enum IPValidationType {
+enum IPValidation {
     VALID,           /**< Valid IP address */
     INVALID_FORMAT,  /**< Wrong formatted IP string */
     INVALID_NUMBERS, /**< The numbers on the ip are not representable by 8 bits */
@@ -68,9 +68,9 @@ bool ipv4_string_to_uint(std::string ip_string, uint* ip_uint);
  * @param min_ip Minimum IP interval value
  * @param max_ip Maximum IP interval value
  *
- * @return @ref IPValidationType
+ * @return @ref IPValidation
  */
-IPValidationType check_valid_ip(std::string ip, std::string min_ip, std::string max_ip);
+IPValidation check_valid_ip(std::string ip, std::string min_ip, std::string max_ip);
 
 /**
  * @brief Get the error msg based on the validation type
@@ -79,5 +79,5 @@ IPValidationType check_valid_ip(std::string ip, std::string min_ip, std::string 
  *
  * @return std::string representing the error
  */
-std::string get_error_msg(IPValidationType error);
+std::string get_error_msg(IPValidation error);
 }  // namespace travesim

@@ -34,9 +34,9 @@ std::string ReplacerConfigurer::get_address(void) {
 
     std::string address = this->config.replacer_address;
 
-    IPValidationType validation = check_valid_ip(address, MIN_UNICAST_ADDRESS, MAX_UNICAST_ADDRESS);
+    IPValidation validation = check_valid_ip(address, MIN_UNICAST_ADDRESS, MAX_UNICAST_ADDRESS);
 
-    if (validation == IPValidationType::VALID) {
+    if (validation == IPValidation::VALID) {
         return address;
     } else {
         ROS_ERROR_STREAM(get_error_msg(validation));

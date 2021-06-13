@@ -40,9 +40,9 @@ std::string TeamsConfigurer::get_address(TeamColor color) {
         address = this->config.blue_team_address;
     }
 
-    IPValidationType validation = check_valid_ip(address, MIN_UNICAST_ADDRESS, MAX_UNICAST_ADDRESS);
+    IPValidation validation = check_valid_ip(address, MIN_UNICAST_ADDRESS, MAX_UNICAST_ADDRESS);
 
-    if (validation == IPValidationType::VALID) {
+    if (validation == IPValidation::VALID) {
         return address;
     } else {
         ROS_ERROR_STREAM(get_error_msg(validation));
