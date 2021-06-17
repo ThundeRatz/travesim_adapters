@@ -11,6 +11,8 @@ add_compile_options(-Wall -Werror)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  dynamic_reconfigure
+  rospy
 )
 
 ## System dependencies are found with CMake's conventions
@@ -18,6 +20,17 @@ find_package(Boost REQUIRED COMPONENTS system thread)
 
 ## Add subdirectories
 add_subdirectory(proto)
+
+################################################
+## Declare ROS dynamic reconfigure parameters ##
+################################################
+
+## Generate dynamic reconfigure parameters in the 'cfg' folder
+generate_dynamic_reconfigure_options(
+  cfg/Vision.cfg
+  cfg/Teams.cfg
+  cfg/Replacer.cfg
+)
 
 ###################################
 ## catkin specific configuration ##
@@ -78,6 +91,13 @@ add_library(${PROJECT_NAME}_protobuf_comm
   src/lib/protobuf/replacer_receiver.cpp
 )
 
+add_library(${PROJECT_NAME}_configurers
+  src/lib/configurers/configurers_utils.cpp
+  src/lib/configurers/replacer_configurer.cpp
+  src/lib/configurers/teams_configurer.cpp
+  src/lib/configurers/vision_configurer.cpp
+)
+
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 
@@ -117,6 +137,18 @@ add_executable(replacer_receiver_example
   examples/protobuf/replacer_receiver_example.cpp
 )
 
+add_executable(replacer_configurer_example
+  examples/configurers/replacer_configurer_example.cpp
+)
+
+add_executable(teams_configurer_example
+  examples/configurers/teams_configurer_example.cpp
+)
+
+add_executable(vision_configurer_example
+  examples/configurers/vision_configurer_example.cpp
+)
+
 add_executable(vision_adapter
   src/bin/vision_adapter.cpp
 )
@@ -125,11 +157,10 @@ add_executable(teams_adapter
   src/bin/teams_adapter.cpp
 )
 
-## Rename C++ executable without prefix
-## The above recommended prefix causes long target names, the following renames the
-## target back to the shorter version for ease of user use
-## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
-# set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
+## Add cmake target dependencies of the executables
+## same as for the libraries above
+
+add_dependencies(${PROJECT_NAME}_configurers ${PROJECT_NAME}_gencfg)
 
 ## Specify libraries to link a library or executable target against
 
@@ -192,6 +223,21 @@ target_link_libraries(replacer_receiver_example
   ${catkin_LIBRARIES}
 )
 
+target_link_libraries(replacer_configurer_example
+  ${PROJECT_NAME}_configurers
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(teams_configurer_example
+  ${PROJECT_NAME}_configurers
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(vision_configurer_example
+  ${PROJECT_NAME}_configurers
+  ${catkin_LIBRARIES}
+)
+
 target_link_libraries(vision_adapter
   ${PROJECT_NAME}_ros
   ${PROJECT_NAME}_protobuf_comm
@@ -235,6 +281,10 @@ if(CATKIN_ENABLE_TESTING)
     src/lib/data/converter/test/ros_side.test.cpp
   )
 
+  catkin_add_gtest(configurers_utils.test
+    src/lib/configurers/test/configurers_utils.test.cpp
+  )
+
   add_rostest_gtest(vision_adapter.test
     test/vision_adapter.test
     src/bin/test/vision_adapter.test.cpp
@@ -243,6 +293,11 @@ if(CATKIN_ENABLE_TESTING)
   target_link_libraries(ros_side_converter.test
     ${PROJECT_NAME}_core
     ${PROJECT_NAME}_ros
+    ${catkin_LIBRARIES}
+  )
+
+  target_link_libraries(configurers_utils.test
+    ${PROJECT_NAME}_configurers
     ${catkin_LIBRARIES}
   )
 
