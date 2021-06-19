@@ -10,7 +10,7 @@
 
 #include "travesim_adapters/data/converter/ros_side.hpp"
 
-#define quaternion_to_theta(q0, q1, q2, q3) atan2(2*(q0*q1+q2*q3), 1 - 2*(q1*q1 + q2*q2))
+#define quaternion_to_theta(qw, qx, qy, qz) atan2(2 * (qw * qz + qx * qy), 1 - 2 * (qy * qy + qz * qz))
 
 typedef std::unordered_map<std::string, travesim::EntityState*> lookup_table_t;
 
@@ -86,9 +86,9 @@ gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, dou
     retval.pose.position = Vector2D_to_Point(&entity_state->position, z);
 
     retval.pose.orientation.w = cos(entity_state->angular_position/2);
-    retval.pose.orientation.x = sin(entity_state->angular_position/2);
+    retval.pose.orientation.x = 0;
     retval.pose.orientation.y = 0;
-    retval.pose.orientation.z = 0;
+    retval.pose.orientation.z = sin(entity_state->angular_position/2);
 
     retval.twist.linear = Vector2D_to_Vector3(&entity_state->velocity);
 
