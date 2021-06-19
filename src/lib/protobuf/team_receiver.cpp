@@ -26,16 +26,13 @@
 
 namespace travesim {
 namespace proto {
-TeamReceiver::TeamReceiver(const std::string receiver_address, const short receiver_port, bool is_yellow) {
+TeamReceiver::TeamReceiver(const std::string receiver_address, const short receiver_port, bool is_yellow,
+                           bool force_specific_source) {
     this->unicast_receiver =
-        new udp::UnicastReceiver(receiver_address, receiver_port);
-    this->unicast_receiver->force_specific_source(true);
+        std::unique_ptr<udp::UnicastReceiver>(new udp::UnicastReceiver(receiver_address, receiver_port));
+    this->unicast_receiver->force_specific_source(force_specific_source);
 
     this->is_yellow = is_yellow;
-}
-
-TeamReceiver::~TeamReceiver() {
-    delete this->unicast_receiver;
 }
 
 bool TeamReceiver::receive(TeamCommand* p_team_cmd) {
