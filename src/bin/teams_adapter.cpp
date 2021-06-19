@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
             blue_port = teams_configurer.get_port(travesim::TeamsConfigurer::TeamColor::BLUE);
             blue_address_str = teams_configurer.get_address(travesim::TeamsConfigurer::TeamColor::BLUE);
 
-            specific_source = teams_configurer.get_specific_source();;
+            specific_source = teams_configurer.get_specific_source();
 
             // Reconfigure yellow team
             yellow_receiver.set_receiver_endpoint(yellow_address_str, yellow_port);

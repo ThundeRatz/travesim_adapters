@@ -46,7 +46,7 @@ class VisionReceiver {
          */
         void receive_callback(const gazebo_msgs::ModelStates::ConstPtr& msg);
 
-        public:
+    public:
         /**
          * @brief Construct a new Vision Receiver object
          *
