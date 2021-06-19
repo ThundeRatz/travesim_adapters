@@ -61,7 +61,10 @@ bool ReplacerReceiver::receive(std::queue<std::shared_ptr<EntityState>>* p_repla
 
 void ReplacerReceiver::set_receiver_endpoint(const std::string receiver_address, const short receiver_port) {
     this->unicast_receiver->set_receiver_endpoint(receiver_address, receiver_port);
-    this->unicast_receiver->reset();
+}
+
+void ReplacerReceiver::force_specific_source(bool force_specific_source) {
+    this->unicast_receiver->force_specific_source(force_specific_source);
 }
 
 void ReplacerReceiver::reset(void) {

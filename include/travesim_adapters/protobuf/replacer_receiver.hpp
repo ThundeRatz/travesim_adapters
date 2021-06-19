@@ -66,6 +66,14 @@ class ReplacerReceiver {
         void set_receiver_endpoint(const std::string receiver_address, const short receiver_port);
 
         /**
+         * @brief Set wheter to enable any source or source specific multicast.
+         *        True for specific source, false for any source, default is false.
+         *
+         * @param force_specific_source Whether to enable source specific or not.
+         */
+        void force_specific_source(bool force_specific_source);
+
+        /**
          * @brief Reset the receiver
          */
         void reset(void);

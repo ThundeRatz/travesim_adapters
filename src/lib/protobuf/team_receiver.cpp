@@ -61,7 +61,10 @@ bool TeamReceiver::receive(TeamCommand* p_team_cmd) {
 void TeamReceiver::set_receiver_endpoint(const std::string receiver_address, const short receiver_port) {
     this->unicast_receiver->set_receiver_endpoint(receiver_address,
                                                   receiver_port);
-    this->unicast_receiver->reset();
+}
+
+void TeamReceiver::force_specific_source(bool force_specific_source) {
+    this->unicast_receiver->force_specific_source(force_specific_source);
 }
 
 void TeamReceiver::reset(void) {
