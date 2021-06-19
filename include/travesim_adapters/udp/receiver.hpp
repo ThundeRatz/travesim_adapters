@@ -62,7 +62,7 @@ class Receiver {
         size_t receive_latest(char* buffer, const size_t buffer_size);
 
         /**
-         * @brief Set wheter to enable any source or source specific multicast.
+         * @brief Set wheter to enable any source or source specific.
          *        True for specific source, false for any source, default is false.
          *
          * @param specific_source Whether to enable source specific or not.
