@@ -241,6 +241,7 @@ target_link_libraries(vision_configurer_example
 target_link_libraries(vision_adapter
   ${PROJECT_NAME}_ros
   ${PROJECT_NAME}_protobuf_comm
+  ${PROJECT_NAME}_configurers
   ${catkin_LIBRARIES}
 )
 

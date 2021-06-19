@@ -21,6 +21,7 @@
 #include "travesim_adapters/data/robot_state.hpp"
 #include "travesim_adapters/data/entity_state.hpp"
 #include "travesim_adapters/protobuf/vision_sender.hpp"
+#include "travesim_adapters/configurers/vision_configurer.hpp"
 
 #include <iostream>
 
@@ -28,14 +29,10 @@ int main(int argc, char** argv) {
     ros::init(argc, argv, "vision_adapter");
     ros::NodeHandle nh;
 
-    int32_t multicast_port;
-    std::string multicast_address_str;
+    travesim::VisionConfigurer vision_configurer;
 
-    if (!ros::param::get("vision_multicast_group/port", multicast_port) ||
-        !ros::param::get("vision_multicast_group/address", multicast_address_str)) {
-        ROS_ERROR_STREAM("Couldn't load multicast port or address!");
-        ros::shutdown();
-    }
+    int32_t multicast_port = vision_configurer.get_port();
+    std::string multicast_address_str = vision_configurer.get_address();
 
     travesim::ros_side::VisionReceiver vision_receiver;
     travesim::proto::VisionSender vision_sender(multicast_address_str, multicast_port);
@@ -43,7 +40,7 @@ int main(int argc, char** argv) {
     travesim::FieldState field_state;
     gazebo_msgs::ModelStates::ConstPtr world_state;
 
-    ROS_INFO_STREAM("Vision sender multicast endpoint " << multicast_address_str << ":" << multicast_port);
+    ROS_INFO_STREAM("Vision adapter config:" << std::endl << vision_configurer);
 
     field_state.time_step = 0;
 
@@ -52,6 +49,15 @@ int main(int argc, char** argv) {
             field_state = travesim::converter::ModelStates_to_FieldState(world_state);
             vision_sender.send(&field_state);
             field_state.time_step++;
+        }
+
+        if (vision_configurer.get_reset()) {
+            multicast_port = vision_configurer.get_port();
+            multicast_address_str = vision_configurer.get_address();
+
+            vision_sender.set_multicast_endpoint(multicast_address_str, multicast_port);
+
+            ROS_INFO_STREAM("Vision adapter config:" << std::endl << vision_configurer);
         }
 
         ros::spinOnce();
