@@ -86,9 +86,9 @@ gazebo_msgs::ModelState EntityState_to_ModelState(EntityState* entity_state, dou
     retval.pose.position = Vector2D_to_Point(&entity_state->position, z);
 
     retval.pose.orientation.w = cos(entity_state->angular_position/2);
-    retval.pose.orientation.x = sin(entity_state->angular_position/2);
+    retval.pose.orientation.x = 0;
     retval.pose.orientation.y = 0;
-    retval.pose.orientation.z = 0;
+    retval.pose.orientation.z = sin(entity_state->angular_position/2);
 
     retval.twist.linear = Vector2D_to_Vector3(&entity_state->velocity);
 
