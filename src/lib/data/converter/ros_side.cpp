@@ -10,7 +10,7 @@
 
 #include "travesim_adapters/data/converter/ros_side.hpp"
 
-#define quaternion_to_theta(q0, q1, q2, q3) atan2(2*(q0*q1+q2*q3), 1 - 2*(q1*q1 + q2*q2))
+#define quaternion_to_theta(qw, qx, qy, qz) atan2(2 * (qw * qz + qx * qy), 1 - 2 * (qy * qy + qz * qz))
 
 typedef std::unordered_map<std::string, travesim::EntityState*> lookup_table_t;
 
