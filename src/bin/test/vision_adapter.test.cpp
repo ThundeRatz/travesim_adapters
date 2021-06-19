@@ -27,13 +27,11 @@
 TEST(vision_adapter, relay_messages)
 {
     std::string listen_address_str = "0.0.0.0";
-    std::string multicast_address_str;
-    int32_t multicast_port;
 
     char data_buff[BUFFER_SIZE];
 
-    ros::param::param<int32_t>("vision_multicast_group/port", multicast_port, 10002);
-    ros::param::param<std::string>("vision_multicast_group/address", multicast_address_str, "224.0.0.1");
+    uint16_t multicast_port = 10002;
+    std::string multicast_address_str = "224.0.0.1";
 
     travesim::udp::MulticastReceiver my_receiver(multicast_address_str, multicast_port);
 

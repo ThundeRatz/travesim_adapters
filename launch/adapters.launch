@@ -1,6 +1,4 @@
 <launch>
-  <rosparam command="load" file="$(find travesim_adapters)/config/network.yml" />
-
   <include file="$(find travesim)/launch/simulation_match.launch">
     <arg name="twist_interface" value="false"/>
   </include>
