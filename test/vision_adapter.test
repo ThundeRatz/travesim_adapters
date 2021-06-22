@@ -5,8 +5,6 @@
 
   <!-- <env name="ROSCONSOLE_FORMAT" value="[${severity}] [${file}:${line}]: ${message}"/> -->
 
-  <rosparam command="load" file="$(find travesim_adapters)/config/network.yml" />
-
   <node pkg="rosbag" type="play" name="player" output="screen" args="--loop $(find travesim_adapters)/test/mocks/gazebo_model_states.bag"/>
 
   <node name="vision_adapter" pkg="travesim_adapters" type="vision_adapter" output="screen"/>
