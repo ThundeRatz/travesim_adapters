@@ -37,7 +37,22 @@ int main(int argc, char** argv) {
     travesim::ros_side::VisionReceiver vision_receiver;
     travesim::proto::VisionSender vision_sender(multicast_address_str, multicast_port);
 
-    travesim::FieldState field_state;
+    int robots_per_team;
+
+    ros::param::param<int>("/robots_per_team", robots_per_team, travesim::TeamsFormation::THREE_ROBOTS_PER_TEAM);
+
+    travesim::TeamsFormation teams_formation;
+
+    if (robots_per_team == int(travesim::TeamsFormation::THREE_ROBOTS_PER_TEAM)) {
+        teams_formation = travesim::TeamsFormation::THREE_ROBOTS_PER_TEAM;
+    } else if (robots_per_team == int(travesim::TeamsFormation::FIVE_ROBOTS_PER_TEAM)) {
+        teams_formation = travesim::TeamsFormation::FIVE_ROBOTS_PER_TEAM;
+    } else {
+        ROS_ERROR_STREAM("Invalid number of robots per team");
+        ros::shutdown();
+    }
+
+    travesim::FieldState field_state(teams_formation);
     gazebo_msgs::ModelStates::ConstPtr world_state;
 
     ROS_INFO_STREAM("Vision adapter config:" << std::endl << vision_configurer);
@@ -46,7 +61,7 @@ int main(int argc, char** argv) {
 
     while (ros::ok()) {
         if (vision_receiver.receive(&world_state)) {
-            field_state = travesim::converter::ModelStates_to_FieldState(world_state);
+            field_state = travesim::converter::ModelStates_to_FieldState(world_state, teams_formation);
             vision_sender.send(&field_state);
             field_state.time_step++;
         }

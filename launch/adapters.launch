@@ -1,4 +1,8 @@
 <launch>
+  <arg name="robots_per_team" default="3"/>
+
+  <param name="robots_per_team" type="int" value="$(arg robots_per_team)" />
+
   <include file="$(find travesim)/launch/simulation_match.launch">
     <arg name="twist_interface" value="false"/>
   </include>
