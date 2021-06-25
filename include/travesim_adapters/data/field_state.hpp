@@ -12,7 +12,7 @@
 #define __FIELD_STATE_H__
 
 #include <iostream>
-#include "travesim_adapters/data/data_constants.hpp"
+#include "travesim_adapters/data/data_common.hpp"
 #include "travesim_adapters/data/entity_state.hpp"
 
 namespace travesim {

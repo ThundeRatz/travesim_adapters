@@ -1,21 +1,24 @@
 /**
- * @file data_constants.hpp
+ * @file data_common.hpp
  *
- * @brief General constants for the data structures
+ * @brief Common constants and types for the data structures
  *
  * @author Lucas Haug <lucas.haug@thunderatz.org>
  *
- * @date 04/2021
+ * @date 06/2021
  */
 
-#ifndef __DATA_CONSTANTS_H__
-#define __DATA_CONSTANTS_H__
+#ifndef __DATA_COMMON_H__
+#define __DATA_COMMON_H__
+
+/*****************************************
+ * Public Constants
+ *****************************************/
 
 /**
  * @brief Robots related constants
  */
 #define NUM_OF_ROBOTS_PER_TEAM 3
-#define NUM_OF_ENTITIES_IN_FIELD (2 * NUM_OF_ROBOTS_PER_TEAM + 1)
 
 /**
  * @brief Printing output configuration constants
@@ -31,4 +34,4 @@
 #define GOAL_WIDTH_M 0.4F
 #define GOAL_DEPTH_M 0.1F
 
-#endif // __DATA_CONSTANTS_H__
+#endif // __DATA_COMMON_H__

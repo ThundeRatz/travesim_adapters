@@ -16,7 +16,7 @@
 
 #include "travesim_adapters/ros/teams_topics.hpp"
 #include "travesim_adapters/data/team_command.hpp"
-#include "travesim_adapters/data/data_constants.hpp"
+#include "travesim_adapters/data/data_common.hpp"
 
 #include <iostream>
 

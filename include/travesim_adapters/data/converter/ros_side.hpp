@@ -19,7 +19,7 @@
 #include <gazebo_msgs/ModelState.h>
 #include <gazebo_msgs/ModelStates.h>
 
-#include "travesim_adapters/data/data_constants.hpp"
+#include "travesim_adapters/data/data_common.hpp"
 #include "travesim_adapters/data/robot_state.hpp"
 #include "travesim_adapters/data/entity_state.hpp"
 #include "travesim_adapters/data/field_state.hpp"

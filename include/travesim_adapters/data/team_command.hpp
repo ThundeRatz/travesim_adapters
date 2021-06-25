@@ -12,7 +12,7 @@
 #define __TEAM_COMMAND_H__
 
 #include <iostream>
-#include "travesim_adapters/data/data_constants.hpp"
+#include "travesim_adapters/data/data_common.hpp"
 
 namespace travesim {
 /**
