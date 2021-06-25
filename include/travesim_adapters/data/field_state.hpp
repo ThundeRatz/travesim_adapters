@@ -11,7 +11,9 @@
 #ifndef __FIELD_STATE_H__
 #define __FIELD_STATE_H__
 
+#include <vector>
 #include <iostream>
+
 #include "travesim_adapters/data/data_common.hpp"
 #include "travesim_adapters/data/entity_state.hpp"
 
@@ -25,8 +27,9 @@ class FieldState {
         /**
          * @brief Construct a new Field State object
          *
+         * @param team_config Number of robots per team, default is 3
          */
-        FieldState() = default;
+        FieldState(TeamsFormation team_form = TeamsFormation::THREE_ROBOTS_PER_TEAM);
 
         /**
          * @brief Output stream operator overloading
@@ -34,15 +37,18 @@ class FieldState {
          */
         friend std::ostream& operator <<(std::ostream& output, const FieldState& field_state);
 
-        unsigned int time_step;  /**< ODE time step */
+        uint time_step;  /**< ODE time step */
+
+        uint8_t robots_per_team;
 
         /**
          * @brief Field entities
          *
          */
         EntityState ball;
-        EntityState yellow_team[NUM_OF_ROBOTS_PER_TEAM];
-        EntityState blue_team[NUM_OF_ROBOTS_PER_TEAM];
+
+        std::vector<EntityState> yellow_team;
+        std::vector<EntityState> blue_team;
 };
 }
 

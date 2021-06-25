@@ -39,7 +39,6 @@
  *****************************************/
 
 namespace travesim {
-
 /**
  * @brief Formation of the teams
  */
