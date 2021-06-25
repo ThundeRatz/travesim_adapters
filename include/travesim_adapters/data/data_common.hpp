@@ -34,4 +34,19 @@
 #define GOAL_WIDTH_M 0.4F
 #define GOAL_DEPTH_M 0.1F
 
+/*****************************************
+ * Public Types
+ *****************************************/
+
+namespace travesim {
+
+/**
+ * @brief Formation of the teams
+ */
+enum TeamsFormation {
+    THREE_ROBOTS_PER_TEAM = 3,
+    FIVE_ROBOTS_PER_TEAM = 5,
+};
+}
+
 #endif // __DATA_COMMON_H__
