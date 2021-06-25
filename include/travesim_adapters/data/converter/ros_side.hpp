@@ -1,8 +1,12 @@
 /**
  * @file ros_side.hpp
+ *
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
+ * @author Lucas Haug <lucas.haug@thunderatz.org>
+ *
  * @brief Collection of data converters between ROS and local formats
- * @date 04/2021
+ *
+ * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *

@@ -1,9 +1,12 @@
 /**
  * @file vision_adapter.cpp
+ *
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
  * @author Lucas Haug <lucas.haug@thunderatz.org>
+ *
  * @brief Vision adapter executable file
- * @date 04/2021
+ *
+ * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *
