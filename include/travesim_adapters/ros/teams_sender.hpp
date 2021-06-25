@@ -1,8 +1,12 @@
 /**
  * @file teams_sender.hpp
+ *
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
+ * @author Lucas Haug <lucas.haug@thunderatz.org>
+ *
  * @brief ROS teams commands sender class definition
- * @date 04/2021
+ *
+ * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *
@@ -14,10 +18,10 @@
 #include <ros/ros.h>
 #include <ros/console.h>
 
-#include "travesim_adapters/ros/teams_topics.hpp"
 #include "travesim_adapters/data/team_command.hpp"
 #include "travesim_adapters/data/data_common.hpp"
 
+#include <vector>
 #include <iostream>
 
 namespace travesim {
@@ -36,38 +40,23 @@ class TeamsSender {
          * @brief Yellow team ROS publishers
          *
          */
-        robot_command_pub_t yellow_pub[NUM_OF_ROBOTS_PER_TEAM];
+        std::vector<robot_command_pub_t> yellow_pubs;
 
         /**
          * @brief Blue team ROS publishers
          *
          */
-        robot_command_pub_t blue_pub[NUM_OF_ROBOTS_PER_TEAM];
+        std::vector<robot_command_pub_t> blue_pubs;
 
-        /**
-         * @brief List of yellow team's topics names
-         *
-         */
-        const std::string yellow_topics[2*NUM_OF_ROBOTS_PER_TEAM] = {
-            YELLOW_ROBOT_0_LEFT_TOPIC, YELLOW_ROBOT_0_RIGHT_TOPIC,
-            YELLOW_ROBOT_1_LEFT_TOPIC, YELLOW_ROBOT_1_RIGHT_TOPIC,
-            YELLOW_ROBOT_2_LEFT_TOPIC, YELLOW_ROBOT_2_RIGHT_TOPIC };
-
-        /**
-         * @brief List of blue team's topics names
-         *
-         */
-        const std::string blue_topics[2*NUM_OF_ROBOTS_PER_TEAM] = {
-            BLUE_ROBOT_0_LEFT_TOPIC, BLUE_ROBOT_0_RIGHT_TOPIC,
-            BLUE_ROBOT_1_LEFT_TOPIC, BLUE_ROBOT_1_RIGHT_TOPIC,
-            BLUE_ROBOT_2_LEFT_TOPIC, BLUE_ROBOT_2_RIGHT_TOPIC };
+        uint8_t robots_per_team;
 
     public:
         /**
          * @brief Construct a new Teams Sender object
          *
+         * @param teams_formation Number of robots per team, default is 3
          */
-        TeamsSender();
+        TeamsSender(TeamsFormation teams_formation = TeamsFormation::THREE_ROBOTS_PER_TEAM);
 
         /**
          * @brief Send the stored commands to Gazebo controllers

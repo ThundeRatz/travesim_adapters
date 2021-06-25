@@ -5,7 +5,7 @@
  *
  * @author Lucas Haug <lucas.haug@thunderatz.org>
  *
- * @date 04/2021
+ * @date 06/2021
  */
 
 #include <iomanip>
@@ -30,10 +30,18 @@ std::ostream& operator <<(std::ostream& output, const RobotCommand& command) {
     return output;
 }
 
+/*****************************************
+ * TeamCommand Related
+ *****************************************/
+
+TeamCommand::TeamCommand(TeamsFormation teams_formation) : robots_per_team(teams_formation) {
+    this->robot_command = std::vector<RobotCommand>(this->robots_per_team);
+}
+
 std::ostream& operator <<(std::ostream& output, const TeamCommand& command) {
     output << std::fixed << std::setprecision(PRINTING_DECIMAL_PRECISION);
 
-    for (int i = 0; i < NUM_OF_ROBOTS_PER_TEAM; i++) {
+    for (int i = 0; i < command.robots_per_team; i++) {
         output << "ROBOT " << i << ":" << std::endl;
         output << command.robot_command[i] << std::endl;
         output << std::endl;
