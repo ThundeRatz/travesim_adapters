@@ -16,11 +16,6 @@
  *****************************************/
 
 /**
- * @brief Robots related constants
- */
-#define NUM_OF_ROBOTS_PER_TEAM 3
-
-/**
  * @brief Printing output configuration constants
  */
 #define PRINTING_MIN_WIDTH 6U
