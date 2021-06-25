@@ -16,7 +16,7 @@ namespace travesim {
  * FieldState Related
  *****************************************/
 
-FieldState::FieldState(TeamsFormation team_form) : robots_per_team(team_form) {
+FieldState::FieldState(TeamsFormation teams_formation) : robots_per_team(teams_formation) {
     this->yellow_team = std::vector<EntityState>(this->robots_per_team);
     this->blue_team = std::vector<EntityState>(this->robots_per_team);
 }

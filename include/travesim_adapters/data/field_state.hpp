@@ -27,9 +27,9 @@ class FieldState {
         /**
          * @brief Construct a new Field State object
          *
-         * @param team_config Number of robots per team, default is 3
+         * @param teams_formation Number of robots per team, default is 3
          */
-        FieldState(TeamsFormation team_form = TeamsFormation::THREE_ROBOTS_PER_TEAM);
+        FieldState(TeamsFormation teams_formation = TeamsFormation::THREE_ROBOTS_PER_TEAM);
 
         /**
          * @brief Output stream operator overloading
