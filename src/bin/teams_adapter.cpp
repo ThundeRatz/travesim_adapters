@@ -53,8 +53,8 @@ int main(int argc, char** argv) {
     }
 
     // Initialize sender, receivers and commands
-    travesim::proto::TeamReceiver yellow_receiver(yellow_address_str, yellow_port, specific_source, teams_formation);
-    travesim::proto::TeamReceiver blue_receiver(blue_address_str, blue_port, specific_source, teams_formation);
+    travesim::proto::TeamReceiver yellow_receiver(yellow_address_str, yellow_port, true, specific_source);
+    travesim::proto::TeamReceiver blue_receiver(blue_address_str, blue_port, false, specific_source);
 
     travesim::ros_side::TeamsSender teams_sender(teams_formation);
 
