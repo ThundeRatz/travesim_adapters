@@ -79,7 +79,8 @@ void TeamReceiver::packet_pb_msg_to_team_command(fira_message::sim_to_ref::Packe
             int robot_id = robot_cmd.id();
 
             if ((robot_id < 0) || (robot_id >= p_team_cmd->robots_per_team)) {
-                ROS_WARN_STREAM("Error: Invalid robot id in team receiver!");
+                ROS_WARN_STREAM("Error: Invalid robot id in team receiver!\r\nReceived id is " <<
+                                robot_id << " and max id is " << p_team_cmd->robots_per_team);
                 continue;
             }
 
