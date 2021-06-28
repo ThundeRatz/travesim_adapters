@@ -18,6 +18,7 @@
 #include "travesim_adapters/data/converter/ros_side.hpp"
 
 #include <iostream>
+#include <unordered_map>
 
 std::unordered_map<std::string, gazebo_msgs::ModelState> world_data;
 
