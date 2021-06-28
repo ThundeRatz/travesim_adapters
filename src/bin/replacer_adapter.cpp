@@ -23,7 +23,7 @@
 
 
 int main(int argc, char** argv) {
-    ros::init(argc, argv, "teams_adapter");
+    ros::init(argc, argv, "replacer_adapter");
     ros::NodeHandle nh;
 
     // Get config
