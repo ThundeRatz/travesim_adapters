@@ -2,7 +2,7 @@
  * @file replacer_adapter.cpp
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
  * @author Lucas Haug <lucas.haug@thunderatz.org>
- * @brief Teams commands adapter execution file
+ * @brief Replacer adapter execution file
  * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
