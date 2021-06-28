@@ -5,14 +5,16 @@
  *
  * @author Lucas Haug <lucas.haug@thunderatz.org>
  *
- * @date 04/2021
+ * @date 06/2021
  */
 
 #ifndef __TEAM_COMMAND_H__
 #define __TEAM_COMMAND_H__
 
+#include <vector>
 #include <iostream>
-#include "travesim_adapters/data/data_constants.hpp"
+
+#include "travesim_adapters/data/data_common.hpp"
 
 namespace travesim {
 /**
@@ -52,8 +54,9 @@ class TeamCommand {
         /**
          * @brief Construct a new Team Command object
          *
+         * @param teams_formation Number of robots per team, default is 3
          */
-        TeamCommand() = default;
+        TeamCommand(TeamsFormation teams_formation = TeamsFormation::THREE_ROBOTS_PER_TEAM);
 
         /**
          * @brief Output stream operator overloading
@@ -65,7 +68,9 @@ class TeamCommand {
          * @brief Public attributes
          *
          */
-        RobotCommand robot_command[NUM_OF_ROBOTS_PER_TEAM];
+        uint8_t robots_per_team;
+
+        std::vector<RobotCommand> robot_command;
 };
 }
 

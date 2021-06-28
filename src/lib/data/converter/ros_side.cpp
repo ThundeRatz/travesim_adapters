@@ -1,12 +1,18 @@
 /**
- * @file converter.cpp
+ * @file ros_side.cpp
+ *
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
+ * @author Lucas Haug <lucas.haug@thunderatz.org>
+ *
  * @brief Collection of data converters between ROS and local formats
- * @date 04/2021
+ *
+ * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *
  */
+
+#include <unordered_map>
 
 #include "travesim_adapters/data/converter/ros_side.hpp"
 
@@ -108,21 +114,21 @@ gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, double
     return retval;
 }
 
-FieldState ModelStates_to_FieldState(gazebo_msgs::ModelStates::ConstPtr model_states) {
-    static FieldState field_state;
+FieldState ModelStates_to_FieldState(gazebo_msgs::ModelStates::ConstPtr model_states, TeamsFormation teams_formation) {
+    static FieldState field_state(teams_formation);
 
     /**
      * @brief This lookup table will map model_name -> field_state data location,
-     * so we can acess field_state elements from their's names
-     *
+     *        so we can acess field_state elements from their's names
      */
-    static lookup_table_t lookup_table({{YELLOW_ROBOT_0_NAME, &field_state.yellow_team[0]},
-                                           {YELLOW_ROBOT_1_NAME, &field_state.yellow_team[1]},
-                                           {YELLOW_ROBOT_2_NAME, &field_state.yellow_team[2]},
-                                           {BLUE_ROBOT_0_NAME, &field_state.blue_team[0]},
-                                           {BLUE_ROBOT_1_NAME, &field_state.blue_team[1]},
-                                           {BLUE_ROBOT_2_NAME, &field_state.blue_team[2]},
-                                           {BALL_NAME, &field_state.ball}});
+    static lookup_table_t lookup_table;
+
+    lookup_table[BALL_NAME] = &field_state.ball;
+
+    for (uint8_t i = 0; i < field_state.robots_per_team; i++) {
+        lookup_table[ROBOT_NAME("yellow", i)] = &field_state.yellow_team[i];
+        lookup_table[ROBOT_NAME("blue", i)] = &field_state.blue_team[i];
+    }
 
     uint32_t size = model_states->name.size();
 

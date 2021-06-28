@@ -59,7 +59,7 @@ fira_message::sim_to_ref::Environment VisionSender::field_state_to_env_pb_msg(Fi
     frame_ball->set_vy(p_field_state->ball.velocity.y);
 
     // Set yellow team
-    for (int i = 0; i < NUM_OF_ROBOTS_PER_TEAM; i++) {
+    for (int i = 0; i < p_field_state->robots_per_team; i++) {
         fira_message::Robot* robot = frame->add_robots_yellow();
 
         robot->set_robot_id(i);
@@ -74,7 +74,7 @@ fira_message::sim_to_ref::Environment VisionSender::field_state_to_env_pb_msg(Fi
     }
 
     // Set blue team
-    for (int i = 0; i < NUM_OF_ROBOTS_PER_TEAM; i++) {
+    for (int i = 0; i < p_field_state->robots_per_team; i++) {
         fira_message::Robot* robot = frame->add_robots_blue();
 
         robot->set_robot_id(i);

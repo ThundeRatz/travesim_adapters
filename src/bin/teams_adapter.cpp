@@ -1,9 +1,12 @@
 /**
  * @file teams_adapter.cpp
+ *
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
  * @author Lucas Haug <lucas.haug@thunderatz.org>
+ *
  * @brief Teams commands adapter execution file
- * @date 04/2021
+ *
+ * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *
@@ -12,7 +15,6 @@
 #include <ros/ros.h>
 #include <ros/console.h>
 
-#include "travesim_adapters/ros/teams_topics.hpp"
 #include "travesim_adapters/ros/teams_sender.hpp"
 
 #include "travesim_adapters/data/team_command.hpp"
@@ -26,6 +28,7 @@ int main(int argc, char** argv) {
 
     travesim::TeamsConfigurer teams_configurer;
 
+    // Get config
     int32_t yellow_port = teams_configurer.get_port(travesim::TeamsConfigurer::TeamColor::YELLOW);
     std::string yellow_address_str = teams_configurer.get_address(travesim::TeamsConfigurer::TeamColor::YELLOW);
 
@@ -34,13 +37,32 @@ int main(int argc, char** argv) {
 
     bool specific_source = teams_configurer.get_specific_source();
 
-    travesim::proto::TeamReceiver yellow_receiver(yellow_address_str, yellow_port, specific_source);
-    travesim::proto::TeamReceiver blue_receiver(blue_address_str, blue_port, specific_source);
+    int robots_per_team;
 
-    travesim::ros_side::TeamsSender teams_sender;
+    ros::param::param<int>("/robots_per_team", robots_per_team, travesim::TeamsFormation::THREE_ROBOTS_PER_TEAM);
 
-    travesim::TeamCommand yellow_command, blue_command;
+    travesim::TeamsFormation teams_formation;
 
+    if (robots_per_team == int(travesim::TeamsFormation::THREE_ROBOTS_PER_TEAM)) {
+        teams_formation = travesim::TeamsFormation::THREE_ROBOTS_PER_TEAM;
+    } else if (robots_per_team == int(travesim::TeamsFormation::FIVE_ROBOTS_PER_TEAM)) {
+        teams_formation = travesim::TeamsFormation::FIVE_ROBOTS_PER_TEAM;
+    } else {
+        ROS_ERROR_STREAM("Invalid number of robots per team");
+        ros::shutdown();
+    }
+
+    // Initialize sender, receivers and commands
+    travesim::proto::TeamReceiver yellow_receiver(yellow_address_str, yellow_port, true, specific_source,
+                                                  teams_formation);
+    travesim::proto::TeamReceiver blue_receiver(blue_address_str, blue_port, false, specific_source, teams_formation);
+
+    travesim::ros_side::TeamsSender teams_sender(teams_formation);
+
+    travesim::TeamCommand yellow_command(teams_formation);
+    travesim::TeamCommand blue_command(teams_formation);
+
+    // Start
     ROS_INFO_STREAM("Teams adapter config:" << std::endl << teams_configurer);
 
     while (ros::ok()) {
