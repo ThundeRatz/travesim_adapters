@@ -26,7 +26,6 @@ int main(int argc, char** argv) {
     ros::init(argc, argv, "teams_adapter");
     ros::NodeHandle nh;
 
-    int32_t send_rate;
     travesim::ros_side::ReplacerSender replacer_sender;
     travesim::ros_side::state_vector_t model_state_vector;
 
@@ -36,12 +35,6 @@ int main(int argc, char** argv) {
     std::queue<std::shared_ptr<travesim::EntityState>> states_queue;
 
     travesim::proto::ReplacerReceiver replacer_receiver(receiver_address, receiver_port, true);
-
-    nh.param<int32_t>("send_rate", send_rate, 120);
-
-    ros::Rate loop_rate(send_rate);
-
-    ROS_INFO_STREAM("Replacer adapter started with loop rate " << send_rate);
 
     while (ros::ok()) {
 
@@ -74,6 +67,5 @@ int main(int argc, char** argv) {
         }
 
         ros::spinOnce();
-        loop_rate.sleep();
     }
 }
