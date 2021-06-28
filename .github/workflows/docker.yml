@@ -19,3 +19,4 @@ jobs:
         with:
           check_name: tests report
           files: test_results/**/*.xml
+          comment_mode: off

@@ -23,7 +23,9 @@
         "/opt/ros/noetic/lib/python3/dist-packages"
     ],
     "editor.formatOnSave": true,
+
     "files.associations": {
-        "*.test": "xml"
+        "*.test": "xml",
+        "*.cfg": "python"
     }
 }

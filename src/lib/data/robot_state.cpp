@@ -42,11 +42,11 @@ std::ostream& operator <<(std::ostream& output, const RobotState& robot_state) {
     output << "TEAM YELLOW: " << robot_state.is_yellow << std::endl;
     output << "ROBOT ID: " << robot_state.id << std::endl;
 
-    output << "POSITION: " << std::endl;
+    output << "POSITION: ";
     output << robot_state.position << " | ";
     output << "THETA: "<< std::setw(PRINTING_MIN_WIDTH) << robot_state.angular_position << std::endl;
 
-    output << "VELOCITY: " << std::endl;
+    output << "VELOCITY: ";
     output << robot_state.velocity << " | ";
     output << "THETA: "<< std::setw(PRINTING_MIN_WIDTH) << robot_state.angular_velocity << std::endl;
 

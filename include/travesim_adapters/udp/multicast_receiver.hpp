@@ -11,8 +11,7 @@
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  */
 
-#include <boost/asio.hpp>
-#include <string>
+#include "travesim_adapters/udp/receiver.hpp"
 
 #ifndef __MULTICAST_RECEIVER_H__
 #define __MULTICAST_RECEIVER_H__
@@ -22,18 +21,24 @@ namespace udp {
 /**
  * @brief Receiver class using UDP in multicast mode
  */
-class MulticastReceiver {
+class MulticastReceiver :
+    public Receiver {
     public:
         /**
          * @brief Construct a new Multicast Receiver object
          *
          * @param multicast_address Multicas group address
          * @param multicast_port Multicast group port
-         * @param listener_address Listener address, has a filtering role, setting
+         * @param receiver_address Receiver address, has a filtering role, setting
          *                         where the data may be received
+         *
+         * @note The multicast addresses must be in the range 224.0.0.0 through
+         *       239.255.255.255, see [IPv4 Multicast Address Space Registry]
+         *       (https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml)
+         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112) for more informations.
          */
         MulticastReceiver(const std::string multicast_address, const short multicast_port,
-                          const std::string listener_address);
+                          const std::string receiver_address);
 
         /**
          * @brief Construct a new Multicast Receiver object
@@ -42,6 +47,11 @@ class MulticastReceiver {
          * @param multicast_port Multicast group port
          *
          * @note Use multicast address as listen address
+         *
+         * @note The multicast addresses must be in the range 224.0.0.0 through
+         *       239.255.255.255, see [IPv4 Multicast Address Space Registry]
+         *       (https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml)
+         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112) for more informations.
          */
         MulticastReceiver(const std::string multicast_address, const short multicast_port);
 
@@ -51,31 +61,31 @@ class MulticastReceiver {
         ~MulticastReceiver();
 
         /**
-         * @brief Receive data using UDP
+         * @brief Set the multicast address
          *
-         * @param buffer Buffet to store data
-         * @param buffer_size Size of the buffer where to store data
+         * @param multicast_address Multicast group address in a string
          *
-         * @return size_t Number of bytes received
+         * @warning reset() must be called after changing the address
+         *
+         * @note The multicast addresses must be in the range 224.0.0.0 through
+         *       239.255.255.255, see [IPv4 Multicast Address Space Registry]
+         *       (https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml)
+         *       or the [RFC1112](https://tools.ietf.org/html/rfc1112) for more informations.
          */
-        size_t receive(char* buffer, const size_t buffer_size);
+        void set_multicast_address(const std::string multicast_address);
 
     private:
-        boost::asio::io_context io_context;   /**< boost/asio I/O execution context */
-        boost::asio::ip::udp::socket* socket; /**< Network socket*/
+        boost::asio::ip::address multicast_address;
 
         /**
-         * @brief Endpoints: addresses and ports pairs
+         * @brief Open the socket with the desired options
          */
-        boost::asio::ip::udp::endpoint sender_endpoint;
-        boost::asio::ip::udp::endpoint listener_endpoint;
+        void open_socket();
 
         /**
-         * @brief Create a socket object
-         *
-         * @param multicast_address Multicas group address
+         * @brief Close the socket
          */
-        void create_socket(const boost::asio::ip::address multicast_address);
+        void close_socket();
 };
 }  // namespace udp
 }  // namespace travesim

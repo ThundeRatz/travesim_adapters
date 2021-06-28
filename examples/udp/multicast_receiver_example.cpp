@@ -36,6 +36,8 @@ int main(int argc, char* argv[]) {
     char data_buff[BUFFER_SIZE];
 
     try {
+        boost::asio::io_context io_context;
+        boost::asio::steady_timer my_timer(io_context);
         travesim::udp::MulticastReceiver my_receiver(multicast_address_str, multicast_port);
 
         size_t data_size = 0;
@@ -51,6 +53,9 @@ int main(int argc, char* argv[]) {
             if (i % 100000 == 0) {
                 std::cout << "Loop count: " << i << std::endl;
             }
+
+            my_timer.expires_after(std::chrono::milliseconds(200));
+            my_timer.wait();
         }
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << "\n";
