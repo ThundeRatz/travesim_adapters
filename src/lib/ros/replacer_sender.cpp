@@ -33,17 +33,17 @@ void ReplacerSender::reconnect_service_client() {
     }
 }
 
-bool ReplacerSender::set_model_state(gazebo_msgs::ModelStatePtr model_state) {
+bool ReplacerSender::set_model_state(gazebo_msgs::ModelState model_state) {
     static gazebo_msgs::SetModelStateRequest request;
     static gazebo_msgs::SetModelStateResponse response;
 
     this->reconnect_service_client();
-    request.model_state = (*model_state);
+    request.model_state = model_state;
 
     bool status = this->gz_service.call(request, response);
 
     if (!(status && response.success)) {
-        ROS_ERROR_STREAM("Error while calling set_model_state " << (*model_state));
+        ROS_ERROR_STREAM("Error while calling set_model_state " << model_state);
         return false;
     }
 

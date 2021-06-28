@@ -158,6 +158,10 @@ add_executable(teams_adapter
   src/bin/teams_adapter.cpp
 )
 
+add_executable(replacer_adapter
+  src/bin/replacer_adapter.cpp
+)
+
 ## Add cmake target dependencies of the executables
 ## same as for the libraries above
 
@@ -247,6 +251,13 @@ target_link_libraries(vision_adapter
 )
 
 target_link_libraries(teams_adapter
+  ${PROJECT_NAME}_ros
+  ${PROJECT_NAME}_protobuf_comm
+  ${PROJECT_NAME}_configurers
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(replacer_adapter
   ${PROJECT_NAME}_ros
   ${PROJECT_NAME}_protobuf_comm
   ${PROJECT_NAME}_configurers

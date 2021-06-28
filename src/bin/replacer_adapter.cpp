@@ -54,12 +54,13 @@ int main(int argc, char** argv) {
                 std::shared_ptr<travesim::RobotState> state = std::dynamic_pointer_cast<travesim::RobotState>(
                     states_queue.front());
 
-                gazebo_msgs::ModelStatePtr gazebo_state_msg;
+                gazebo_msgs::ModelState gazebo_state_msg;
                 if (state != nullptr) {
-                    *gazebo_state_msg = travesim::converter::RobotState_to_ModelState(state.get());
+                    gazebo_state_msg = travesim::converter::RobotState_to_ModelState(state.get());
                 } else {
-                    *gazebo_state_msg = travesim::converter::EntityState_to_ModelState(state.get());
+                    gazebo_state_msg = travesim::converter::EntityState_to_ModelState(states_queue.front().get());
                 }
+
                 model_state_vector.push_back(gazebo_state_msg);
 
                 states_queue.pop();

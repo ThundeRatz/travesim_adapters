@@ -32,7 +32,7 @@ enum simulation_command_t {
  * @brief Helper type to set the states of multiple entites at once
  *
  */
-typedef std::vector<gazebo_msgs::ModelStatePtr> state_vector_t;
+typedef std::vector<gazebo_msgs::ModelState> state_vector_t;
 
 class ReplacerSender {
     private:
@@ -69,7 +69,7 @@ class ReplacerSender {
          * @return true If sucessfull
          * @return false If any error occured
          */
-        bool set_model_state(gazebo_msgs::ModelStatePtr model_state);
+        bool set_model_state(gazebo_msgs::ModelState model_state);
 
         /**
          * @brief Send command to gazebo
