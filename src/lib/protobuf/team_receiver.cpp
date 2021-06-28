@@ -5,7 +5,7 @@
  *
  * @brief Team control data receiver with UDP and protobuf
  *
- * @date 04/2021
+ * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  */
@@ -27,12 +27,14 @@
 namespace travesim {
 namespace proto {
 TeamReceiver::TeamReceiver(const std::string receiver_address, const short receiver_port, bool is_yellow,
-                           bool force_specific_source) {
+                           bool force_specific_source, TeamsFormation teams_formation) {
     this->unicast_receiver =
         std::unique_ptr<udp::UnicastReceiver>(new udp::UnicastReceiver(receiver_address, receiver_port));
     this->unicast_receiver->force_specific_source(force_specific_source);
 
     this->is_yellow = is_yellow;
+
+    this->last_team_cmd = std::unique_ptr<TeamCommand>(new TeamCommand(teams_formation));
 }
 
 bool TeamReceiver::receive(TeamCommand* p_team_cmd) {
@@ -45,14 +47,14 @@ bool TeamReceiver::receive(TeamCommand* p_team_cmd) {
         if (packet_data.has_cmd()) {
             this->packet_pb_msg_to_team_command(&packet_data, p_team_cmd);
 
-            last_team_cmd = *p_team_cmd;
+            *last_team_cmd = *p_team_cmd;
 
             return true;
         } else {
-            *p_team_cmd = last_team_cmd;
+            *p_team_cmd = *last_team_cmd;
         }
     } else {
-        *p_team_cmd = last_team_cmd;
+        *p_team_cmd = *last_team_cmd;
     }
 
     return false;
@@ -76,8 +78,9 @@ void TeamReceiver::packet_pb_msg_to_team_command(fira_message::sim_to_ref::Packe
         if (robot_cmd.yellowteam() == this->is_yellow) {
             int robot_id = robot_cmd.id();
 
-            if ((robot_id < 0) || (robot_id >= NUM_OF_ROBOTS_PER_TEAM)) {
-                ROS_WARN_STREAM("Error: Invalid robot id in team receiver!");
+            if ((robot_id < 0) || (robot_id >= p_team_cmd->robots_per_team)) {
+                ROS_WARN_STREAM("Error: Invalid robot id in team receiver!\r\nReceived id is " <<
+                                robot_id << " and max id is " << p_team_cmd->robots_per_team);
                 continue;
             }
 

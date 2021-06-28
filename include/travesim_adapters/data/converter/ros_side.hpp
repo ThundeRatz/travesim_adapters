@@ -1,8 +1,12 @@
 /**
  * @file ros_side.hpp
+ *
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
+ * @author Lucas Haug <lucas.haug@thunderatz.org>
+ *
  * @brief Collection of data converters between ROS and local formats
- * @date 04/2021
+ *
+ * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *
@@ -12,14 +16,13 @@
 #define __CONVERTER_H__
 
 #include <iostream>
-#include <unordered_map>
 
 #include <geometry_msgs/Point.h>
 #include <geometry_msgs/Vector3.h>
 #include <gazebo_msgs/ModelState.h>
 #include <gazebo_msgs/ModelStates.h>
 
-#include "travesim_adapters/data/data_constants.hpp"
+#include "travesim_adapters/data/data_common.hpp"
 #include "travesim_adapters/data/robot_state.hpp"
 #include "travesim_adapters/data/entity_state.hpp"
 #include "travesim_adapters/data/field_state.hpp"
@@ -27,13 +30,7 @@
 #define DEFAULT_Z_VALUE_BALL 0.032
 #define DEFAULT_Z_VALUE_ROBOT 0.012
 
-#define YELLOW_ROBOT_0_NAME "yellow_team/robot_0"
-#define YELLOW_ROBOT_1_NAME "yellow_team/robot_1"
-#define YELLOW_ROBOT_2_NAME "yellow_team/robot_2"
-
-#define BLUE_ROBOT_0_NAME "blue_team/robot_0"
-#define BLUE_ROBOT_1_NAME "blue_team/robot_1"
-#define BLUE_ROBOT_2_NAME "blue_team/robot_2"
+#define ROBOT_NAME(color, num) color "_team/robot_" + std::to_string(num)
 
 #define BALL_NAME "vss_ball"
 
@@ -112,9 +109,12 @@ gazebo_msgs::ModelState RobotState_to_ModelState(RobotState* robot_state, double
  * @brief Function to convert gazebo_msgs::ModelStates to travesim::FieldState
  *
  * @param model_states Data to be converted
+ * @param teams_formation Number of robots per team
+ *
  * @return travesim::FieldState Converted data
  */
-travesim::FieldState ModelStates_to_FieldState(gazebo_msgs::ModelStates::ConstPtr model_states);
+travesim::FieldState ModelStates_to_FieldState(gazebo_msgs::ModelStates::ConstPtr model_states,
+                                               TeamsFormation                     teams_formation);
 }  // namespace converter
 }  // namespace travesim
 

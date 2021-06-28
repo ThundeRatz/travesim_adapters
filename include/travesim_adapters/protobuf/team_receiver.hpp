@@ -33,6 +33,7 @@ class TeamReceiver {
          * @param receiver_port Team control port
          * @param is_yellow Wheter to tecontrol team yellow or blue
          * @param force_specific_source Whether to enable source specific or not, default false
+         * @param teams_formation Number of robots per team, default is 3
          *
          * @note The unicast addresses must be in the block 127.0.0.0/8, see
          *       [IANA IPv4 Address Space Registry]
@@ -40,7 +41,8 @@ class TeamReceiver {
          *       or the [RFC6890](https://tools.ietf.org/html/rfc6890) for more informations.
          */
         TeamReceiver(const std::string receiver_address, const short receiver_port, bool is_yellow,
-                     bool force_specific_source = false);
+                     bool force_specific_source = false,
+                     TeamsFormation teams_formation = TeamsFormation::THREE_ROBOTS_PER_TEAM);
 
         /**
          * @brief Receive the command from a team
@@ -90,7 +92,7 @@ class TeamReceiver {
 
         bool is_yellow;  /**< true for yellow, false for blue */
 
-        TeamCommand last_team_cmd;
+        std::unique_ptr<TeamCommand> last_team_cmd;
 };
 }  // namespace proto
 }  // namespace travesim

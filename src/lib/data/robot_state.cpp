@@ -10,7 +10,7 @@
 
 #include <iomanip>
 #include "travesim_adapters/data/robot_state.hpp"
-#include "travesim_adapters/data/data_constants.hpp"
+#include "travesim_adapters/data/data_common.hpp"
 
 namespace travesim {
 /*****************************************

@@ -16,6 +16,11 @@ namespace travesim {
  * FieldState Related
  *****************************************/
 
+FieldState::FieldState(TeamsFormation teams_formation) : robots_per_team(teams_formation) {
+    this->yellow_team = std::vector<EntityState>(this->robots_per_team);
+    this->blue_team = std::vector<EntityState>(this->robots_per_team);
+}
+
 std::ostream& operator <<(std::ostream& output, const FieldState& field_state) {
     output << "TIME STEP: " << std::endl;
     output << field_state.time_step << std::endl;
@@ -25,7 +30,7 @@ std::ostream& operator <<(std::ostream& output, const FieldState& field_state) {
 
     output << "TEAM YELLOW STATE: " << std::endl;
 
-    for (int i = 0; i < NUM_OF_ROBOTS_PER_TEAM; i++) {
+    for (int i = 0; i < field_state.robots_per_team; i++) {
         output << "ROBOT " << i << ":" << std::endl;
         output << field_state.yellow_team[i] << std::endl;
     }
@@ -34,7 +39,7 @@ std::ostream& operator <<(std::ostream& output, const FieldState& field_state) {
 
     output << "TEAM BLUE STATE: " << std::endl;
 
-    for (int i = 0; i < NUM_OF_ROBOTS_PER_TEAM; i++) {
+    for (int i = 0; i < field_state.robots_per_team; i++) {
         output << "ROBOT " << i << ":" << std::endl;
         output << field_state.blue_team[i] << std::endl;
     }
