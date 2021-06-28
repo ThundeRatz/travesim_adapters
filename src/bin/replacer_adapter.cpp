@@ -1,8 +1,11 @@
 /**
  * @file replacer_adapter.cpp
+ *
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
  * @author Lucas Haug <lucas.haug@thunderatz.org>
+ *
  * @brief Replacer adapter execution file
+ *
  * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
@@ -20,7 +23,6 @@
 #include "travesim_adapters/protobuf/replacer_receiver.hpp"
 #include "travesim_adapters/data/converter/ros_side.hpp"
 #include "travesim_adapters/configurers/replacer_configurer.hpp"
-
 
 int main(int argc, char** argv) {
     ros::init(argc, argv, "replacer_adapter");
@@ -56,6 +58,7 @@ int main(int argc, char** argv) {
                     states_queue.front());
 
                 gazebo_msgs::ModelState gazebo_state_msg;
+
                 if (state != nullptr) {
                     gazebo_state_msg = travesim::converter::RobotState_to_ModelState(state.get());
                 } else {

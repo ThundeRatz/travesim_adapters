@@ -28,12 +28,12 @@ TEST(replacer_sender, msg_received)
 
     std::vector<gazebo_msgs::ModelState> list_model_states;
 
-   gazebo_msgs::ModelState yellow_robot;
-   gazebo_msgs::ModelState blue_robot;
+    gazebo_msgs::ModelState yellow_robot;
+    gazebo_msgs::ModelState blue_robot;
 
-   yellow_robot.model_name = "yellow_team/robot_0";
-   yellow_robot.pose.position.x = 1.0;
-   yellow_robot.pose.position.y = 2.0;
+    yellow_robot.model_name = "yellow_team/robot_0";
+    yellow_robot.pose.position.x = 1.0;
+    yellow_robot.pose.position.y = 2.0;
 
     blue_robot.model_name = "blue_team/robot_1";
     blue_robot.pose.position.x = -0.5;
