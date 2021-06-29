@@ -36,7 +36,17 @@ ReplacerReceiver::ReplacerReceiver(const std::string receiver_address, const sho
 bool ReplacerReceiver::receive(std::queue<std::shared_ptr<EntityState>>* p_replament_queue) {
     char buffer[BUFFER_SIZE];
 
-    if (this->unicast_receiver->receive(buffer, BUFFER_SIZE) > 0) {
+    size_t data_size = 0;
+
+    try {
+        data_size = this->unicast_receiver->receive(buffer, BUFFER_SIZE);
+    } catch (std::exception& e) {
+        ROS_ERROR_STREAM("Replacer receiver: " << e.what());
+
+        return false;
+    }
+
+    if (data_size > 0) {
         fira_message::sim_to_ref::Packet packet_data;
         packet_data.ParseFromArray(buffer, BUFFER_SIZE);
 

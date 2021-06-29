@@ -40,7 +40,17 @@ TeamReceiver::TeamReceiver(const std::string receiver_address, const short recei
 bool TeamReceiver::receive(TeamCommand* p_team_cmd) {
     char buffer[BUFFER_SIZE];
 
-    if (this->unicast_receiver->receive_latest(buffer, BUFFER_SIZE) > 0) {
+    size_t data_size = 0;
+
+    try {
+        data_size = this->unicast_receiver->receive_latest(buffer, BUFFER_SIZE);
+    } catch (std::exception& e) {
+        ROS_ERROR_STREAM((this->is_yellow ? "Yellow" : "Blue") << " team receiver: " << e.what());
+
+        return false;
+    }
+
+    if (data_size > 0) {
         fira_message::sim_to_ref::Packet packet_data;
         packet_data.ParseFromArray(buffer, BUFFER_SIZE);
 
