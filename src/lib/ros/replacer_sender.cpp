@@ -1,7 +1,10 @@
 /**
  * @file replacer_sender.cpp
+ *
  * @author Felipe Gomes de Melo <felipe.gomes@thunderatz.org>
- * @brief
+ *
+ * @brief ROS replacer sender for gazebo
+ * 
  * @date 04/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
@@ -14,8 +17,6 @@
 #include <unordered_map>
 
 #include "travesim_adapters/ros/replacer_sender.hpp"
-
-// #define ERROR_LOG(msg) ROS_ERROR_
 
 namespace travesim {
 namespace ros_side {
