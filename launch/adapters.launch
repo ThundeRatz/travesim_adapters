@@ -18,6 +18,7 @@
 
   <node name="vision_adapter" required="true" pkg="travesim_adapters" type="vision_adapter" output="screen"/>
   <node name="teams_adapter" required="true" pkg="travesim_adapters" type="teams_adapter" output="screen"/>
+  <node name="replacer_adapter" required="true" pkg="travesim_adapters" type="replacer_adapter" output="screen"/>
 
   <node name="configurers" pkg="rqt_gui" type="rqt_gui" args="--perspective-file $(find travesim_adapters)/config/rqt.perspective"/>
 </launch>

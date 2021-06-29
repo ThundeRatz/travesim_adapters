@@ -74,6 +74,7 @@ add_library(${PROJECT_NAME}_ros
   src/lib/data/converter/ros_side.cpp
   src/lib/ros/vision_receiver.cpp
   src/lib/ros/teams_sender.cpp
+  src/lib/ros/replacer_sender.cpp
 )
 
 add_library(${PROJECT_NAME}_udp_comm
@@ -155,6 +156,10 @@ add_executable(vision_adapter
 
 add_executable(teams_adapter
   src/bin/teams_adapter.cpp
+)
+
+add_executable(replacer_adapter
+  src/bin/replacer_adapter.cpp
 )
 
 ## Add cmake target dependencies of the executables
@@ -252,6 +257,13 @@ target_link_libraries(teams_adapter
   ${catkin_LIBRARIES}
 )
 
+target_link_libraries(replacer_adapter
+  ${PROJECT_NAME}_ros
+  ${PROJECT_NAME}_protobuf_comm
+  ${PROJECT_NAME}_configurers
+  ${catkin_LIBRARIES}
+)
+
 #############
 ## Install ##
 #############
@@ -279,6 +291,10 @@ install(TARGETS vision_adapter
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
 
+  add_executable(gazebo_services.mock
+    test/mocks/bin/gazebo_services.mock.cpp
+  )
+
   catkin_add_gtest(ros_side_converter.test
     src/lib/data/converter/test/ros_side.test.cpp
   )
@@ -290,6 +306,17 @@ if(CATKIN_ENABLE_TESTING)
   add_rostest_gtest(vision_adapter.test
     test/vision_adapter.test
     src/bin/test/vision_adapter.test.cpp
+  )
+
+  add_rostest_gtest(replacer_sender.test
+    test/replacer_sender.test
+    src/lib/ros/test/replacer_sender.test.cpp
+  )
+
+  target_link_libraries(gazebo_services.mock
+    ${PROJECT_NAME}_core
+    ${PROJECT_NAME}_ros
+    ${catkin_LIBRARIES}
   )
 
   target_link_libraries(ros_side_converter.test
@@ -304,6 +331,13 @@ if(CATKIN_ENABLE_TESTING)
   )
 
   target_link_libraries(vision_adapter.test
+    ${PROJECT_NAME}_core
+    ${PROJECT_NAME}_ros
+    ${PROJECT_NAME}_protobuf_comm
+    ${catkin_LIBRARIES}
+  )
+
+  target_link_libraries(replacer_sender.test
     ${PROJECT_NAME}_core
     ${PROJECT_NAME}_ros
     ${PROJECT_NAME}_protobuf_comm
