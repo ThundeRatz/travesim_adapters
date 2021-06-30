@@ -1,6 +1,7 @@
 <launch>
   <arg name="robots_per_team" default="3"/>
   <arg name="gui" default="true"/>
+  <arg name="sound" default="true"/>
 
   <param name="robots_per_team" type="int" value="$(arg robots_per_team)" />
 
@@ -14,6 +15,7 @@
     <arg unless="$(eval (arg('robots_per_team') == 3))"
          name="world_name"
          value="vss_field_5.world"/>
+    <arg name="sound" default="$(arg sound)"/>
   </include>
 
   <node name="vision_adapter" required="true" pkg="travesim_adapters" type="vision_adapter" output="screen"/>
