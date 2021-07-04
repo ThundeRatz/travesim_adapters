@@ -45,6 +45,12 @@ Parameter         | Description                                                 
 `gui`             | Whether to show TraveSim GUI or run it headless.                | `true`
 `sound`           | Whether to play sound while spawning robots in TraveSim or not. | `true`
 
+For example:
+
+```bash
+roslaunch travesim_adapters adapters.launch robots_per_team:=5
+```
+
 ### 💫 Dynamic Reconfigure
 
 There are some parameters that can be configured for each adapter node while they are running with dynamic reconfigure through the rqt interface.
