@@ -23,8 +23,8 @@ There are some parameters that can be configured for each adapter node with dyna
 
 ### 📢 Referee
 
-Parameter          | Description   | Default value
------------------- | ------------- | ------------------
+Parameter             | Description | Default value
+:-------------------: | :---------- | :------------:
 `replacer_address` | Unicast addresses of the referee adapter receiver, must be in the block [127.0.0.0/8](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml). | "127.0.0.1"
 `replacer_port`    | Port of the referee adapter receiver, must be in the range [1024 - 49151](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml). | 20011
 `specific_source`  |Whether the referee adapter should only receive from one source only or not. If this option is enabled, the first sender to communicate with the adapter will be set as the source and receiving anything from other programs, except this first program, will throw an error message. | false
@@ -34,8 +34,8 @@ Observation: If the VSSReferee is restarted, its sender address will have change
 
 ### 🤖 Teams
 
-Parameter             | Description   | Default value
---------------------- | ------------- | ------------------
+Parameter             | Description | Default value
+:-------------------: | :---------- | :------------:
 `yellow_team_address` | Unicast addresses of the yellow team receiver from the teams adapter, must be in the block [127.0.0.0/8](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml). | "127.0.0.1"
 `yellow_team_port`    | Port of the yellow team receiver from the teams adapter, must be in the range [1024 - 49151](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml). | 20012
 `blue_team_address`   | Unicast addresses of the blue team receiver from the teams adapter, must be in the block [127.0.0.0/8](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml). | "127.0.0.1"
@@ -47,8 +47,8 @@ Observation: If the any of the teams is restarted, its sender address will have 
 
 ### 📸 Vision
 
-Parameter             | Description   | Default value
---------------------- | ------------- | ------------------
+Parameter             | Description | Default value
+:-------------------: | :---------- | :------------:
 `multicast_address`   | Multicast address of the vision adapter, must be in the range [224.0.0.0 through 239.255.255.255](https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml). | "224.0.0.1"
 `multicast_port`      | Port of the vision adapter, must be in the range [1024 - 49151](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml). | 10002
 `reset`               | "Button" to reset all protobuf communication. | false
