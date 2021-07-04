@@ -9,11 +9,27 @@
 
 </p>
 
-This project provides an adapter layer to non-ROS projects to work with [TraveSim](https://github.com/ThundeRatz/travesim)
+This project provides an adapter layer to non-ROS projects to work with [TraveSim](https://github.com/ThundeRatz/travesim).
 
 ## 🏗️ Architecture
 
 ![Adapters architecture](./docs/assets/img/arquitetura.png)
+
+## ▶️ Running
+
+It is necessary to clone the project and [TraveSim](https://github.com/ThundeRatz/travesim) inside the `src` directory of a catkin workspace. To create a workspace, refer to [this link](http://wiki.ros.org/catkin/Tutorials/create_a_workspace).
+
+Than compile all the projects running the following command in the root of the catkin workspace:
+
+```bash
+catkin_make
+```
+
+Finally, to run the adapters along with TraveSim simply use the adapters lanchfile:
+
+```bash
+roslaunch travesim_adapters adapters.launch
+```
 
 ## 🔧 Configuration
 
