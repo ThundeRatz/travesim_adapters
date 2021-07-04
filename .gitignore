@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Hidden files
+~*
+
+# Test reports
+test_results/
+
+# Doxygen generated files
+doxygen/
