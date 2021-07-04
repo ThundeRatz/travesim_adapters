@@ -1,0 +1,8 @@
+<map id="include/travesim_adapters/udp/multicast_receiver.hpp" name="include/travesim_adapters/udp/multicast_receiver.hpp">
+<area shape="rect" id="node1" title="Receiver data using UDP in multicast mode." alt="" coords="560,5,852,47"/>
+<area shape="rect" id="node2" href="$d7/df5/vision__receiver__example_8cpp.html" title="Example to read data published from vision adapter." alt="" coords="5,95,268,136"/>
+<area shape="rect" id="node3" href="$d0/d9c/multicast__receiver__example_8cpp.html" title="Example on how to use the MulticastReceiver." alt="" coords="293,95,535,136"/>
+<area shape="rect" id="node4" href="$d4/dfc/multicast__receiver__reset__example_8cpp.html" title=" " alt="" coords="560,95,852,136"/>
+<area shape="rect" id="node5" href="$d7/d29/vision__adapter_8test_8cpp.html" title=" " alt="" coords="876,95,1088,136"/>
+<area shape="rect" id="node6" href="$df/dda/multicast__receiver_8cpp.html" title="Receiver data using UDP in multicast mode." alt="" coords="1113,95,1345,136"/>
+</map>

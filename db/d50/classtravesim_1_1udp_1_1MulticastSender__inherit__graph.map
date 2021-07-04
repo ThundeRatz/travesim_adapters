@@ -1,0 +1,4 @@
+<map id="travesim::udp::MulticastSender" name="travesim::udp::MulticastSender">
+<area shape="rect" id="node1" title="Sender class using UDP in multicast mode." alt="" coords="10,204,273,296"/>
+<area shape="rect" id="node2" href="$d9/ddb/classtravesim_1_1udp_1_1Sender.html" title="Sender class using UDP." alt="" coords="5,5,277,156"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="travesim::ros_side::VisionReceiver::receive_callback" name="travesim::ros_side::VisionReceiver::receive_callback">
+<area shape="rect" id="node1" title="Callback function for Gazebo subscriber." alt="" coords="396,5,668,61"/>
+<area shape="rect" id="node2" href="$d0/d64/classtravesim_1_1ros__side_1_1VisionReceiver.html#ac45ab792e8f9f740cf8601f1eacd866f" title="Construct a new Vision Receiver object." alt="" coords="5,13,348,54"/>
+</map>

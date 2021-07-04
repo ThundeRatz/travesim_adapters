@@ -1,0 +1,5 @@
+<map id="travesim::udp::Receiver" name="travesim::udp::Receiver">
+<area shape="rect" id="node1" title="Receiver class using UDP." alt="" coords="150,5,453,273"/>
+<area shape="rect" id="node2" href="$d2/d4f/classtravesim_1_1udp_1_1MulticastReceiver.html" title="Receiver class using UDP in multicast mode." alt="" coords="5,321,277,487"/>
+<area shape="rect" id="node3" href="$dc/d9b/classtravesim_1_1udp_1_1UnicastReceiver.html" title="Receiver class using UDP in unicast mode." alt="" coords="301,351,624,457"/>
+</map>

@@ -1,0 +1,24 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,394,68,421"/>
+<area shape="rect" id="node2" href="$d6/d3d/namespacetravesim_1_1converter.html#a6d486910a036b99f60fc65798e1f9422" title="Function to convert travesim::EntityState to gazebo_msgs::ModelState." alt="" coords="496,275,788,316"/>
+<area shape="rect" id="node5" href="$d5/d4a/classtravesim_1_1proto_1_1ReplacerReceiver.html#a3496b698ccf155a90282c89faa413ba2" title="Set wheter to enable any source or source specific multicast. True for specific source,..." alt="" coords="116,96,448,137"/>
+<area shape="rect" id="node6" href="$d3/df0/classtravesim_1_1ReplacerConfigurer.html#aeaaa46b3e10fba23cb2dd2efc0c4c6fb" title="Get the replacer configured address." alt="" coords="131,31,433,72"/>
+<area shape="rect" id="node10" href="$d3/df0/classtravesim_1_1ReplacerConfigurer.html#a62b3b192d5b77c9f3aeac513e454f99e" title="Get the replacer configured port." alt="" coords="131,227,433,268"/>
+<area shape="rect" id="node11" href="$dd/d5b/classtravesim_1_1AdapterConfigurer.html#a036c5ec113755fcbb96bfed6943ab174" title="Get the reset config." alt="" coords="136,292,428,333"/>
+<area shape="rect" id="node12" href="$d3/df0/classtravesim_1_1ReplacerConfigurer.html#a1b4d2a6f7ed4da42b69f1ddfbc9df133" title="Get the specific_source config." alt="" coords="131,357,433,399"/>
+<area shape="rect" id="node13" href="$d5/d4a/classtravesim_1_1proto_1_1ReplacerReceiver.html#abacb36956126510b9bae3d305e1ed1ad" title="Receive the replacement commands." alt="" coords="146,540,418,581"/>
+<area shape="rect" id="node16" href="$d5/d4a/classtravesim_1_1proto_1_1ReplacerReceiver.html#a831338c749514a764aa44def5ca12f39" title="Reset the receiver." alt="" coords="146,475,418,516"/>
+<area shape="rect" id="node17" href="$d6/d3d/namespacetravesim_1_1converter.html#ac5627853c78581bcfe89dea3d7c32cca" title="Function to convert travesim::RobotState to gazebo_msgs::ModelState." alt="" coords="141,161,423,203"/>
+<area shape="rect" id="node18" href="$d8/d44/classtravesim_1_1ros__side_1_1ReplacerSender.html#af334c7464ba9b8647792b4640c70b297" title="Send command to gazebo." alt="" coords="161,605,403,661"/>
+<area shape="rect" id="node19" href="$d8/d44/classtravesim_1_1ros__side_1_1ReplacerSender.html#a177b69b64b3139faeae4551b3cd6d2e6" title="Set state of multiple entities." alt="" coords="166,685,398,741"/>
+<area shape="rect" id="node22" href="$d5/d4a/classtravesim_1_1proto_1_1ReplacerReceiver.html#a665d968c88b28f196bb3e4a6d7cf94db" title="Set the receiver endpoint." alt="" coords="146,765,418,821"/>
+<area shape="rect" id="node3" href="$d6/d3d/namespacetravesim_1_1converter.html#a389749796334ec513d508de7b81da2d6" title="Function to convert travesim::Vector2D to geometry_msgs::Point." alt="" coords="876,308,1088,349"/>
+<area shape="rect" id="node4" href="$d6/d3d/namespacetravesim_1_1converter.html#aef469dc9282ff1263bba64c66c2bc3a1" title="Function to convert travesim::Vector2D to geometry_msgs::Vector3." alt="" coords="866,243,1098,284"/>
+<area shape="rect" id="node7" href="$d1/d4b/namespacetravesim.html#a05f869547c07b49b722c2afb6c1967ef" title="Checks if a IP is valid and is in the specified range." alt="" coords="511,13,773,39"/>
+<area shape="rect" id="node9" href="$d1/d4b/namespacetravesim.html#a32624f8212a09572f8587ea017f67d30" title="Get the error msg based on the validation type." alt="" coords="516,63,768,90"/>
+<area shape="rect" id="node8" href="$d1/d4b/namespacetravesim.html#ad051590d1f7aa8c749f82ed36c4b2cba" title="Converts a IPv4 in a string to a array of unsigned integers, where the most significant byte of the I..." alt="" coords="866,5,1098,47"/>
+<area shape="rect" id="node14" href="$d5/d4a/classtravesim_1_1proto_1_1ReplacerReceiver.html#a95c3ca946b4aedf5c98803e7c832cf1c" title="Convert a RobotReplacement protobuf message to a RobotState." alt="" coords="506,489,778,545"/>
+<area shape="rect" id="node15" href="$d5/d4a/classtravesim_1_1proto_1_1ReplacerReceiver.html#a92a11afe21eaf8c2d3ed511007b82953" title="Convert a BallReplacement protobuf message to a EntityState." alt="" coords="506,569,778,625"/>
+<area shape="rect" id="node20" href="$d8/d44/classtravesim_1_1ros__side_1_1ReplacerSender.html#a8362945aa7722d4b8bbff20402128b48" title="Set the state of one entity." alt="" coords="526,685,758,741"/>
+<area shape="rect" id="node21" href="$d8/d44/classtravesim_1_1ros__side_1_1ReplacerSender.html#aa78948b06021a691d891535377b5a833" title="Attempts to reconnect gz_service ServiceClient if connection dropped." alt="" coords="836,685,1128,741"/>
+</map>

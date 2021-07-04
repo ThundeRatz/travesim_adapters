@@ -1,0 +1,10 @@
+<map id="include/travesim_adapters/data/team_command.hpp" name="include/travesim_adapters/data/team_command.hpp">
+<area shape="rect" id="node1" title="Team command data structure." alt="" coords="591,5,863,47"/>
+<area shape="rect" id="node2" href="$de/db1/team__receiver_8hpp.html" title="Team control data receiver with UDP and protobuf." alt="" coords="287,95,579,136"/>
+<area shape="rect" id="node4" href="$dd/dcd/teams__adapter_8cpp.html" title="Teams commands adapter execution file." alt="" coords="528,191,800,218"/>
+<area shape="rect" id="node6" href="$d3/d35/teams__sender_8hpp.html" title="ROS teams commands sender class definition." alt="" coords="677,95,949,136"/>
+<area shape="rect" id="node8" href="$dd/dc9/team__command_8cpp.html" title="Team command data structure." alt="" coords="973,102,1285,129"/>
+<area shape="rect" id="node3" href="$da/d15/team__receiver__example_8cpp.html" title="Example to read data published from a team." alt="" coords="5,184,248,225"/>
+<area shape="rect" id="node5" href="$d6/d4c/team__receiver_8cpp.html" title="Team control data receiver with UDP and protobuf." alt="" coords="272,184,504,225"/>
+<area shape="rect" id="node7" href="$d1/d4e/teams__sender_8cpp.html" title="ROS teams commands sender class definition." alt="" coords="825,191,1127,218"/>
+</map>

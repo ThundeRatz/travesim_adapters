@@ -1,0 +1,4 @@
+<map id="travesim::proto::VisionSender::send" name="travesim::proto::VisionSender::send">
+<area shape="rect" id="node1" title="Send vision data with UDP and protobuf." alt="" coords="5,5,317,47"/>
+<area shape="rect" id="node2" href="$d2/d61/classtravesim_1_1proto_1_1VisionSender.html#a154be6562f93161fbadc55c07c97af87" title="Convert a FieldState object to a Environment protobuf message object." alt="" coords="365,5,677,47"/>
+</map>

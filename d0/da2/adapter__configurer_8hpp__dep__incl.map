@@ -1,0 +1,15 @@
+<map id="include/travesim_adapters/configurers/adapter_configurer.hpp" name="include/travesim_adapters/configurers/adapter_configurer.hpp">
+<area shape="rect" id="node1" title="Template configurer for an adapter." alt="" coords="1152,5,1524,47"/>
+<area shape="rect" id="node2" href="$d0/d46/replacer__configurer_8hpp.html" title="Configurer for the Replacer." alt="" coords="365,95,748,136"/>
+<area shape="rect" id="node6" href="$d0/d61/teams__configurer_8hpp.html" title="Configurer for the teams." alt="" coords="1162,95,1514,136"/>
+<area shape="rect" id="node10" href="$d0/d78/vision__configurer_8hpp.html" title="Configurer for the vision." alt="" coords="1897,95,2259,136"/>
+<area shape="rect" id="node3" href="$dd/d3a/replacer__configurer__example_8cpp.html" title="Example on how to use the ReplacerConfigurer." alt="" coords="5,184,228,240"/>
+<area shape="rect" id="node4" href="$da/d85/replacer__adapter_8cpp.html" title="Replacer adapter execution file." alt="" coords="252,199,555,225"/>
+<area shape="rect" id="node5" href="$d2/d15/replacer__configurer_8cpp.html" title="Configurer for the Replacer." alt="" coords="579,191,841,233"/>
+<area shape="rect" id="node7" href="$de/d50/teams__configurer__example_8cpp.html" title="Example on how to use the TeamsConfigurer." alt="" coords="866,191,1178,233"/>
+<area shape="rect" id="node8" href="$dd/dcd/teams__adapter_8cpp.html" title="Teams commands adapter execution file." alt="" coords="1202,199,1474,225"/>
+<area shape="rect" id="node9" href="$db/da2/teams__configurer_8cpp.html" title="Configurer for the teams." alt="" coords="1498,191,1730,233"/>
+<area shape="rect" id="node11" href="$df/dfd/vision__configurer__example_8cpp.html" title="Example on how to use the VisionConfigurer." alt="" coords="1754,191,2077,233"/>
+<area shape="rect" id="node12" href="$df/ddf/vision__adapter_8cpp.html" title="Vision adapter executable file." alt="" coords="2101,199,2383,225"/>
+<area shape="rect" id="node13" href="$d7/d1a/vision__configurer_8cpp.html" title="Configurer for the vision." alt="" coords="2407,191,2650,233"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,71,68,98"/>
+<area shape="rect" id="node2" href="$de/d8e/classtravesim_1_1TeamsConfigurer.html#a037f5024d67489ba12a3509f8735b55c" title="Get the configured address of a team." alt="" coords="126,31,398,72"/>
+<area shape="rect" id="node6" href="$dd/d5b/classtravesim_1_1AdapterConfigurer.html#a036c5ec113755fcbb96bfed6943ab174" title="Get the reset config." alt="" coords="116,96,408,137"/>
+<area shape="rect" id="node3" href="$d1/d4b/namespacetravesim.html#a05f869547c07b49b722c2afb6c1967ef" title="Checks if a IP is valid and is in the specified range." alt="" coords="456,13,719,39"/>
+<area shape="rect" id="node5" href="$d1/d4b/namespacetravesim.html#a32624f8212a09572f8587ea017f67d30" title="Get the error msg based on the validation type." alt="" coords="461,63,713,90"/>
+<area shape="rect" id="node4" href="$d1/d4b/namespacetravesim.html#ad051590d1f7aa8c749f82ed36c4b2cba" title="Converts a IPv4 in a string to a array of unsigned integers, where the most significant byte of the I..." alt="" coords="767,5,999,47"/>
+</map>

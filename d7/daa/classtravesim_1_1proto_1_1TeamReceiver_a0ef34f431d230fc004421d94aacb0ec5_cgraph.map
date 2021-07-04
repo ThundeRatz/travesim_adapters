@@ -1,0 +1,4 @@
+<map id="travesim::proto::TeamReceiver::receive" name="travesim::proto::TeamReceiver::receive">
+<area shape="rect" id="node1" title="Receive the command from a team." alt="" coords="5,5,317,47"/>
+<area shape="rect" id="node2" href="$d7/daa/classtravesim_1_1proto_1_1TeamReceiver.html#a2b3893a4e168f65c3b2007094fb9e082" title="Update a TeamCommand object from a Packet protobuf message." alt="" coords="365,5,697,47"/>
+</map>

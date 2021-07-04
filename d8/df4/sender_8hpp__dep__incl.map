@@ -1,0 +1,14 @@
+<map id="include/travesim_adapters/udp/sender.hpp" name="include/travesim_adapters/udp/sender.hpp">
+<area shape="rect" id="node1" title="Send data using UDP." alt="" coords="837,5,1109,47"/>
+<area shape="rect" id="node2" href="$df/de3/multicast__sender_8hpp.html" title="Send data using UDP in multicast mode." alt="" coords="419,95,691,136"/>
+<area shape="rect" id="node9" href="$d1/dca/unicast__sender_8hpp.html" title="Send data using UDP in unicast mode." alt="" coords="837,95,1109,136"/>
+<area shape="rect" id="node12" href="$d3/df1/sender_8cpp.html" title="Send data using UDP." alt="" coords="1133,102,1375,129"/>
+<area shape="rect" id="node3" href="$d1/d23/multicast__sender__example_8cpp.html" title="Example on how to use the MulticastSender." alt="" coords="21,184,263,225"/>
+<area shape="rect" id="node4" href="$db/da8/vision__sender_8hpp.html" title="Vision data sender with UDP and protobuf." alt="" coords="288,184,580,225"/>
+<area shape="rect" id="node8" href="$de/d82/multicast__sender_8cpp.html" title="Send data using UDP in multicast mode." alt="" coords="605,184,837,225"/>
+<area shape="rect" id="node5" href="$de/d50/vision__sender__example_8cpp.html" title="Example on how to use the VisionSender with protobuf." alt="" coords="5,273,268,315"/>
+<area shape="rect" id="node6" href="$df/ddf/vision__adapter_8cpp.html" title="Vision adapter executable file." alt="" coords="293,281,575,307"/>
+<area shape="rect" id="node7" href="$d0/d19/vision__sender_8cpp.html" title="Vision data sender with UDP and protobuf." alt="" coords="600,273,852,315"/>
+<area shape="rect" id="node10" href="$de/d05/unicast__sender__example_8cpp.html" title="Example on how to use the UnicastSender." alt="" coords="861,184,1084,225"/>
+<area shape="rect" id="node11" href="$d6/d70/unicast__sender_8cpp.html" title="Send data using UDP in unicast mode." alt="" coords="1108,184,1320,225"/>
+</map>

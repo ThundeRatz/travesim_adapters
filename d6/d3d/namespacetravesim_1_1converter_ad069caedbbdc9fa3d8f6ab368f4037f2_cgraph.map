@@ -1,0 +1,6 @@
+<map id="travesim::converter::ModelState_to_RobotState" name="travesim::converter::ModelState_to_RobotState">
+<area shape="rect" id="node1" title="Function to convert gazebo_msgs::ModelState to travesim::RobotState." alt="" coords="5,39,288,80"/>
+<area shape="rect" id="node2" href="$d6/d3d/namespacetravesim_1_1converter.html#aedf89b45b5636a0f772c62a984478c57" title="Function to convert gazebo_msgs::ModelState to travesim::EntityState." alt="" coords="336,39,628,80"/>
+<area shape="rect" id="node3" href="$d6/d3d/namespacetravesim_1_1converter.html#a8b5c76ee2a1ed97cdf46ec41c5f54b68" title="Function to convert geometry_msgs::Point to travesim::Vector2D." alt="" coords="686,5,898,47"/>
+<area shape="rect" id="node4" href="$d6/d3d/namespacetravesim_1_1converter.html#a6e075638ef35b4c6d5926d65bc5d79e6" title="Function to convert geometry_msgs::Vector3 to travesim::Vector2D." alt="" coords="676,71,908,112"/>
+</map>

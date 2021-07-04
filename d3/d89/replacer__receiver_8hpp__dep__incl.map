@@ -1,0 +1,6 @@
+<map id="include/travesim_adapters/protobuf/replacer_receiver.hpp" name="include/travesim_adapters/protobuf/replacer_receiver.hpp">
+<area shape="rect" id="node1" title="Replacer receiver with UDP and protobuf." alt="" coords="298,5,630,47"/>
+<area shape="rect" id="node2" href="$d8/d50/replacer__receiver__example_8cpp.html" title="Example to read data published from VSSReplacer." alt="" coords="5,95,288,136"/>
+<area shape="rect" id="node3" href="$da/d85/replacer__adapter_8cpp.html" title="Replacer adapter execution file." alt="" coords="313,102,615,129"/>
+<area shape="rect" id="node4" href="$d2/d5a/replacer__receiver_8cpp.html" title="Replacer receiver with UDP and protobuf." alt="" coords="640,95,912,136"/>
+</map>

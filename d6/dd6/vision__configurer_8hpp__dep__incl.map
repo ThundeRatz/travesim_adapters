@@ -1,0 +1,6 @@
+<map id="include/travesim_adapters/configurers/vision_configurer.hpp" name="include/travesim_adapters/configurers/vision_configurer.hpp">
+<area shape="rect" id="node1" title="Configurer for the vision." alt="" coords="312,5,675,47"/>
+<area shape="rect" id="node2" href="$df/dfd/vision__configurer__example_8cpp.html" title="Example on how to use the VisionConfigurer." alt="" coords="5,95,328,136"/>
+<area shape="rect" id="node3" href="$df/ddf/vision__adapter_8cpp.html" title="Vision adapter executable file." alt="" coords="352,102,635,129"/>
+<area shape="rect" id="node4" href="$d7/d1a/vision__configurer_8cpp.html" title="Configurer for the vision." alt="" coords="659,95,901,136"/>
+</map>

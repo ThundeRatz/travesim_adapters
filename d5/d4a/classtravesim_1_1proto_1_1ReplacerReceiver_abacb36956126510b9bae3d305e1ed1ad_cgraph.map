@@ -1,0 +1,5 @@
+<map id="travesim::proto::ReplacerReceiver::receive" name="travesim::proto::ReplacerReceiver::receive">
+<area shape="rect" id="node1" title="Receive the replacement commands." alt="" coords="5,53,277,94"/>
+<area shape="rect" id="node2" href="$d5/d4a/classtravesim_1_1proto_1_1ReplacerReceiver.html#a92a11afe21eaf8c2d3ed511007b82953" title="Convert a BallReplacement protobuf message to a EntityState." alt="" coords="325,5,597,61"/>
+<area shape="rect" id="node3" href="$d5/d4a/classtravesim_1_1proto_1_1ReplacerReceiver.html#a95c3ca946b4aedf5c98803e7c832cf1c" title="Convert a RobotReplacement protobuf message to a RobotState." alt="" coords="325,85,597,141"/>
+</map>

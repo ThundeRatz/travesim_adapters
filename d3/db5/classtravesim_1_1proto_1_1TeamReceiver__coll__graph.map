@@ -1,0 +1,3 @@
+<map id="travesim::proto::TeamReceiver" name="travesim::proto::TeamReceiver">
+<area shape="rect" id="node1" title="Team control data receiver class with UDP and protobuf." alt="" coords="5,5,317,200"/>
+</map>

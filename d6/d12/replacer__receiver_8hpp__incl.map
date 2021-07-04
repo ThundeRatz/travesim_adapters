@@ -1,0 +1,13 @@
+<map id="include/travesim_adapters/protobuf/replacer_receiver.hpp" name="include/travesim_adapters/protobuf/replacer_receiver.hpp">
+<area shape="rect" id="node1" title="Replacer receiver with UDP and protobuf." alt="" coords="234,5,566,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,102,77,129"/>
+<area shape="rect" id="node3" title=" " alt="" coords="101,102,184,129"/>
+<area shape="rect" id="node4" href="$de/d4a/unicast__receiver_8hpp.html" title="Receiver data using UDP in unicast mode." alt="" coords="208,95,440,136"/>
+<area shape="rect" id="node8" href="$de/d28/entity__state_8hpp.html" title="Entity state data structure." alt="" coords="409,184,652,225"/>
+<area shape="rect" id="node10" href="$dc/d09/robot__state_8hpp.html" title="Robot state data structure." alt="" coords="515,95,757,136"/>
+<area shape="rect" id="node11" title=" " alt="" coords="782,102,914,129"/>
+<area shape="rect" id="node5" href="$df/d3c/receiver_8hpp.html" title="Receiver data using UDP." alt="" coords="153,184,385,225"/>
+<area shape="rect" id="node6" title=" " alt="" coords="187,273,349,300"/>
+<area shape="rect" id="node7" title=" " alt="" coords="373,273,456,300"/>
+<area shape="rect" id="node9" title=" " alt="" coords="559,273,662,300"/>
+</map>

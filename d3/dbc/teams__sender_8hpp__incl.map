@@ -1,0 +1,9 @@
+<map id="include/travesim_adapters/ros/teams_sender.hpp" name="include/travesim_adapters/ros/teams_sender.hpp">
+<area shape="rect" id="node1" title="ROS teams commands sender class definition." alt="" coords="273,5,545,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,102,117,129"/>
+<area shape="rect" id="node3" title=" " alt="" coords="141,102,293,129"/>
+<area shape="rect" id="node4" href="$d7/d05/team__command_8hpp.html" title="Team command data structure." alt="" coords="368,95,611,136"/>
+<area shape="rect" id="node5" title=" " alt="" coords="313,191,396,218"/>
+<area shape="rect" id="node6" title=" " alt="" coords="441,191,543,218"/>
+<area shape="rect" id="node7" href="$d9/d46/data__common_8hpp.html" title="Common constants and types for the data structures." alt="" coords="573,184,816,225"/>
+</map>

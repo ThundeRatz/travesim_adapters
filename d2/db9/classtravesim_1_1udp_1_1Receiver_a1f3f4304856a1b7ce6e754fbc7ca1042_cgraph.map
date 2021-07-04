@@ -1,0 +1,4 @@
+<map id="travesim::udp::Receiver::receive" name="travesim::udp::Receiver::receive">
+<area shape="rect" id="node1" title="Receive data using UDP." alt="" coords="5,5,257,47"/>
+<area shape="rect" id="node2" href="$d2/db9/classtravesim_1_1udp_1_1Receiver.html#a32838d397abca3db4ebb73dffea971b7" title="Validate whether the current sender endpoint matches the first sender endpoint when using specific so..." alt="" coords="305,5,588,47"/>
+</map>

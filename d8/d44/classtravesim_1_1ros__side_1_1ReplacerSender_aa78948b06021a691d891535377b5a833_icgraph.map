@@ -1,0 +1,8 @@
+<map id="travesim::ros_side::ReplacerSender::reconnect_service_client" name="travesim::ros_side::ReplacerSender::reconnect_service_client">
+<area shape="rect" id="node1" title="Attempts to reconnect gz_service ServiceClient if connection dropped." alt="" coords="727,45,1019,101"/>
+<area shape="rect" id="node2" href="$d8/d44/classtravesim_1_1ros__side_1_1ReplacerSender.html#a43d534e9a2b377102287dc34a73a1716" title="Construct a new Replacer Sender object." alt="" coords="396,5,679,61"/>
+<area shape="rect" id="node3" href="$d8/d44/classtravesim_1_1ros__side_1_1ReplacerSender.html#a8362945aa7722d4b8bbff20402128b48" title="Set the state of one entity." alt="" coords="421,85,653,141"/>
+<area shape="rect" id="node4" href="$d8/d44/classtravesim_1_1ros__side_1_1ReplacerSender.html#a177b69b64b3139faeae4551b3cd6d2e6" title="Set state of multiple entities." alt="" coords="116,85,348,141"/>
+<area shape="rect" id="node5" href="$da/d85/replacer__adapter_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,75,68,101"/>
+<area shape="rect" id="node6" href="$d5/d78/replacer__sender_8test_8cpp.html#a4b5237914b519d98599c7d1ba1a45ebb" title=" " alt="" coords="5,125,68,152"/>
+</map>

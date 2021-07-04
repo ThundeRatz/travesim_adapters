@@ -1,0 +1,6 @@
+<map id="include/travesim_adapters/protobuf/vision_sender.hpp" name="include/travesim_adapters/protobuf/vision_sender.hpp">
+<area shape="rect" id="node1" title="Vision data sender with UDP and protobuf." alt="" coords="288,5,580,47"/>
+<area shape="rect" id="node2" href="$de/d50/vision__sender__example_8cpp.html" title="Example on how to use the VisionSender with protobuf." alt="" coords="5,95,268,136"/>
+<area shape="rect" id="node3" href="$df/ddf/vision__adapter_8cpp.html" title="Vision adapter executable file." alt="" coords="293,102,575,129"/>
+<area shape="rect" id="node4" href="$d0/d19/vision__sender_8cpp.html" title="Vision data sender with UDP and protobuf." alt="" coords="600,95,852,136"/>
+</map>

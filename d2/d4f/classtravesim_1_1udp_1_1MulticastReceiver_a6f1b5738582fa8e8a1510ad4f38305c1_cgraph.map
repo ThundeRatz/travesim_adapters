@@ -1,0 +1,4 @@
+<map id="travesim::udp::MulticastReceiver::~MulticastReceiver" name="travesim::udp::MulticastReceiver::~MulticastReceiver">
+<area shape="rect" id="node1" title="Destroy the Multicast Receiver object." alt="" coords="5,5,308,47"/>
+<area shape="rect" id="node2" href="$d2/d4f/classtravesim_1_1udp_1_1MulticastReceiver.html#a9ed81c7279e3358f045ea2a026771d3e" title="Close the socket." alt="" coords="356,5,619,47"/>
+</map>

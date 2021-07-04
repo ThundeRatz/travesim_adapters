@@ -1,0 +1,6 @@
+<map id="include/travesim_adapters/protobuf/team_receiver.hpp" name="include/travesim_adapters/protobuf/team_receiver.hpp">
+<area shape="rect" id="node1" title="Team control data receiver with UDP and protobuf." alt="" coords="262,5,554,47"/>
+<area shape="rect" id="node2" href="$da/d15/team__receiver__example_8cpp.html" title="Example to read data published from a team." alt="" coords="5,95,248,136"/>
+<area shape="rect" id="node3" href="$dd/dcd/teams__adapter_8cpp.html" title="Teams commands adapter execution file." alt="" coords="272,102,544,129"/>
+<area shape="rect" id="node4" href="$d6/d4c/team__receiver_8cpp.html" title="Team control data receiver with UDP and protobuf." alt="" coords="568,95,800,136"/>
+</map>

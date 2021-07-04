@@ -1,0 +1,5 @@
+<map id="travesim::udp::Receiver::reset" name="travesim::udp::Receiver::reset">
+<area shape="rect" id="node1" title="Reset the receiver." alt="" coords="5,39,257,80"/>
+<area shape="rect" id="node2" href="$d2/db9/classtravesim_1_1udp_1_1Receiver.html#a15c10e73545ef7c20a1e70f72c8c9b4e" title="Close the socket." alt="" coords="305,5,557,47"/>
+<area shape="rect" id="node3" href="$d2/db9/classtravesim_1_1udp_1_1Receiver.html#a357feeaa2341049285fd36bedd74f73f" title="Open the socket with the desired options." alt="" coords="305,71,557,112"/>
+</map>

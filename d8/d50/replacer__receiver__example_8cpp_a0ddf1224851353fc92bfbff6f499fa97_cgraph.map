@@ -1,0 +1,6 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,60,68,87"/>
+<area shape="rect" id="node2" href="$d5/d4a/classtravesim_1_1proto_1_1ReplacerReceiver.html#abacb36956126510b9bae3d305e1ed1ad" title="Receive the replacement commands." alt="" coords="116,53,388,94"/>
+<area shape="rect" id="node3" href="$d5/d4a/classtravesim_1_1proto_1_1ReplacerReceiver.html#a95c3ca946b4aedf5c98803e7c832cf1c" title="Convert a RobotReplacement protobuf message to a RobotState." alt="" coords="436,5,708,61"/>
+<area shape="rect" id="node4" href="$d5/d4a/classtravesim_1_1proto_1_1ReplacerReceiver.html#a92a11afe21eaf8c2d3ed511007b82953" title="Convert a BallReplacement protobuf message to a EntityState." alt="" coords="436,85,708,141"/>
+</map>

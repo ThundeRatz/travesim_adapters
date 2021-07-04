@@ -1,0 +1,9 @@
+<map id="include/travesim_adapters/udp/multicast_sender.hpp" name="include/travesim_adapters/udp/multicast_sender.hpp">
+<area shape="rect" id="node1" title="Send data using UDP in multicast mode." alt="" coords="298,5,570,47"/>
+<area shape="rect" id="node2" href="$d1/d23/multicast__sender__example_8cpp.html" title="Example on how to use the MulticastSender." alt="" coords="21,95,263,136"/>
+<area shape="rect" id="node3" href="$db/da8/vision__sender_8hpp.html" title="Vision data sender with UDP and protobuf." alt="" coords="288,95,580,136"/>
+<area shape="rect" id="node7" href="$de/d82/multicast__sender_8cpp.html" title="Send data using UDP in multicast mode." alt="" coords="605,95,837,136"/>
+<area shape="rect" id="node4" href="$de/d50/vision__sender__example_8cpp.html" title="Example on how to use the VisionSender with protobuf." alt="" coords="5,184,268,225"/>
+<area shape="rect" id="node5" href="$df/ddf/vision__adapter_8cpp.html" title="Vision adapter executable file." alt="" coords="293,191,575,218"/>
+<area shape="rect" id="node6" href="$d0/d19/vision__sender_8cpp.html" title="Vision data sender with UDP and protobuf." alt="" coords="600,184,852,225"/>
+</map>

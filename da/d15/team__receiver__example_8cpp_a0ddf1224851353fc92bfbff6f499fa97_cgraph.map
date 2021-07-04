@@ -1,0 +1,5 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,13,68,39"/>
+<area shape="rect" id="node2" href="$d7/daa/classtravesim_1_1proto_1_1TeamReceiver.html#a0ef34f431d230fc004421d94aacb0ec5" title="Receive the command from a team." alt="" coords="116,5,428,47"/>
+<area shape="rect" id="node3" href="$d7/daa/classtravesim_1_1proto_1_1TeamReceiver.html#a2b3893a4e168f65c3b2007094fb9e082" title="Update a TeamCommand object from a Packet protobuf message." alt="" coords="476,5,808,47"/>
+</map>

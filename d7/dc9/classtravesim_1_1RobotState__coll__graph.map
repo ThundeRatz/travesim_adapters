@@ -1,0 +1,5 @@
+<map id="travesim::RobotState" name="travesim::RobotState">
+<area shape="rect" id="node1" title="Data structure to hold the state of a robot in the simulation." alt="" coords="10,360,233,481"/>
+<area shape="rect" id="node2" href="$d9/d12/classtravesim_1_1EntityState.html" title="Data structure to hold the state of a entity in the simulation." alt="" coords="5,189,237,311"/>
+<area shape="rect" id="node3" href="$d9/d2b/classtravesim_1_1Vector2D.html" title="Data structure to hold a two dimensional vector." alt="" coords="20,5,223,112"/>
+</map>

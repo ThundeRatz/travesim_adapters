@@ -1,0 +1,13 @@
+<map id="include/travesim_adapters/protobuf/team_receiver.hpp" name="include/travesim_adapters/protobuf/team_receiver.hpp">
+<area shape="rect" id="node1" title="Team control data receiver with UDP and protobuf." alt="" coords="213,5,505,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,102,88,129"/>
+<area shape="rect" id="node3" href="$de/d4a/unicast__receiver_8hpp.html" title="Receiver data using UDP in unicast mode." alt="" coords="112,95,344,136"/>
+<area shape="rect" id="node7" href="$d7/d05/team__command_8hpp.html" title="Team command data structure." alt="" coords="368,95,611,136"/>
+<area shape="rect" id="node11" title=" " alt="" coords="635,102,767,129"/>
+<area shape="rect" id="node4" href="$df/d3c/receiver_8hpp.html" title="Receiver data using UDP." alt="" coords="93,184,325,225"/>
+<area shape="rect" id="node5" title=" " alt="" coords="55,273,217,300"/>
+<area shape="rect" id="node6" title=" " alt="" coords="241,273,324,300"/>
+<area shape="rect" id="node8" title=" " alt="" coords="349,191,432,218"/>
+<area shape="rect" id="node9" title=" " alt="" coords="457,191,559,218"/>
+<area shape="rect" id="node10" href="$d9/d46/data__common_8hpp.html" title="Common constants and types for the data structures." alt="" coords="584,184,827,225"/>
+</map>

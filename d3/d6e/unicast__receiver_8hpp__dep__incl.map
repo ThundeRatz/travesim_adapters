@@ -1,0 +1,13 @@
+<map id="include/travesim_adapters/udp/unicast_receiver.hpp" name="include/travesim_adapters/udp/unicast_receiver.hpp">
+<area shape="rect" id="node1" title="Receiver data using UDP in unicast mode." alt="" coords="780,5,1052,47"/>
+<area shape="rect" id="node2" href="$dc/dfa/unicast__receiver__example_8cpp.html" title="Example on how to use the UnicastReceiver." alt="" coords="325,95,557,136"/>
+<area shape="rect" id="node3" href="$d4/d4c/replacer__receiver_8hpp.html" title="Replacer receiver with UDP and protobuf." alt="" coords="582,95,914,136"/>
+<area shape="rect" id="node7" href="$de/db1/team__receiver_8hpp.html" title="Team control data receiver with UDP and protobuf." alt="" coords="938,95,1230,136"/>
+<area shape="rect" id="node11" href="$db/dae/unicast__receiver_8cpp.html" title="Receiver data using UDP in unicast mode." alt="" coords="1254,95,1466,136"/>
+<area shape="rect" id="node4" href="$d8/d50/replacer__receiver__example_8cpp.html" title="Example to read data published from VSSReplacer." alt="" coords="5,184,288,225"/>
+<area shape="rect" id="node5" href="$da/d85/replacer__adapter_8cpp.html" title="Replacer adapter execution file." alt="" coords="313,191,615,218"/>
+<area shape="rect" id="node6" href="$d2/d5a/replacer__receiver_8cpp.html" title="Replacer receiver with UDP and protobuf." alt="" coords="640,184,912,225"/>
+<area shape="rect" id="node8" href="$da/d15/team__receiver__example_8cpp.html" title="Example to read data published from a team." alt="" coords="936,184,1179,225"/>
+<area shape="rect" id="node9" href="$dd/dcd/teams__adapter_8cpp.html" title="Teams commands adapter execution file." alt="" coords="1203,191,1475,218"/>
+<area shape="rect" id="node10" href="$d6/d4c/team__receiver_8cpp.html" title="Team control data receiver with UDP and protobuf." alt="" coords="1499,184,1731,225"/>
+</map>

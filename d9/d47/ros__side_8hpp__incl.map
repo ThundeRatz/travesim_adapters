@@ -1,0 +1,13 @@
+<map id="include/travesim_adapters/data/converter/ros_side.hpp" name="include/travesim_adapters/data/converter/ros_side.hpp">
+<area shape="rect" id="node1" title="Collection of data converters between ROS and local formats." alt="" coords="478,5,781,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="102,273,205,300"/>
+<area shape="rect" id="node3" title=" " alt="" coords="667,102,899,129"/>
+<area shape="rect" id="node4" title=" " alt="" coords="924,102,1176,129"/>
+<area shape="rect" id="node5" title=" " alt="" coords="1200,102,1462,129"/>
+<area shape="rect" id="node6" title=" " alt="" coords="1487,102,1759,129"/>
+<area shape="rect" id="node7" href="$d9/d46/data__common_8hpp.html" title="Common constants and types for the data structures." alt="" coords="536,184,779,225"/>
+<area shape="rect" id="node8" href="$dc/d09/robot__state_8hpp.html" title="Robot state data structure." alt="" coords="32,95,275,136"/>
+<area shape="rect" id="node9" href="$de/d28/entity__state_8hpp.html" title="Entity state data structure." alt="" coords="112,184,355,225"/>
+<area shape="rect" id="node10" href="$de/d1e/field__state_8hpp.html" title=" " alt="" coords="350,95,592,136"/>
+<area shape="rect" id="node11" title=" " alt="" coords="430,191,512,218"/>
+</map>

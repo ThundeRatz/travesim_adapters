@@ -1,0 +1,6 @@
+<map id="travesim::ros_side::ReplacerSender::set_model_state" name="travesim::ros_side::ReplacerSender::set_model_state">
+<area shape="rect" id="node1" title="Set the state of one entity." alt="" coords="396,16,628,72"/>
+<area shape="rect" id="node2" href="$d8/d44/classtravesim_1_1ros__side_1_1ReplacerSender.html#a177b69b64b3139faeae4551b3cd6d2e6" title="Set state of multiple entities." alt="" coords="116,16,348,72"/>
+<area shape="rect" id="node3" href="$da/d85/replacer__adapter_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,68,32"/>
+<area shape="rect" id="node4" href="$d5/d78/replacer__sender_8test_8cpp.html#a4b5237914b519d98599c7d1ba1a45ebb" title=" " alt="" coords="5,56,68,83"/>
+</map>

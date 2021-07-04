@@ -1,0 +1,5 @@
+<map id="travesim::udp::Receiver::Receiver" name="travesim::udp::Receiver::Receiver">
+<area shape="rect" id="node1" title="Construct a new Receiver object." alt="" coords="5,39,257,80"/>
+<area shape="rect" id="node2" href="$d2/db9/classtravesim_1_1udp_1_1Receiver.html#adc2e4ae64cc3d39424781c9ba4700267" title="Set wheter to enable any source or source specific. True for specific source, false for any source,..." alt="" coords="305,5,557,47"/>
+<area shape="rect" id="node3" href="$d2/db9/classtravesim_1_1udp_1_1Receiver.html#a4e40819c2e3737e33c5f994cbee79f6e" title="Set the receiver endpoint." alt="" coords="305,71,557,112"/>
+</map>

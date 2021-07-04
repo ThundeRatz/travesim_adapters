@@ -1,0 +1,6 @@
+<map id="travesim::udp::Receiver::close_socket" name="travesim::udp::Receiver::close_socket">
+<area shape="rect" id="node1" title="Close the socket." alt="" coords="487,39,739,80"/>
+<area shape="rect" id="node2" href="$d2/db9/classtravesim_1_1udp_1_1Receiver.html#af527c0a1a7c9b711972ac02a10d762a8" title="Reset the receiver." alt="" coords="151,5,403,47"/>
+<area shape="rect" id="node4" href="$dc/d9b/classtravesim_1_1udp_1_1UnicastReceiver.html#add5f72c6fa1aa55a582c501ce72b3cc9" title="Destroy the Unicast Receiver object." alt="" coords="116,71,439,112"/>
+<area shape="rect" id="node3" href="$d4/dfc/multicast__receiver__reset__example_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,68,39"/>
+</map>

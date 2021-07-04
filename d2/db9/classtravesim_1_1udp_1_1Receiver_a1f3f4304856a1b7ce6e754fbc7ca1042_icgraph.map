@@ -1,0 +1,5 @@
+<map id="travesim::udp::Receiver::receive" name="travesim::udp::Receiver::receive">
+<area shape="rect" id="node1" title="Receive data using UDP." alt="" coords="116,23,368,65"/>
+<area shape="rect" id="node2" href="$d7/df5/vision__receiver__example_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,68,32"/>
+<area shape="rect" id="node3" href="$d7/d29/vision__adapter_8test_8cpp.html#a9b9690e1c14b74009327607bbc6519da" title=" " alt="" coords="5,56,68,83"/>
+</map>

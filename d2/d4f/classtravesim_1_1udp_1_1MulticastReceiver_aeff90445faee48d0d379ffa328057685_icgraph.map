@@ -1,0 +1,4 @@
+<map id="travesim::udp::MulticastReceiver::set_multicast_address" name="travesim::udp::MulticastReceiver::set_multicast_address">
+<area shape="rect" id="node1" title="Set the multicast address." alt="" coords="345,5,608,61"/>
+<area shape="rect" id="node2" href="$d2/d4f/classtravesim_1_1udp_1_1MulticastReceiver.html#aa6a5cc3b53950280fdccdc4a4f58a6cb" title="Construct a new Multicast Receiver object." alt="" coords="5,13,297,54"/>
+</map>

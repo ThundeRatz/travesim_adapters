@@ -1,0 +1,4 @@
+<map id="travesim::ros_side::ReplacerSender::ReplacerSender" name="travesim::ros_side::ReplacerSender::ReplacerSender">
+<area shape="rect" id="node1" title="Construct a new Replacer Sender object." alt="" coords="5,5,288,61"/>
+<area shape="rect" id="node2" href="$d8/d44/classtravesim_1_1ros__side_1_1ReplacerSender.html#aa78948b06021a691d891535377b5a833" title="Attempts to reconnect gz_service ServiceClient if connection dropped." alt="" coords="336,5,628,61"/>
+</map>

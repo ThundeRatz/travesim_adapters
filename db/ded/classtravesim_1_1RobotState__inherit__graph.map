@@ -1,0 +1,4 @@
+<map id="travesim::RobotState" name="travesim::RobotState">
+<area shape="rect" id="node1" title="Data structure to hold the state of a robot in the simulation." alt="" coords="10,204,233,325"/>
+<area shape="rect" id="node2" href="$d9/d12/classtravesim_1_1EntityState.html" title="Data structure to hold the state of a entity in the simulation." alt="" coords="5,5,237,156"/>
+</map>

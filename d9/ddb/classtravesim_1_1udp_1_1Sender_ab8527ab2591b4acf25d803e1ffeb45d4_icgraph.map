@@ -1,0 +1,4 @@
+<map id="travesim::udp::Sender::set_receiver_endpoint" name="travesim::udp::Sender::set_receiver_endpoint">
+<area shape="rect" id="node1" title="Set the receiver endpoint object." alt="" coords="285,5,537,47"/>
+<area shape="rect" id="node2" href="$d9/ddb/classtravesim_1_1udp_1_1Sender.html#ac9d117cde2ca46c6f7f5291e75618da2" title="Construct a new Sender object." alt="" coords="5,5,237,47"/>
+</map>

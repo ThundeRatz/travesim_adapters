@@ -1,0 +1,5 @@
+<map id="travesim::proto::ReplacerReceiver::robot_rplcmt_pb_to_robot_state" name="travesim::proto::ReplacerReceiver::robot_rplcmt_pb_to_robot_state">
+<area shape="rect" id="node1" title="Convert a RobotReplacement protobuf message to a RobotState." alt="" coords="436,5,708,61"/>
+<area shape="rect" id="node2" href="$d5/d4a/classtravesim_1_1proto_1_1ReplacerReceiver.html#abacb36956126510b9bae3d305e1ed1ad" title="Receive the replacement commands." alt="" coords="116,13,388,54"/>
+<area shape="rect" id="node3" href="$d8/d50/replacer__receiver__example_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,20,68,47"/>
+</map>

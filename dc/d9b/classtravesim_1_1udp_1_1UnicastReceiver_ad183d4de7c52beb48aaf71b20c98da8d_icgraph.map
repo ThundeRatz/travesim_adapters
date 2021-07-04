@@ -1,0 +1,4 @@
+<map id="travesim::udp::UnicastReceiver::open_socket" name="travesim::udp::UnicastReceiver::open_socket">
+<area shape="rect" id="node1" title="Open the socket with the desired options." alt="" coords="376,5,699,47"/>
+<area shape="rect" id="node2" href="$dc/d9b/classtravesim_1_1udp_1_1UnicastReceiver.html#a1170c9348d0abc0bdcd72dcac1ed7f64" title="Construct a new Unicast Receiver object." alt="" coords="5,5,328,47"/>
+</map>

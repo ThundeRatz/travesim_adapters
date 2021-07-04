@@ -1,0 +1,3 @@
+<map id="travesim::proto::VisionSender" name="travesim::proto::VisionSender">
+<area shape="rect" id="node1" title="Vision sender class with UDP and protobuf." alt="" coords="5,5,317,141"/>
+</map>
