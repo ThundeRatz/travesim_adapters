@@ -78,7 +78,11 @@ void ReplacerReceiver::force_specific_source(bool force_specific_source) {
 }
 
 void ReplacerReceiver::reset(void) {
-    this->unicast_receiver->reset();
+    try {
+        this->unicast_receiver->reset();
+    } catch (std::exception& e) {
+        ROS_ERROR_STREAM("Replacer receiver: " << e.what());
+    }
 }
 
 EntityState ReplacerReceiver::ball_rplcmt_pb_to_entity_state(
