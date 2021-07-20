@@ -80,7 +80,11 @@ void TeamReceiver::force_specific_source(bool force_specific_source) {
 }
 
 void TeamReceiver::reset(void) {
-    this->unicast_receiver->reset();
+    try {
+        this->unicast_receiver->reset();
+    } catch (std::exception& e) {
+        ROS_ERROR_STREAM((this->is_yellow ? "Yellow" : "Blue") << " team receiver: " << e.what());
+    }
 }
 
 void TeamReceiver::packet_pb_msg_to_team_command(fira_message::sim_to_ref::Packet* p_packet, TeamCommand* p_team_cmd) {
