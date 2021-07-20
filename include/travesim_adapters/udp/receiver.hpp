@@ -104,6 +104,9 @@ class Receiver {
          *  // Set blocking mode
          *  this->socket->non_blocking(true);
          * @endcode
+         *
+         * @note When opening a socket, if the socket is already bound to an endpoint,
+         *       a boost::wrapexcept<boost::system::system_error> exception is thrown.
          */
         virtual void open_socket() = 0;
 
